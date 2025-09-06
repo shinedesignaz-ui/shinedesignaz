@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shinedesignaz.com/sitemap.xml
