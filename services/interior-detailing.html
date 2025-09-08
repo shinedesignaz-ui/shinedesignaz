@@ -9,6 +9,7 @@
   <link rel="canonical" href="https://shinedesignaz.com/services/interior-detailing.html">
   <link rel="icon" href="/assets/images/favicon.ico">
   <meta name="theme-color" content="#0ea5e9">
+  <!-- OG/Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Interior Detailing | Shine Design (East Valley AZ)">
   <meta property="og:description" content="Deep interior cleaning with steam & extraction. Stain, odor & pet hair removal options. Book online in 60s.">
@@ -92,7 +93,59 @@
     .review-grid{display:grid;grid-template-columns:1fr;gap:16px}
     @media(min-width:920px){.review-grid{grid-template-columns:repeat(3,1fr)}}
     .quote{border:1px solid #e2e8f0;background:#fff;border-radius:16px;padding:16px;font-size:15px}
+
+    footer{background:#0b1220;color:#d1d5db;padding:32px 0 24px 0}
+    .foot-grid, footer .container{padding-left:16px;padding-right:16px}
+    footer a{color:#93c5fd}
+    .foot-grid{display:grid;grid-template-columns:1fr;gap:18px;padding:28px 0}
+    @media(min-width:920px){.foot-grid{grid-template-columns:repeat(4,1fr)}}
+    .small{font-size:12px;color:#9ca3af}
+    .micro-footer{background:#0a4259;color:#fff;text-align:center;padding:12px 0;font-size:14px;border-top:1px solid #134e69}
+    .micro-footer a{color:#93e4ff;font-weight:600}
+    .micro-footer a:hover{color:#fff;text-decoration:underline}
   </style>
+
+  <!-- JSON-LD: Service + FAQ + Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://shinedesignaz.com/services/interior-detailing.html#service",
+        "name": "Interior Detailing",
+        "provider": {"@type":"LocalBusiness","name":"Shine Design Mobile Detailing","@id":"https://shinedesignaz.com/#local"},
+        "areaServed": ["Gilbert AZ","Mesa AZ","Chandler AZ","Queen Creek AZ","San Tan Valley AZ","Scottsdale AZ","Tempe AZ"],
+        "serviceType": "Automotive interior detailing",
+        "description": "Vacuum, wipe‑down, steam cleaning, shampoo & hot‑water extraction, leather care, and odor/pet hair add‑ons.",
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "USD",
+          "lowPrice": "149",
+          "highPrice": "659",
+          "offerCount": "3"
+        }
+      },
+      {
+        "@type":"FAQPage",
+        "@id":"https://shinedesignaz.com/services/interior-detailing.html#faq",
+        "mainEntity":[
+          {"@type":"Question","name":"How long does an interior take?","acceptedAnswer":{"@type":"Answer","text":"1.5–2.5 hrs for Level 1; 2.5–4 hrs for Level 2; up to 5 hrs for Level 3 depending on size & condition."}},
+          {"@type":"Question","name":"Do you remove odors (smoke/spills)?","acceptedAnswer":{"@type":"Answer","text":"We address the source first with steam/extraction and can add ozone when needed. Severe cases may require multiple steps."}},
+          {"@type":"Question","name":"Is heavy pet hair extra?","acceptedAnswer":{"@type":"Answer","text":"Yes—heavy pet hair is an add‑on due to time and tool wear. We’ll confirm after inspection."}}
+        ]
+      },
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://shinedesignaz.com/"},
+          {"@type":"ListItem","position":2,"name":"Services","item":"https://shinedesignaz.com/services/"},
+          {"@type":"ListItem","position":3,"name":"Interior Detailing","item":"https://shinedesignaz.com/services/interior-detailing.html"}
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="sr-only" href="#main">Skip to content</a>
@@ -278,6 +331,20 @@
           <blockquote class="quote">“My SUV interior looks brand new. Stains and dog hair completely gone.”</blockquote>
           <blockquote class="quote">“Smells fresh again and leather feels soft. Excellent work.”</blockquote>
           <blockquote class="quote">“They removed a coffee spill I thought was permanent. Highly recommend!”</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Area -->
+    <section class="section">
+      <div class="container">
+        <h2>Serving the East Valley & Greater Phoenix</h2>
+        <div class="cards">
+          <article class="card"><div class="pad"><h3>Gilbert</h3><p><a href="/locations/gilbert.html">Interior Detailing in Gilbert →</a></p></div></article>
+          <article class="card"><div class="pad"><h3>Mesa</h3><p><a href="/locations/mesa.html">Interior Detailing in Mesa →</a></p></div></article>
+          <article class="card"><div class="pad"><h3>Chandler</h3><p><a href="/locations/chandler.html">Interior Detailing in Chandler →</a></p></div></article>
+          <article class="card"><div class="pad"><h3>Queen Creek</h3><p><a href="/locations/queen-creek.html">Interior Detailing in Queen Creek →</a></p></div></article>
+          <article class="card"><div class="pad"><h3>San Tan Valley</h3><p><a href="/locations/san-tan-valley.html">Interior Detailing in San Tan Valley →</a></p></div></article>
         </div>
       </div>
     </section>
