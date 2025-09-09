@@ -4,21 +4,65 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services | Shine Design Mobile Detailing (East Valley AZ)</title>
-  <meta name="description" content="Explore all services: ceramic coating, paint protection film (PPF), window tint, paint correction, interior & exterior detailing. Serving Gilbert, Mesa, Chandler, Queen Creek & San Tan Valley.">
+  <title>Auto Detailing Services | Ceramic Coating, PPF, Paint Correction | Shine Design East Valley AZ</title>
+  <meta name="description" content="Professional auto detailing services in East Valley AZ. Ceramic coating, paint protection film, paint correction, interior & exterior detailing, window tinting. Mobile service available.">
   <link rel="canonical" href="https://shinedesignaz.com/services/">
   <link rel="icon" href="/assets/images/favicon.ico">
   <meta name="theme-color" content="#0ea5e9">
+  
+  <!-- JSON-LD: CollectionPage + Breadcrumb + Service Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://shinedesignaz.com/services/#page",
+        "name": "Auto Detailing Services – Shine Design",
+        "isPartOf": {"@id":"https://shinedesignaz.com/#website"},
+        "description": "Professional auto detailing services including ceramic coating, paint protection film, paint correction, and more",
+        "hasPart": [
+          {"@type":"WebPage","name":"Ceramic Coating","url":"https://shinedesignaz.com/services/ceramic-coating.html"},
+          {"@type":"WebPage","name":"Paint Protection Film","url":"https://shinedesignaz.com/services/paint-protection-film.html"},
+          {"@type":"WebPage","name":"Window Tinting","url":"https://shinedesignaz.com/services/window-tinting.html"},
+          {"@type":"WebPage","name":"Interior Detailing","url":"https://shinedesignaz.com/services/interior-detailing.html"},
+          {"@type":"WebPage","name":"Exterior Detailing","url":"https://shinedesignaz.com/services/exterior-detailing.html"},
+          {"@type":"WebPage","name":"Paint Correction","url":"https://shinedesignaz.com/services/paint-correction.html"}
+        ]
+      },
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://shinedesignaz.com/"},
+          {"@type":"ListItem","position":2,"name":"Services","item":"https://shinedesignaz.com/services/"}
+        ]
+      },
+      {
+        "@type": "AutoDetailing",
+        "name": "Shine Design Auto Detailing Services",
+        "telephone": "+14805288227",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mesa",
+          "addressRegion": "AZ",
+          "addressCountry": "US"
+        },
+        "areaServed": ["Gilbert", "Mesa", "Chandler", "Queen Creek", "San Tan Valley", "Tempe", "Scottsdale", "Phoenix"]
+      }
+    ]
+  }
+  </script>
+  
+  <!-- OG/Twitter -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Services | Shine Design Mobile Detailing">
-  <meta property="og:description" content="Ceramic coatings, PPF, tint, correction & full detailing across the East Valley. Book online in 60 seconds.">
+  <meta property="og:title" content="Auto Detailing Services | Shine Design East Valley AZ">
+  <meta property="og:description" content="Complete auto detailing services: ceramic coating, PPF, paint correction, interior & exterior detailing. Mobile service available.">
   <meta property="og:url" content="https://shinedesignaz.com/services/">
   <meta property="og:image" content="/assets/images/og-image.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Services | Shine Design Mobile Detailing">
-  <meta name="twitter:description" content="Ceramic coating, PPF, tint, correction & mobile detailing for AZ drivers.">
+  <meta name="twitter:title" content="Auto Detailing Services | Shine Design">
+  <meta name="twitter:description" content="Professional ceramic coating, PPF, paint correction & detailing services in East Valley AZ">
   <meta name="twitter:image" content="/assets/images/og-image.webp">
-  <link rel="preload" href="/assets/images/hero-bg.jpg" as="image">
 
   <!-- Fieldd Lead + Booking -->
   <script src="https://fieldd-scripts.s3.amazonaws.com/leadForm/fieldd-lead-form.js"></script>
@@ -55,7 +99,7 @@
     .hero p{font-size:16px;opacity:.95;margin:0 0 18px}
     .hero .cta-wrap{display:flex;gap:10px;flex-wrap:wrap}
     .cta-alt{display:inline-block;background:#fff;color:var(--brand);padding:10px 16px;border-radius:999px;font-weight:700;border:2px solid #fff}
-    .cta-alt:hover{background:transparent;color:#fff}
+    .cta-alt:hover{background:transparent;color:#fff;text-decoration:none}
 
     /* Trust row */
     .trust{background:#f8fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}
@@ -63,77 +107,58 @@
     .trust .item{display:flex;gap:10px;align-items:center;color:var(--muted);font-weight:600}
     @media(min-width:680px){.trust .row{grid-template-columns:repeat(4,1fr)}}
 
-    /* Grids */
-    .cards{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr)}}
-    @media(min-width:1024px){.cards{grid-template-columns:repeat(3,1fr)}}
-    .card{border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
-    .card img{width:100%;height:180px;object-fit:cover}
-    .card .pad{padding:16px}
-    .card h3{margin:0 0 6px;font-size:20px}
-    .card p{margin:0 0 12px;color:var(--muted)}
-    .pill{display:inline-block;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;background:#e0f2fe;color:var(--brand-dark);margin-right:6px}
-
+    /* Services Grid */
+    .services-grid{display:grid;grid-template-columns:1fr;gap:24px;margin:48px 0}
+    @media(min-width:640px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:960px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+    
+    .service-card{background:#fff;border:2px solid #e2e8f0;border-radius:20px;overflow:hidden;transition:all .3s;text-decoration:none;color:var(--text);display:flex;flex-direction:column}
+    .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(14,165,233,.15);border-color:var(--brand);text-decoration:none}
+    
+    .service-icon{height:180px;background:linear-gradient(135deg,rgba(14,165,233,.1),rgba(14,165,233,.05));display:flex;align-items:center;justify-content:center;font-size:64px;position:relative;overflow:hidden}
+    .service-icon::after{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(14,165,233,.1) 0%,transparent 70%);animation:pulse 4s ease-in-out infinite}
+    @keyframes pulse{0%,100%{transform:scale(0.8);opacity:0.5}50%{transform:scale(1.2);opacity:0.8}}
+    
+    .service-content{padding:20px;flex:1;display:flex;flex-direction:column}
+    .service-title{font-size:20px;font-weight:700;margin:0 0 8px;color:var(--text)}
+    .service-desc{font-size:14px;color:var(--muted);margin:0 0 16px;flex:1}
+    .service-features{list-style:none;padding:0;margin:0 0 16px;font-size:13px}
+    .service-features li{padding:4px 0;color:var(--text);display:flex;align-items:center}
+    .service-features li::before{content:'✓';color:#22c55e;font-weight:bold;margin-right:8px}
+    .service-price{font-size:14px;color:var(--brand);font-weight:700;margin-bottom:12px}
+    .service-cta{display:inline-block;background:var(--brand);color:#fff;padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px;text-align:center;transition:all .2s}
+    .service-card:hover .service-cta{background:var(--brand-dark)}
+    
+    .popular-badge{position:absolute;top:12px;right:12px;background:#ff6b6b;color:#fff;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700}
+    
+    /* Category Headers */
+    .category-header{text-align:center;margin:64px 0 32px}
+    .category-header h2{font-size:32px;margin:0 0 12px;color:var(--text)}
+    .category-header p{font-size:16px;color:var(--muted);max-width:600px;margin:0 auto}
+    
+    /* Split Section */
+    .split{display:grid;gap:18px}
+    @media(min-width:980px){.split{grid-template-columns:1fr 1fr;align-items:center}}
+    
     .list{display:grid;gap:10px}
     .list li{list-style:none;padding-left:28px;position:relative}
     .list li:before{content:"✓";position:absolute;left:0;top:0;color:#16a34a;font-weight:700}
-
-    .split{display:grid;gap:18px}
-    @media(min-width:980px){.split{grid-template-columns:1fr 1fr;align-items:center}}
-
+    
+    /* CTA Banner */
     .cta-banner{background:linear-gradient(90deg,var(--brand),var(--brand-dark));color:#fff;border-radius:16px;padding:18px;display:grid;gap:10px;align-items:center}
     @media(min-width:780px){.cta-banner{grid-template-columns:1fr auto}}
-
-    .reviews{background:#f8fafc}
-    .review-grid{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:920px){.review-grid{grid-template-columns:repeat(3,1fr)}}
-    .quote{border:1px solid #e2e8f0;background:#fff;border-radius:16px;padding:16px;font-size:15px}
-
+    
     footer{background:#0b1220;color:#d1d5db;padding:32px 0 24px 0}
-    .foot-grid, footer .container{padding-left:16px;padding-right:16px}
-    footer a{color:#93c5fd}
     .foot-grid{display:grid;grid-template-columns:1fr;gap:18px;padding:28px 0}
     @media(min-width:920px){.foot-grid{grid-template-columns:repeat(4,1fr)}}
+    footer a{color:#93c5fd}
     .small{font-size:12px;color:#9ca3af}
     .micro-footer{background:#0a4259;color:#fff;text-align:center;padding:12px 0;font-size:14px;border-top:1px solid #134e69}
     .micro-footer a{color:#93e4ff;font-weight:600}
     .micro-footer a:hover{color:#fff;text-decoration:underline}
+    .lead{font-size:18px;margin:16px 0}
+    .pill{display:inline-block;background:#e0f2fe;color:var(--brand-dark);padding:6px 12px;border-radius:999px;font-size:13px;font-weight:600;margin-right:6px}
   </style>
-
-  <!-- JSON-LD: CollectionPage + ItemList + Breadcrumb -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "CollectionPage",
-        "@id": "https://shinedesignaz.com/services/#page",
-        "name": "Services — Shine Design Mobile Detailing",
-        "description": "Ceramic coating, paint protection film (PPF), window tint, paint correction, interior & exterior detailing.",
-        "isPartOf": {"@id":"https://shinedesignaz.com/#website"}
-      },
-      {
-        "@type": "ItemList",
-        "@id": "https://shinedesignaz.com/services/#list",
-        "itemListElement": [
-          {"@type":"ListItem","position":1,"url":"https://shinedesignaz.com/services/ceramic-coating.html","name":"Ceramic Coating"},
-          {"@type":"ListItem","position":2,"url":"https://shinedesignaz.com/services/paint-protection-film.html","name":"Paint Protection Film (PPF)"},
-          {"@type":"ListItem","position":3,"url":"https://shinedesignaz.com/services/window-tinting.html","name":"Window Tint"},
-          {"@type":"ListItem","position":4,"url":"https://shinedesignaz.com/services/paint-correction.html","name":"Paint Correction"},
-          {"@type":"ListItem","position":5,"url":"https://shinedesignaz.com/services/interior-detailing.html","name":"Interior Detailing"},
-          {"@type":"ListItem","position":6,"url":"https://shinedesignaz.com/services/exterior-detailing.html","name":"Exterior Detailing"}
-        ]
-      },
-      {
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Home","item":"https://shinedesignaz.com/"},
-          {"@type":"ListItem","position":2,"name":"Services","item":"https://shinedesignaz.com/services/"}
-        ]
-      }
-    ]
-  }
-  </script>
 </head>
 <body>
   <a class="sr-only" href="#main">Skip to content</a>
@@ -147,7 +172,7 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="/services/">Services</a>
         <a href="/locations/">Locations</a>
-        <a href="/pricing.html">Pricing</a>
+        <a href="/pricing/">Pricing</a>
         <a href="/gallery.html">Gallery</a>
         <a href="/reviews.html">Reviews</a>
         <a href="/faq.html">FAQ</a>
@@ -159,7 +184,7 @@
       <div class="container" style="padding:8px 16px 16px">
         <a href="/services/">Services</a> •
         <a href="/locations/">Locations</a> •
-        <a href="/pricing.html">Pricing</a> •
+        <a href="/pricing/">Pricing</a> •
         <a href="/gallery.html">Gallery</a> •
         <a href="/reviews.html">Reviews</a> •
         <a href="/faq.html">FAQ</a> •
@@ -172,16 +197,16 @@
   <section class="hero">
     <div class="container">
       <div class="kickers">
-        <span>🛠️ Full-Service Detailing Shop</span>
-        <span>🚐 100% Mobile – We Come to You</span>
-        <span>🛡️ Protection: Coatings & PPF</span>
-        <span>☀️ Tint for AZ Heat</span>
+        <span>🚐 Mobile Service</span>
+        <span>🛡️ Ceramic & PPF</span>
+        <span>💎 Paint Correction</span>
+        <span>⭐ 500+ 5-Star Reviews</span>
       </div>
-      <h1>All Shine Design Services</h1>
-      <p>From deep-clean detailing to long-term protection, pick the service that fits your vehicle and goals. Serving Gilbert, Mesa, Chandler, Queen Creek & San Tan Valley.</p>
+      <h1>Professional Auto Detailing Services</h1>
+      <p>From ceramic coating to paint correction, we offer comprehensive detailing services to protect and perfect your vehicle. Mobile service available throughout East Valley.</p>
       <div class="cta-wrap">
         <a class="cta" href="https://booknow.shinedesignaz.com/" rel="nofollow">Book Now</a>
-        <a class="cta-alt" href="#services">Browse Services</a>
+        <a class="cta-alt" href="#quote">Get Free Quote</a>
       </div>
       <p class="small" style="margin-top:8px;color:#fff">Call/Text <a href="tel:+14805288227" style="color:#fff">(480) 528-8227</a></p>
     </div>
@@ -191,167 +216,439 @@
   <section class="trust">
     <div class="container">
       <div class="row">
-        <div class="item">✅ Insured & Certified</div>
-        <div class="item">🏆 200+ 5‑Star Reviews</div>
-        <div class="item">🧼 Maintenance Plans</div>
-        <div class="item">🕒 Same‑Day Options</div>
+        <div class="item">✓ Insured & Certified</div>
+        <div class="item">🏆 Lifetime Warranty</div>
+        <div class="item">💳 Financing Available</div>
+        <div class="item">🚐 We Bring Water & Power</div>
       </div>
     </div>
   </section>
 
   <main id="main">
-    <!-- Services Grid -->
-    <section class="section" id="services">
-      <div class="container">
-        <h2>Popular Services</h2>
-        <p class="lead" style="color:var(--muted);margin:0 0 16px">Choose a category to see packages, pricing guidance, FAQs, and galleries.</p>
-        <div class="cards">
-          <article class="card">
-            <img loading="lazy" src="/assets/images/services/ceramic-coating.jpg" alt="Ceramic coating application in Gilbert, AZ">
-            <div class="pad">
-              <h3>Ceramic Coating</h3>
-              <p>1–7 year protection. Extreme gloss, UV defense, easy maintenance.</p>
-              <span class="pill">Most Popular</span> <a href="/services/ceramic-coating.html">Learn more →</a>
-            </div>
-          </article>
-          <article class="card">
-            <img loading="lazy" src="/assets/images/services/paint-protection-film.jpg" alt="PPF clear bra installation in Mesa, AZ">
-            <div class="pad">
-              <h3>Paint Protection Film (PPF)</h3>
-              <p>Self‑healing film that stops rock chips. Front‑end & full body.</p>
-              <a href="/services/paint-protection-film.html">Learn more →</a>
-            </div>
-          </article>
-          <article class="card">
-            <img loading="lazy" src="/assets/images/services/window-tinting.jpg" alt="Window tint installation in Chandler, AZ">
-            <div class="pad">
-              <h3>Window Tint</h3>
-              <p>Ceramic & IR films to beat AZ heat. Lifetime warranty.</p>
-              <a href="/services/window-tinting.html">Learn more →</a>
-            </div>
-          </article>
-          <article class="card">
-            <img loading="lazy" src="/assets/images/services/paint-correction.jpg" alt="Paint correction polishing and swirl removal in Queen Creek, AZ">
-            <div class="pad">
-              <h3>Paint Correction</h3>
-              <p>1–3 step polishing to remove swirls & haze and restore clarity.</p>
-              <a href="/services/paint-correction.html">Learn more →</a>
-            </div>
-          </article>
-          <article class="card">
-            <img loading="lazy" src="/assets/images/services/interior-detail.jpg" alt="Interior detailing and steam cleaning in San Tan Valley, AZ">
-            <div class="pad">
-              <h3>Interior Detailing</h3>
-              <p>Deep clean carpets, seats and plastics. Odor, stain & pet hair options.</p>
-              <a href="/services/interior-detailing.html">Learn more →</a>
-            </div>
-          </article>
-          <article class="card">
-            <img loading="lazy" src="/assets/images/services/exterior-detail.jpg" alt="Exterior wash, decon and wax in Scottsdale, AZ">
-            <div class="pad">
-              <h3>Exterior Detailing</h3>
-              <p>Decon wash, clay & iron removal. Machine‑applied protection.</p>
-              <a href="/services/exterior-detailing.html">Learn more →</a>
-            </div>
-          </article>
+    <!-- Lead Form Section -->
+    <section class="section" id="quote">
+      <div class="container split">
+        <div>
+          <h2 style="margin-top:0">Get a Free Quote</h2>
+          <p class="lead" style="color:var(--muted)">Tell us what service you need—detailing, ceramic coating, paint correction, PPF, or tint—and we'll recommend the best package for your vehicle.</p>
+          <ul class="list">
+            <li>Mobile service across the East Valley</li>
+            <li>Transparent pricing by vehicle size</li>
+            <li>Fast scheduling with text updates</li>
+            <li>Professional grade products only</li>
+            <li>Satisfaction guaranteed</li>
+          </ul>
+          <p style="margin-top:20px"><strong>Popular Services:</strong></p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span class="pill">Ceramic Coating</span>
+            <span class="pill">Paint Correction</span>
+            <span class="pill">Interior Detail</span>
+            <span class="pill">PPF</span>
+          </div>
+        </div>
+        <div>
+          <fieldd-lead-form code="I-HCZQ"></fieldd-lead-form>
+          <div id="fieldd-fallback" style="display:none;margin-top:12px">
+            <iframe src="https://shinedesignaz.fieldd.co" title="Shine Design Booking"
+                    style="width:100%;max-width:480px;height:760px;border:1px solid #e2e8f0;border-radius:12px"
+                    loading="lazy"></iframe>
+            <p class="small" style="color:var(--muted);margin-top:8px">
+              If the form doesn't load, <a href="https://shinedesignaz.fieldd.co" target="_blank" rel="noopener">open booking page</a>.
+            </p>
+          </div>
+          <script>
+            (function(){
+              function boot(){
+                var el=document.querySelector('fieldd-lead-form');
+                var ok=!!(window.FielddBooking && typeof window.FielddBooking.init==='function');
+                if(ok){ try{ window.FielddBooking.init('I-HCZQ'); }catch(e){} }
+                setTimeout(function(){
+                  var upgraded = el && (el.shadowRoot || el.querySelector('iframe'));
+                  if(!upgraded){ var fb=document.getElementById('fieldd-fallback'); if(fb) fb.style.display='block'; }
+                }, 1200);
+              }
+              if(document.readyState==='complete' || document.readyState==='interactive'){ boot(); }
+              else{ document.addEventListener('DOMContentLoaded', boot); }
+            })();
+          </script>
         </div>
       </div>
     </section>
 
-    <!-- Compare / Pricing CTA -->
+    <!-- Protection Services -->
+    <section class="section">
+      <div class="container">
+        <div class="category-header">
+          <h2>Protection Services</h2>
+          <p>Long-lasting protection for your vehicle's paint, interior, and windows</p>
+        </div>
+        
+        <div class="services-grid">
+          <!-- Ceramic Coating -->
+          <a href="/services/ceramic-coating.html" class="service-card">
+            <div class="service-icon">
+              🛡️
+              <span class="popular-badge">MOST POPULAR</span>
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Ceramic Coating</h3>
+              <p class="service-desc">Professional-grade ceramic coating with up to 7+ years of protection. Hydrophobic, UV resistant, and scratch resistant.</p>
+              <ul class="service-features">
+                <li>3, 5, and 7+ year options</li>
+                <li>CARFAX documented</li>
+                <li>Lifetime warranty available</li>
+                <li>Superior gloss & protection</li>
+              </ul>
+              <div class="service-price">Starting at $899</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+
+          <!-- Paint Protection Film -->
+          <a href="/services/paint-protection-film.html" class="service-card">
+            <div class="service-icon">
+              🎬
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Paint Protection Film (PPF)</h3>
+              <p class="service-desc">Clear protective film that shields against rock chips, scratches, and road debris. Self-healing technology included.</p>
+              <ul class="service-features">
+                <li>Self-healing technology</li>
+                <li>10-year warranty</li>
+                <li>Custom computer cut</li>
+                <li>Invisible protection</li>
+              </ul>
+              <div class="service-price">Starting at $599</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+
+          <!-- Window Tinting -->
+          <a href="/services/window-tinting.html" class="service-card">
+            <div class="service-icon">
+              🪟
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Window Tinting</h3>
+              <p class="service-desc">Premium ceramic window tint for heat rejection, UV protection, and privacy. Lifetime warranty included.</p>
+              <ul class="service-features">
+                <li>Ceramic & carbon options</li>
+                <li>99% UV protection</li>
+                <li>Lifetime warranty</li>
+                <li>Legal tint levels</li>
+              </ul>
+              <div class="service-price">Starting at $199</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailing Services -->
+    <section class="section" style="background:#f8fafc">
+      <div class="container">
+        <div class="category-header">
+          <h2>Detailing Services</h2>
+          <p>Comprehensive cleaning and restoration for your vehicle's interior and exterior</p>
+        </div>
+        
+        <div class="services-grid">
+          <!-- Interior Detailing -->
+          <a href="/services/interior-detailing.html" class="service-card">
+            <div class="service-icon">
+              🚗
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Interior Detailing</h3>
+              <p class="service-desc">Deep cleaning and sanitization of your vehicle's interior. Remove stains, odors, and restore that new car feel.</p>
+              <ul class="service-features">
+                <li>Full vacuum & shampoo</li>
+                <li>Leather conditioning</li>
+                <li>Stain & odor removal</li>
+                <li>UV protection</li>
+              </ul>
+              <div class="service-price">Starting at $149</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+
+          <!-- Exterior Detailing -->
+          <a href="/services/exterior-detailing.html" class="service-card">
+            <div class="service-icon">
+              ✨
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Exterior Detailing</h3>
+              <p class="service-desc">Complete exterior cleaning with paint decontamination, polish, and protection. Restore your vehicle's showroom shine.</p>
+              <ul class="service-features">
+                <li>Hand wash & clay bar</li>
+                <li>Paint decontamination</li>
+                <li>Wheel & tire detail</li>
+                <li>6-month sealant</li>
+              </ul>
+              <div class="service-price">Starting at $99</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+
+          <!-- Paint Correction -->
+          <a href="/services/paint-correction.html" class="service-card">
+            <div class="service-icon">
+              💎
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Paint Correction</h3>
+              <p class="service-desc">Remove swirls, scratches, and oxidation. Multi-stage machine polishing for mirror-like finish.</p>
+              <ul class="service-features">
+                <li>Swirl & scratch removal</li>
+                <li>Multi-stage polish</li>
+                <li>Show car finish available</li>
+                <li>70-95% defect removal</li>
+              </ul>
+              <div class="service-price">Starting at $499</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specialty Services -->
+    <section class="section">
+      <div class="container">
+        <div class="category-header">
+          <h2>Specialty Services</h2>
+          <p>Professional detailing for boats, RVs, motorcycles, aircraft, and commercial fleets</p>
+        </div>
+        
+        <div class="services-grid">
+          <!-- Boat Detailing -->
+          <a href="/services/boat-detailing.html" class="service-card">
+            <div class="service-icon">
+              🛥️
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Boat Detailing</h3>
+              <p class="service-desc">Marine-specific detailing for boats and watercraft. Oxidation removal, gel coat restoration, and marine ceramic coating.</p>
+              <ul class="service-features">
+                <li>Gel coat restoration</li>
+                <li>Oxidation removal</li>
+                <li>Marine ceramic coating</li>
+                <li>Upholstery cleaning</li>
+              </ul>
+              <div class="service-price">Custom Quote</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+
+          <!-- RV Detailing -->
+          <a href="/services/rv-detailing.html" class="service-card">
+            <div class="service-icon">
+              🚐
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">RV Detailing</h3>
+              <p class="service-desc">Complete detailing services for RVs and motorhomes. Roof treatment, oxidation removal, and full interior/exterior detail.</p>
+              <ul class="service-features">
+                <li>Roof cleaning & seal</li>
+                <li>Oxidation removal</li>
+                <li>Black streak removal</li>
+                <li>Interior deep clean</li>
+              </ul>
+              <div class="service-price">Custom Quote</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+
+          <!-- Fleet Services -->
+          <a href="/services/fleet-services.html" class="service-card">
+            <div class="service-icon">
+              🚛
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Fleet Services</h3>
+              <p class="service-desc">Commercial fleet detailing and maintenance programs. Volume discounts and scheduled maintenance available.</p>
+              <ul class="service-features">
+                <li>Volume discounts</li>
+                <li>Scheduled maintenance</li>
+                <li>Mobile service</li>
+                <li>Custom programs</li>
+              </ul>
+              <div class="service-price">Custom Pricing</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+
+          <!-- Motorcycle Detailing -->
+          <a href="/services/motorcycle-detailing.html" class="service-card">
+            <div class="service-icon">
+              🏍️
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Motorcycle Detailing</h3>
+              <p class="service-desc">Specialized detailing for motorcycles and bikes. Chrome polishing, engine detailing, and ceramic coating options.</p>
+              <ul class="service-features">
+                <li>Chrome & metal polishing</li>
+                <li>Engine bay detailing</li>
+                <li>Leather conditioning</li>
+                <li>Ceramic coating</li>
+              </ul>
+              <div class="service-price">Starting at $149</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+
+          <!-- ATV/UTV Detailing -->
+          <a href="/services/atv-detailing.html" class="service-card">
+            <div class="service-icon">
+              🏜️
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">ATV/UTV Detailing</h3>
+              <p class="service-desc">Off-road vehicle detailing. Mud removal, undercarriage cleaning, and protective coatings for harsh conditions.</p>
+              <ul class="service-features">
+                <li>Heavy mud removal</li>
+                <li>Undercarriage cleaning</li>
+                <li>Plastic restoration</li>
+                <li>Protective coating</li>
+              </ul>
+              <div class="service-price">Starting at $99</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+
+          <!-- Aircraft Detailing -->
+          <a href="/services/aircraft-detailing.html" class="service-card">
+            <div class="service-icon">
+              ✈️
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Aircraft Detailing</h3>
+              <p class="service-desc">Aviation-grade detailing for private aircraft. Brightwork polishing, paint protection, and interior detailing.</p>
+              <ul class="service-features">
+                <li>Brightwork polishing</li>
+                <li>De-icing boot treatment</li>
+                <li>Interior leather care</li>
+                <li>Paint protection</li>
+              </ul>
+              <div class="service-price">Custom Quote</div>
+              <span class="service-cta">Learn More →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map + Service radius -->
     <section class="section">
       <div class="container split">
         <div>
-          <h2>Not sure which service fits?</h2>
-          <p>Use our clear‑cut pricing to compare packages side‑by‑side and see add‑ons like headlight restoration, engine bay, glass coating and more.</p>
+          <h2>East Valley & Greater Phoenix Coverage</h2>
           <ul class="list">
-            <li>Interior, Exterior & Full‑Detail bundles</li>
-            <li>Ceramic coating tiers (1/3/5/7 years)</li>
-            <li>PPF options: partial front, full front, full body</li>
-            <li>Window tint: ceramic & IR film levels</li>
+            <li>Primary service areas: Gilbert, Mesa, Chandler, Queen Creek, San Tan Valley</li>
+            <li>Extended coverage: Tempe, Scottsdale, Apache Junction, Gold Canyon, Florence</li>
+            <li>Mobile service radius ~35 miles from Gilbert; call for extended travel</li>
+            <li>We bring all equipment, water, and power needed</li>
+            <li>Same-day and next-day appointments available</li>
           </ul>
-          <p style="margin-top:8px"><a class="cta" href="/pricing.html">See Clear‑Cut Pricing</a></p>
+          <p class="small" style="color:var(--muted)">Professional detailing, ceramic coating, PPF, window tint, and paint correction services. Fleet, RV, boat, and aircraft detailing also available.</p>
         </div>
-        <img src="/assets/images/services/compare.jpg" alt="Comparison of Shine Design service packages" style="width:100%;border-radius:16px;border:1px solid #e2e8f0">
+        <figure style="margin:0">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d213570.57183576375!2d-111.79862080318935!3d33.23925062939132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872ba9f6074d3f1f%3A0x25d3998d5edfe34d!2sShine%20Design%20Mobile%20Detailing!5e0!3m2!1sen!2sus!4v1756796622540!5m2!1sen!2sus"
+                  width="100%" height="360" style="border:1px solid #e2e8f0;border-radius:12px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                  title="Shine Design Mobile Detailing service area map"></iframe>
+          <figcaption class="small" style="color:#64748b;margin-top:6px">Service area map for Shine Design Mobile Detailing - East Valley, AZ</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- Lead Form -->
-    <section class="section" id="quote">
-      <div class="container">
-        <h2 style="text-align:center;max-width:560px;margin:0 auto 12px">Request a Free Quote</h2>
-        <p class="lead" style="color:var(--muted);text-align:center;max-width:640px;margin:0 auto 18px">Tell us about your vehicle, goals, and timeline. We’ll recommend the best package for your budget and use‑case.</p>
-        <fieldd-lead-form code="I-HCZQ"></fieldd-lead-form>
+    <!-- CTA Banner -->
+    <section class="container cta-banner" style="margin:32px auto">
+      <div>
+        <h2 style="margin:0">Ready to transform your vehicle?</h2>
+        <p style="margin:4px 0 0">Book your service online in 60 seconds or call for a custom quote</p>
       </div>
+      <a class="cta" href="https://booknow.shinedesignaz.com/" rel="nofollow" style="background:#fff;color:var(--brand)">Book Now</a>
     </section>
 
-    <!-- Service Area -->
-    <section class="section">
-      <div class="container">
-        <h2>Serving the East Valley & Greater Phoenix</h2>
-        <div class="cards">
-          <article class="card"><div class="pad"><h3>Gilbert</h3><p><a href="/locations/gilbert.html">Gilbert Services →</a></p></div></article>
-          <article class="card"><div class="pad"><h3>Mesa</h3><p><a href="/locations/mesa.html">Mesa Services →</a></p></div></article>
-          <article class="card"><div class="pad"><h3>Chandler</h3><p><a href="/locations/chandler.html">Chandler Services →</a></p></div></article>
-          <article class="card"><div class="pad"><h3>Queen Creek</h3><p><a href="/locations/queen-creek.html">Queen Creek Services →</a></p></div></article>
-          <article class="card"><div class="pad"><h3>San Tan Valley</h3><p><a href="/locations/san-tan-valley.html">San Tan Valley Services →</a></p></div></article>
+    <!-- Service Areas -->
+    <section class="section" style="background:#f8fafc">
+      <div class="container" style="text-align:center">
+        <h2>Mobile Service Throughout East Valley & Phoenix Metro</h2>
+        <p style="font-size:18px;color:var(--muted);margin:16px 0 32px">We come to you! Professional detailing at your home or office.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;font-size:18px">
+          <span>📍 Gilbert</span>
+          <span>📍 Mesa</span>
+          <span>📍 Chandler</span>
+          <span>📍 Queen Creek</span>
+          <span>📍 San Tan Valley</span>
+          <span>📍 Tempe</span>
+          <span>📍 Scottsdale</span>
+          <span>📍 Phoenix</span>
+          <span>📍 Apache Junction</span>
+          <span>📍 Gold Canyon</span>
+          <span>📍 Fountain Hills</span>
+          <span>📍 Paradise Valley</span>
+          <span>📍 Ahwatukee</span>
+          <span>📍 Guadalupe</span>
+          <span>📍 Higley</span>
         </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="container">
-        <h2>FAQ</h2>
-        <details><summary>Do you come to my home or office?</summary><p>Yes—our mobile units cover the East Valley & greater Phoenix. We also offer drop‑off by appointment.</p></details>
-        <details><summary>Is ceramic coating worth it in Arizona?</summary><p>Absolutely. Coatings add UV resistance and make washes faster while protecting clear coat.
-        </p></details>
-        <details><summary>How do I choose between PPF and ceramic coating?</summary><p>PPF protects against rock chips and scratches. Ceramic adds gloss and makes cleaning easier. Many clients do PPF up front + ceramic everywhere else.</p></details>
-        <details><summary>Do you offer maintenance plans?</summary><p>Yes—monthly, bi‑monthly, and quarterly plans keep your vehicle dialed in. See <a href="/pricing.html">Pricing</a>.</p></details>
+        <p style="margin-top:24px;color:var(--muted)">Serving all of East Valley, Arizona with mobile auto detailing services</p>
       </div>
     </section>
   </main>
 
   <div class="micro-footer">
-    <div class="container">Mobile detailing, ceramic coating & PPF across Gilbert, Mesa, Chandler, Queen Creek, San Tan Valley. <a href="tel:+14805288227" style="color:#0ea5e9;font-weight:700">Call 480‑528‑8227</a></div>
+    <div class="container">Professional auto detailing services in East Valley, AZ. <a href="tel:+14805288227" style="color:#0ea5e9;font-weight:700">Call 480-528-8227</a> for instant quote.</div>
   </div>
 
   <footer>
     <div class="container foot-grid">
       <div>
         <img src="/assets/images/shine-design-logo-blue.webp" alt="Shine Design logo" style="height:36px">
-        <p class="small">© {year} Shine Design, LLC • Insured • East Valley, AZ</p>
+        <p class="small">© 2025 Shine Design, LLC • Insured • East Valley, AZ</p>
         <p class="small"><a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • <a href="/contact.html">Contact</a> • <a href="/sitemap.xml">Sitemap</a></p>
       </div>
       <div>
-        <strong>Services</strong><br>
+        <strong>Protection Services</strong><br>
         <a href="/services/ceramic-coating.html">Ceramic Coating</a><br>
-        <a href="/services/paint-protection-film.html">PPF</a><br>
-        <a href="/services/window-tinting.html">Window Tint</a><br>
-        <a href="/services/paint-correction.html">Paint Correction</a><br>
+        <a href="/services/paint-protection-film.html">Paint Protection Film</a><br>
+        <a href="/services/window-tinting.html">Window Tinting</a>
+      </div>
+      <div>
+        <strong>Detailing Services</strong><br>
         <a href="/services/interior-detailing.html">Interior Detailing</a><br>
-        <a href="/services/exterior-detailing.html">Exterior Detailing</a>
+        <a href="/services/exterior-detailing.html">Exterior Detailing</a><br>
+        <a href="/services/paint-correction.html">Paint Correction</a>
       </div>
       <div>
-        <strong>Locations</strong><br>
-        <a href="/locations/gilbert.html">Gilbert</a><br>
-        <a href="/locations/mesa.html">Mesa</a><br>
-        <a href="/locations/chandler.html">Chandler</a><br>
-        <a href="/locations/queen-creek.html">Queen Creek</a><br>
-        <a href="/locations/san-tan-valley.html">San Tan Valley</a>
+        <strong>Specialty Services</strong><br>
+        <a href="/services/boat-detailing.html">Boat Detailing</a><br>
+        <a href="/services/rv-detailing.html">RV Detailing</a><br>
+        <a href="/services/fleet-services.html">Fleet Services</a><br>
+        <a href="/services/motorcycle-detailing.html">Motorcycle</a><br>
+        <a href="/services/atv-detailing.html">ATV/UTV</a><br>
+        <a href="/services/aircraft-detailing.html">Aircraft</a><br>
+        <br>
+        <a class="cta" href="https://booknow.shinedesignaz.com/" rel="nofollow">Book Now</a>
       </div>
-      <div>
-        <strong>Book</strong><br>
-        <a class="cta" href="https://booknow.shinedesignaz.com/" rel="nofollow">Book Now</a><br>
-        <p class="small" style="margin-top:6px">Call/Text <a href="tel:+14805288227">(480) 528-8227</a></p>
-      </div>
-    </div>
-    <div class="container" style="padding-bottom:24px">
-      <p class="small">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
     </div>
   </footer>
 
-  <script defer src="/navigation.js"></script>
-  <script>document.querySelectorAll('footer .small').forEach(el=>el.innerHTML=el.innerHTML.replace('{year}', new Date().getFullYear()));</script>
+  <script>
+    // Simple mobile menu toggle
+    (function(){
+      var btn = document.querySelector('.menu-btn');
+      var menu = document.getElementById('mobile-nav');
+      if(btn && menu){
+        btn.addEventListener('click', function(){
+          var open = menu.hasAttribute('hidden') ? false : true;
+          if(open){ menu.setAttribute('hidden', ''); btn.setAttribute('aria-expanded','false'); btn.textContent='☰'; }
+          else{ menu.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); btn.textContent='✕'; }
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

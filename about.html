@@ -2,25 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-    <script type="text/javascript" src="https://fieldd-scripts.s3.amazonaws.com/leadForm/fieldd-lead-form.js"></script>
-    <script type="text/javascript" src="https://d3vun76hlrxgjr.cloudfront.net"></script>
-    <script>window.FielddBooking.init('I-HCZQ');</script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About • Shine Design</title>
-  <meta name="description" content="Arizona’s trusted mobile detailing, coatings, PPF & tint.">
+  <title>About Us | Shine Design Mobile Detailing (East Valley AZ)</title>
+  <meta name="description" content="Shine Design is a certified, insured East Valley detailing company led by Keegan Cottingham. We specialize in mobile detailing, ceramic coating, paint correction, PPF and window tint across Gilbert, Mesa, Chandler, Queen Creek, San Tan Valley and beyond.">
   <link rel="canonical" href="https://shinedesignaz.com/about.html">
   <link rel="icon" href="/assets/images/favicon.ico">
   <meta name="theme-color" content="#0ea5e9">
+  <!-- OG/Twitter -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="About • Shine Design">
-  <meta property="og:description" content="Arizona’s trusted mobile detailing, coatings, PPF & tint.">
+  <meta property="og:title" content="About Shine Design Mobile Detailing — East Valley AZ">
+  <meta property="og:description" content="Certified, insured, East‑Valley‑built. Mobile detailing, coatings, PPF & tint with transparent pricing and 200+ 5‑star reviews.">
   <meta property="og:url" content="https://shinedesignaz.com/about.html">
-  <meta property="og:image" content="/assets/images/og-image.jpg">
+  <meta property="og:image" content="/assets/images/og-image.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About • Shine Design">
-  <meta name="twitter:description" content="Arizona’s trusted mobile detailing, coatings, PPF & tint.">
-  <meta name="twitter:image" content="/assets/images/og-image.jpg">
+  <meta name="twitter:title" content="About Shine Design Mobile Detailing — East Valley AZ">
+  <meta name="twitter:description" content="Your Car, Our Passion, Your Place.">
+  <meta name="twitter:image" content="/assets/images/og-image.webp">
+  <link rel="preload" href="/assets/images/hero-bg.jpg" as="image">
+
+  <!-- Fieldd Lead + Booking -->
+  <script src="https://fieldd-scripts.s3.amazonaws.com/leadForm/fieldd-lead-form.js"></script>
+  <script src="https://d3vun76hlrxgjr.cloudfront.net"></script>
+  <script>window.FielddBooking && window.FielddBooking.init && window.FielddBooking.init('I-HCZQ');</script>
 
   <style>
     :root{--brand:#0ea5e9;--brand-dark:#0284c7;--text:#0f172a;--muted:#475569;--bg:#fff}
@@ -38,25 +42,74 @@
     .cta:hover{background:#fff;color:var(--brand);text-decoration:none}
     .menu-btn{background:none;border:none;padding:8px;font-size:28px}
     @media(min-width:920px){.nav-links{display:flex}.menu-btn{display:none}}
-    footer{background:#0b1220;color:#d1d5db}
+    main{min-height:52vh}
+    .section{padding:48px 0}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden;color:#fff;text-align:left;background:linear-gradient(180deg,rgba(2,132,199,.95),rgba(14,165,233,.85)),url('/assets/images/hero-bg.jpg') center/cover no-repeat}
+    .hero .container{padding:64px 16px 48px}
+    .hero h1{font-size:32px;line-height:1.15;margin:0 0 10px}
+    .hero p{opacity:.95;margin:0 0 18px}
+    .kickers{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+    .kickers span{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);padding:6px 10px;border-radius:999px;font-weight:600;font-size:14px}
+
+    /* Grids / cards */
+    .grid{display:grid;gap:18px}
+    @media(min-width:980px){.grid.two{grid-template-columns:1fr 1fr}}
+    @media(min-width:1100px){.grid.three{grid-template-columns:repeat(3,1fr)}}
+    .card{border:1px solid #e2e8f0;border-radius:16px;background:#fff}
+    .pad{padding:16px}
+    .pill{display:inline-block;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;background:#e0f2fe;color:#0284c7;margin-right:6px}
+    .list{display:grid;gap:10px}
+    .list li{list-style:none;padding-left:28px;position:relative}
+    .list li:before{content:"✓";position:absolute;left:0;top:0;color:#16a34a;font-weight:700}
+    .note{color:#64748b;font-size:14px}
+
+    /* Trust row */
+    .trust{background:#f8fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}
+    .trust .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:18px 0}
+    .trust .item{display:flex;gap:10px;align-items:center;color:var(--muted);font-weight:600}
+    @media(min-width:680px){.trust .row{grid-template-columns:repeat(4,1fr)}}
+
+    .cta-banner{background:linear-gradient(90deg,var(--brand),var(--brand-dark));color:#fff;border-radius:16px;padding:18px;display:grid;gap:10px;align-items:center}
+    @media(min-width:780px){.cta-banner{grid-template-columns:1fr auto}}
+
+    footer{background:#0b1220;color:#d1d5db;padding:32px 0 24px 0}
+    .foot-grid, footer .container{padding-left:16px;padding-right:16px}
     footer a{color:#93c5fd}
     .foot-grid{display:grid;grid-template-columns:1fr;gap:18px;padding:28px 0}
     @media(min-width:920px){.foot-grid{grid-template-columns:repeat(4,1fr)}}
     .small{font-size:12px;color:#9ca3af}
-    main{min-height:52vh}
-    .section{padding:48px 0}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+    .micro-footer{background:#0a4259;color:#fff;text-align:center;padding:12px 0;font-size:14px;border-top:1px solid #134e69}
+    .micro-footer a{color:#93e4ff;font-weight:600}
+    .micro-footer a:hover{color:#fff;text-decoration:underline}
   </style>
 
-  <script type="text/javascript" src="https://d3vun76hlrxgjr.cloudfront.net"></script>
-  <script>window.FielddBooking.init('I-HCZQ');</script>
+  <!-- JSON-LD: AboutPage + Organization + Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {"@type":"AboutPage","@id":"https://shinedesignaz.com/about.html#about","name":"About Shine Design Mobile Detailing","description":"Certified, insured mobile detailing company in the East Valley, specializing in ceramic coatings, paint correction, PPF and tint.","breadcrumb":{"@id":"https://shinedesignaz.com/about.html#breadcrumbs"}},
+      {"@type":"Organization","@id":"https://shinedesignaz.com/#org","name":"Shine Design, LLC","alternateName":"Shine Design Mobile Detailing","url":"https://shinedesignaz.com/","logo":"https://shinedesignaz.com/assets/images/logo.webp","contactPoint":{"@type":"ContactPoint","telephone":"+1-480-528-8227","contactType":"customer service","areaServed":"US-AZ","availableLanguage":["English"]}},
+      {"@type":"BreadcrumbList","@id":"https://shinedesignaz.com/about.html#breadcrumbs","itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://shinedesignaz.com/"},
+        {"@type":"ListItem","position":2,"name":"About","item":"https://shinedesignaz.com/about.html"}
+      ]}
+    ]
+  }
+  </script>
 </head>
 <body>
-
   <a class="sr-only" href="#main">Skip to content</a>
   <header>
     <div class="container nav">
-      <a class="brand" href="/"><img src="/assets/images/logo.png" alt="Shine Design logo"></a>
+      <a class="brand" href="/"><img src="/assets/images/logo.webp" alt="Shine Design logo"></a>
+      <a href="tel:+14805288227" style="margin-left:16px;display:flex;align-items:center;color:#22c55e;font-weight:700;font-size:20px;text-decoration:none" aria-label="Call Shine Design">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" style="margin-right:6px"><circle cx="12" cy="12" r="12" fill="#22c55e"/><path d="M16.5 14.5c-.7 0-1.4-.1-2-.4-.2-.1-.5 0-.6 .2l-1.1 1.1c-2.2-1.1-4-2.9-5.1-5.1l1.1-1.1c.2-.2 .3-.4 .2-.6-.3-.6-.4-1.3-.4-2C8.6 6.7 8.3 6.5 8 6.5H5.5C5.2 6.5 5 6.7 5 7c0 6.1 4.9 11 11 11 .3 0 .5-.2 .5-.5V16c0-.3-.2-.5-.5-.5z" fill="#fff"/></svg>
+        <span style="color:#22c55e;font-size:16px">(480) 528-8227</span>
+      </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="/services/">Services</a>
         <a href="/locations/">Locations</a>
@@ -69,7 +122,7 @@
       <button class="menu-btn" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false">☰</button>
     </div>
     <nav id="mobile-nav" hidden>
-      <div class="container" style="padding:8px 16px 16px;">
+      <div class="container" style="padding:8px 16px 16px">
         <a href="/services/">Services</a> •
         <a href="/locations/">Locations</a> •
         <a href="/pricing.html">Pricing</a> •
@@ -81,23 +134,165 @@
     </nav>
   </header>
 
-<main id="main" class="container section">
-  <h1>About Shine Design</h1>
-  <p>Arizona’s trusted mobile detailing, coatings, PPF & tint.</p>
-</main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="kickers"><span>Your Car</span><span>Our Passion</span><span>Your Place</span></div>
+      <h1>About Shine Design Mobile Detailing</h1>
+      <p>We’re an East Valley team obsessed with clean, glossy, protected cars—delivered at your driveway or our shop. From maintenance details to show‑car finishes, we combine safe processes with real craftsmanship.</p>
+      <div class="cta-wrap" style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="cta" href="https://booknow.shinedesignaz.com/" rel="nofollow">Get a Quote</a>
+        <a class="cta" style="background:#fff;color:var(--brand);border-color:#fff" href="#story">Our Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST ROW -->
+  <section class="trust">
+    <div class="container">
+      <div class="row">
+        <div class="item">✅ Certified & Insured</div>
+        <div class="item">🧪 Coating‑Safe, AZ‑tested</div>
+        <div class="item">🛠️ Correction & Finishing Pros</div>
+        <div class="item">🏆 200+ 5‑Star Reviews</div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- Story -->
+    <section class="section" id="story">
+      <div class="container grid two">
+        <div class="card"><div class="pad">
+          <h2>Our Story</h2>
+          <p>Shine Design started with a simple idea: <em>make professional‑level detailing easy to book and hard to beat</em>. What began as a one‑rig mobile operation serving friends and neighbors has grown into a full service outfit trusted by daily drivers, collectors and local businesses across the East Valley.</p>
+          <p>Today we deliver dealership‑better finishes with clear, size‑based pricing, honest recommendations, and a satisfaction‑first mindset.</p>
+        </div></div>
+        <div class="card"><div class="pad">
+          <h2>Meet the Owner</h2>
+          <p><strong>Keegan Cottingham</strong> leads Shine Design with a hands‑on approach to quality, training and customer care. You’ll often see Keegan on site for test‑spots, final inspections and coaching the team on safe, repeatable processes.</p>
+          <ul class="list">
+            <li>Safe wash & decon methods tailored for AZ water</li>
+            <li>Measured correction with lighting & paint‑depth awareness</li>
+            <li>Protection that fits your goals: sealant, ceramic or PPF</li>
+          </ul>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- What We Stand For -->
+    <section class="section">
+      <div class="container">
+        <h2>What we stand for</h2>
+        <div class="grid three">
+          <div class="card"><div class="pad"><h3>Transparency</h3><p>No games. Clear menus, real timelines, honest expectations.</p></div></div>
+          <div class="card"><div class="pad"><h3>Safety</h3><p>pH‑balanced products, proper towels/pads, and lighting to protect finishes.</p></div></div>
+          <div class="card"><div class="pad"><h3>Craft</h3><p>Test‑spot first, then consistent technique panel by panel.</p></div></div>
+          <div class="card"><div class="pad"><h3>Convenience</h3><p>Mobile or drop‑off. Book online in 60 seconds. Text updates.</p></div></div>
+          <div class="card"><div class="pad"><h3>Guarantee</h3><p>We stand behind our work. If something’s off, we make it right.</p></div></div>
+          <div class="card"><div class="pad"><h3>Results</h3><p>Gloss, clarity and protection you can see and maintain.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Snapshot -->
+    <section class="section">
+      <div class="container grid two">
+        <div class="card"><div class="pad">
+          <h2>What we do</h2>
+          <ul class="list">
+            <li>Interior & Exterior Detailing</li>
+            <li>Paint Correction (Enhancement → Show Car)</li>
+            <li>Ceramic Coating (1, 3 & 5 year options)</li>
+            <li>Paint Protection Film (Partial/Full Front, Full Body)</li>
+            <li>Window Tint (ceramic IR, lifetime warranty)</li>
+            <li>RV / Marine / Fleet detailing</li>
+          </ul>
+          <p class="note">See all services: <a href="/services/">Service Hub →</a></p>
+        </div></div>
+        <div class="card"><div class="pad">
+          <h2>How we work</h2>
+          <ol class="list" style="gap:8px">
+            <li>Quick quote or book online</li>
+            <li>On‑site arrival & walkthrough</li>
+            <li>Wash/decon → test‑spot → execute</li>
+            <li>Final inspection & care tips</li>
+          </ol>
+          <p class="note">Add ceramic or PPF to lock in results.</p>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- Service Area -->
+    <section class="section">
+      <div class="container">
+        <h2>Serving the East Valley & Greater Phoenix</h2>
+        <div class="grid three">
+          <div class="card"><div class="pad"><h3>Gilbert</h3><p><a href="/locations/gilbert.html">Detailing in Gilbert →</a></p></div></div>
+          <div class="card"><div class="pad"><h3>Mesa</h3><p><a href="/locations/mesa.html">Detailing in Mesa →</a></p></div></div>
+          <div class="card"><div class="pad"><h3>Chandler</h3><p><a href="/locations/chandler.html">Detailing in Chandler →</a></p></div></div>
+          <div class="card"><div class="pad"><h3>Queen Creek</h3><p><a href="/locations/queen-creek.html">Detailing in Queen Creek →</a></p></div></div>
+          <div class="card"><div class="pad"><h3>San Tan Valley</h3><p><a href="/locations/san-tan-valley.html">Detailing in STV →</a></p></div></div>
+          <div class="card"><div class="pad"><h3>Phoenix & Scottsdale</h3><p><a href="/locations/phoenix.html">Phoenix</a> • <a href="/locations/scottsdale.html">Scottsdale</a></p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Highlight -->
+    <section class="section trust">
+      <div class="container">
+        <h2>What customers say</h2>
+        <div class="row">
+          <div class="item">“Swirls gone, looks brand new.”</div>
+          <div class="item">“On time, professional, meticulous.”</div>
+          <div class="item">“Coating stays glossy and easy to wash.”</div>
+          <div class="item">“Booking was fast and simple.”</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Lead Form -->
+    <section class="section" id="quote">
+      <div class="container grid two">
+        <div>
+          <h2>Have a project in mind?</h2>
+          <p>Tell us your vehicle, goals and timeline. We’ll reply fast with a clear recommendation.</p>
+          <ul class="list">
+            <li>Mobile or drop‑off (Gilbert / San Tan Valley)</li>
+            <li>Water & power solutions available</li>
+            <li>COI available for property managers & fleets</li>
+          </ul>
+        </div>
+        <div>
+          <fieldd-lead-form code="I-HCZQ"></fieldd-lead-form>
+          <div id="fieldd-fallback" style="display:none;margin-top:12px">
+            <iframe src="https://shinedesignaz.fieldd.co" title="Shine Design Booking" style="width:100%;max-width:560px;height:760px;border:1px solid #e2e8f0;border-radius:12px" loading="lazy"></iframe>
+            <p class="small" style="color:#64748b;margin-top:8px">If the embedded form doesn’t load, <a href="https://shinedesignaz.fieldd.co" target="_blank" rel="noopener">open the booking page</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="container cta-banner">
+      <div>
+        <h2 style="margin:0">Ready to get started?</h2>
+        <p style="margin:4px 0 0">Pick your service and book online in 60 seconds.</p>
+      </div>
+      <a class="cta" href="https://booknow.shinedesignaz.com/" rel="nofollow">Book Now</a>
+    </section>
+  </main>
 
   <div class="micro-footer">
-    <div class="container">
-      Mobile detailing, ceramic coating & PPF across Gilbert, Mesa, Chandler, Queen Creek, San Tan Valley. <a href="tel:+14805288227" style="color:#0ea5e9;font-weight:700;">Call 480-528-8227</a>
-    </div>
+    <div class="container">Detailing, ceramic coating, PPF & tint across Gilbert, Mesa, Chandler, Queen Creek & San Tan Valley. <a href="tel:+14805288227" style="color:#0ea5e9;font-weight:700">Call 480‑528‑8227</a></div>
   </div>
 
   <footer>
     <div class="container foot-grid">
       <div>
-        <img src="/assets/images/logo-white.png" alt="Shine Design logo (white)" style="height:36px;">
+        <img src="/assets/images/shine-design-logo-blue.webp" alt="Shine Design logo" style="height:36px">
         <p class="small">© {year} Shine Design, LLC • Insured • East Valley, AZ</p>
-        <p class="small"><a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • <a href="/contact.html">Contact</a></p>
+        <p class="small"><a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • <a href="/contact.html">Contact</a> • <a href="/sitemap.xml">Sitemap</a></p>
       </div>
       <div>
         <strong>Services</strong><br>
@@ -114,19 +309,40 @@
         <a href="/locations/mesa.html">Mesa</a><br>
         <a href="/locations/chandler.html">Chandler</a><br>
         <a href="/locations/queen-creek.html">Queen Creek</a><br>
-        <a href="/locations/san-tan-valley.html">San Tan Valley</a>
+        <a href="/locations/san-tan-valley.html">San Tan Valley</a><br>
+        <a href="/locations/scottsdale.html">Scottsdale</a><br>
+        <a href="/locations/tempe.html">Tempe</a>
       </div>
       <div>
         <strong>Book</strong><br>
         <a class="cta" href="https://booknow.shinedesignaz.com/" rel="nofollow">Book Now</a><br>
-        <p class="small" style="margin-top:6px;">Call/Text <a href="tel:+14805288227">(480) 528-8227</a></p>
+        <p class="small" style="margin-top:6px">Call/Text <a href="tel:+14805288227">(480) 528-8227</a></p>
       </div>
     </div>
-    <div class="container" style="padding-bottom:24px;">
+    <div class="container" style="padding-bottom:24px">
       <p class="small">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
     </div>
   </footer>
-  <script defer src="/navigation.js"></script>
-  <script>document.querySelectorAll('footer .small').forEach(el=>el.innerHTML=el.innerHTML.replace('{year}', new Date().getFullYear()));</script>
 
-</body></html>
+  <script>
+    // Year token
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.querySelectorAll('footer .small').forEach(el=>el.innerHTML=el.innerHTML.replace('{year}', new Date().getFullYear()))
+    })
+    // Fieldd fallback
+    ;(function(){
+      function boot(){
+        var el=document.querySelector('fieldd-lead-form');
+        var ok=!!(window.FielddBooking && typeof window.FielddBooking.init==='function');
+        if(ok){ try{ window.FielddBooking.init('I-HCZQ'); }catch(e){} }
+        setTimeout(function(){
+          var upgraded = el && (el.shadowRoot || el.querySelector('iframe'));
+          if(!upgraded){ var fb=document.getElementById('fieldd-fallback'); if(fb) fb.style.display='block'; }
+        }, 1200);
+      }
+      if(document.readyState==='complete' || document.readyState==='interactive'){ boot(); }
+      else{ document.addEventListener('DOMContentLoaded', boot); }
+    })();
+  </script>
+</body>
+</html>

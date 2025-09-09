@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ceramic Coating | Shine Design Mobile Detailing (East Valley AZ)</title>
-  <meta name="description" content="Pro-grade ceramic coating in Gilbert, Mesa, Chandler, Queen Creek & San Tan Valley. 1–7 year options, paint correction, and maintenance plans. Book online.">
+  <meta name="description" content="Professional ceramic coating in Gilbert, Mesa, Chandler, Queen Creek & San Tan Valley. 3-7 year protection options with paint correction. Added to CARFAX. Book online.">
   <link rel="canonical" href="https://shinedesignaz.com/services/ceramic-coating.html">
   <link rel="icon" href="/assets/images/favicon.ico">
   <meta name="theme-color" content="#0ea5e9">
@@ -16,7 +16,7 @@
   <meta property="og:image" content="/assets/images/services/ceramic-coating.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ceramic Coating | Shine Design (East Valley AZ)">
-  <meta name="twitter:description" content="1–7 year ceramic coatings with prep & paint correction. Serving the East Valley & Phoenix.">
+  <meta name="twitter:description" content="3-7 year ceramic coatings with prep & paint correction. Serving the East Valley & Phoenix.">
   <meta name="twitter:image" content="/assets/images/services/ceramic-coating.jpg">
   <link rel="preload" href="/assets/images/hero-bg.jpg" as="image">
 
@@ -72,11 +72,12 @@
     .card .pad{padding:16px}
     .card h3{margin:0 0 6px;font-size:20px}
     .card p{margin:0 0 12px;color:var(--muted)}
-    .pill{display:inline-block;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;background:#e0f2fe;color:var(--brand-dark);margin-right:6px}
+    .pill{display:inline-block;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;background:#e0f2fe;color:var(--brand-dark);margin-right:6px;margin-bottom:4px}
+    .carfax-badge{display:inline-block;background:#059669;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:6px;font-weight:600}
 
     .list{display:grid;gap:10px}
     .list li{list-style:none;padding-left:28px;position:relative}
-    .list li:before{content:"✓";position:absolute;left:0;top:0;color:#16a34a;font-weight:700}
+    .list li:before{content:"✔";position:absolute;left:0;top:0;color:#16a34a;font-weight:700}
 
     .split{display:grid;gap:18px}
     @media(min-width:980px){.split{grid-template-columns:1fr 1fr;align-items:center}}
@@ -84,6 +85,21 @@
     .steps{counter-reset: step}
     .steps li{list-style:none;border:1px solid #e2e8f0;border-radius:12px;padding:12px 14px;margin:0 0 10px}
     .steps li:before{counter-increment: step;content:counters(step,"") ".";font-weight:800;margin-right:8px;color:var(--brand)}
+
+    .pricing-table{background:#fff;border:2px solid #e2e8f0;border-radius:16px;overflow:hidden;margin:16px 0}
+    .pricing-header{background:linear-gradient(90deg,var(--brand),var(--brand-dark));color:#fff;padding:16px;text-align:center}
+    .pricing-row{display:grid;grid-template-columns:1fr;padding:12px 16px;border-bottom:1px solid #e2e8f0}
+    .pricing-row:last-child{border:none}
+    @media(min-width:640px){.pricing-row{grid-template-columns:100px 1fr}}
+    .size-label{font-weight:700;color:var(--text);margin-bottom:4px}
+    .size-prices{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .price-tag{background:#f8fafc;padding:4px 10px;border-radius:6px;font-size:14px;font-weight:600;color:var(--text)}
+
+    .addon-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0}
+    @media(min-width:640px){.addon-grid{grid-template-columns:repeat(2,1fr)}}
+    .addon-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#f8fafc;border-radius:8px}
+    .addon-name{font-weight:600;color:var(--text)}
+    .addon-price{font-weight:700;color:var(--brand)}
 
     .cta-banner{background:linear-gradient(90deg,var(--brand),var(--brand-dark));color:#fff;border-radius:16px;padding:18px;display:grid;gap:10px;align-items:center}
     @media(min-width:780px){.cta-banner{grid-template-columns:1fr auto}}
@@ -102,6 +118,9 @@
     .micro-footer{background:#0a4259;color:#fff;text-align:center;padding:12px 0;font-size:14px;border-top:1px solid #134e69}
     .micro-footer a{color:#93e4ff;font-weight:600}
     .micro-footer a:hover{color:#fff;text-decoration:underline}
+
+    .calc-link{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff;padding:12px 20px;border-radius:12px;display:inline-block;font-weight:700;margin-top:16px}
+    .calc-link:hover{text-decoration:none;transform:scale(1.02)}
   </style>
 
   <!-- JSON-LD: Service + FAQ + Breadcrumb -->
@@ -116,22 +135,22 @@
         "provider": {"@type":"LocalBusiness","name":"Shine Design Mobile Detailing","@id":"https://shinedesignaz.com/#local"},
         "areaServed": ["Gilbert AZ","Mesa AZ","Chandler AZ","Queen Creek AZ","San Tan Valley AZ","Scottsdale AZ","Tempe AZ"],
         "serviceType": "Automotive paint protection",
-        "description": "Professional ceramic coatings (1–7 years) with paint decontamination and optional correction.",
+        "description": "Professional ceramic coatings (3-7 years) with paint decontamination and optional correction.",
         "offers": {
           "@type": "AggregateOffer",
           "priceCurrency": "USD",
-          "lowPrice": "499",
-          "highPrice": "1999",
-          "offerCount": "4"
+          "lowPrice": "899",
+          "highPrice": "3499",
+          "offerCount": "3"
         }
       },
       {
         "@type":"FAQPage",
         "@id":"https://shinedesignaz.com/services/ceramic-coating.html#faq",
         "mainEntity":[
-          {"@type":"Question","name":"How long do ceramic coatings last?","acceptedAnswer":{"@type":"Answer","text":"We offer 1–7 year options depending on product and maintenance."}},
-          {"@type":"Question","name":"Do you correct paint first?","acceptedAnswer":{"@type":"Answer","text":"Yes, every coating includes at minimum a gloss enhancement polish; multi-step correction is available for heavier defects."}},
-          {"@type":"Question","name":"Can you coat wheels, glass, and trim?","acceptedAnswer":{"@type":"Answer","text":"Absolutely—add-ons include wheels-off coatings, glass, plastic trim, and interior protection."}}
+          {"@type":"Question","name":"How long do ceramic coatings last?","acceptedAnswer":{"@type":"Answer","text":"We offer 3-year, 5+ year, and 7+ year/lifetime options depending on product and maintenance."}},
+          {"@type":"Question","name":"Do you correct paint first?","acceptedAnswer":{"@type":"Answer","text":"Yes, every coating includes appropriate paint prep. Essential includes light polish, Premium includes enhancement polish, and Elite includes paint correction."}},
+          {"@type":"Question","name":"Can you coat wheels, glass, and trim?","acceptedAnswer":{"@type":"Answer","text":"Absolutely—add-ons include wheels coating, glass coating, trim coating, and interior protection."}}
         ]
       },
       {
@@ -183,15 +202,15 @@
   <section class="hero">
     <div class="container">
       <div class="kickers">
-        <span>🛡️ 1–7 Year Protection</span>
+        <span>🛡️ 3-7 Year Protection</span>
         <span>☀️ UV & AZ Heat Defense</span>
-        <span>💧 Insanely Hydrophobic</span>
-        <span>🚐 Mobile & Shop</span>
+        <span>💧 Hydrophobic Surface</span>
+        <span>✅ Added to CARFAX</span>
       </div>
-      <h1>Ceramic Coating in the East Valley</h1>
-      <p>Ultra-gloss, UV protection, and rinse-easy maintenance for years. We prep, polish, and professionally coat your vehicle for Arizona living.</p>
+      <h1>Professional Ceramic Coating in the East Valley</h1>
+      <p>Ultra-gloss, UV protection, and rinse-easy maintenance for years. Professional grade protection with necessary paint prep included. Mobile and shop service available.</p>
       <div class="cta-wrap">
-        <a class="cta" href="https://booknow.shinedesignaz.com/" rel="nofollow">Book Now</a>
+        <a class="cta" href="/service-calculator.html">Calculate Price</a>
         <a class="cta-alt" href="#pricing">See Packages</a>
       </div>
       <p class="small" style="margin-top:8px;color:#fff">Call/Text <a href="tel:+14805288227" style="color:#fff">(480) 528-8227</a></p>
@@ -204,8 +223,8 @@
       <div class="row">
         <div class="item">✅ Insured & Certified</div>
         <div class="item">🔧 Paint Correction Pros</div>
-        <div class="item">🧼 Maintenance Plans</div>
-        <div class="item">🏆 200+ 5‑Star Reviews</div>
+        <div class="item">📝 Added to CARFAX</div>
+        <div class="item">🏆 200+ 5-Star Reviews</div>
       </div>
     </div>
   </section>
@@ -216,12 +235,14 @@
       <div class="container split">
         <div>
           <h2 style="margin-top:0">Free Ceramic Coating Quote</h2>
-          <p class="lead" style="color:var(--muted)">Tell us about your vehicle and goals—daily driver, weekend toy, or new car protection. We’ll recommend the perfect system and prep level.</p>
+          <p class="lead" style="color:var(--muted)">Tell us about your vehicle and goals—daily driver, weekend toy, or new car protection. We'll recommend the perfect system and prep level.</p>
           <ul class="list">
             <li>Mobile or drop-off (Gilbert/San Tan Valley)</li>
-            <li>New-car, single-stage, or multi-step correction options</li>
-            <li>Glass, wheels, and trim coating add‑ons</li>
+            <li>Professional grade protection added to CARFAX</li>
+            <li>All packages include necessary paint prep</li>
+            <li>Glass, wheels, and trim coating add-ons available</li>
           </ul>
+          <a href="/service-calculator.html" class="calc-link">📊 Use Our Price Calculator</a>
         </div>
         <div><fieldd-lead-form code="I-HCZQ"></fieldd-lead-form></div>
       </div>
@@ -231,46 +252,115 @@
     <section class="section" id="pricing">
       <div class="container">
         <h2>Ceramic Coating Packages</h2>
-        <p class="lead" style="color:var(--muted)">Durability options for every build. All packages include decon wash, clay, iron removal, and a gloss‑enhancement polish unless otherwise noted.</p>
+        <p class="lead" style="color:var(--muted);margin-bottom:8px">Professional grade protection added to CARFAX - includes necessary paint prep</p>
+        
         <div class="cards">
+          <!-- Essential 3 Year -->
           <article class="card">
-            <img loading="lazy" src="/assets/images/packages/1-year.jpg" alt="1 year ceramic coating application">
+            <img loading="lazy" src="/assets/images/packages/3-year.jpg" alt="3 year ceramic coating application">
             <div class="pad">
-              <h3>1‑Year Entry</h3>
-              <p>Great for daily drivers wanting easier washes and UV protection.</p>
-              <span class="pill">From $499 (S)</span> <span class="pill">$599 (M)</span> <span class="pill">$699 (L)</span>
-              <p style="margin-top:10px"><a href="https://booknow.shinedesignaz.com/" class="cta">Book</a> <a href="#faq" style="margin-left:10px">What’s included →</a></p>
+              <h3>Essential - 3 Year Protection <span class="carfax-badge">CARFAX</span></h3>
+              <p><strong>Includes:</strong> Wash, decontamination, light polish, ceramic coating</p>
+              <div style="margin:12px 0">
+                <span class="pill">Small $899</span>
+                <span class="pill">Medium $1,099</span>
+                <span class="pill">Large $1,299</span>
+                <span class="pill">XL $1,499</span>
+                <span class="pill">XXL $1,799</span>
+              </div>
+              <p style="color:#059669;font-weight:600;font-size:13px">👉 Best for: New cars, first-time coating, budget-conscious</p>
+              <p style="margin-top:10px">
+                <a href="/service-calculator.html" class="cta">Calculate</a> 
+                <a href="https://booknow.shinedesignaz.com/" style="margin-left:10px">Book Now</a>
+              </p>
             </div>
           </article>
+
+          <!-- Premium 5+ Year -->
           <article class="card">
-            <img loading="lazy" src="/assets/images/packages/3-year.jpg" alt="3 year ceramic coating gloss finish">
+            <img loading="lazy" src="/assets/images/packages/5-year.jpg" alt="5 year ceramic coating premium">
             <div class="pad">
-              <h3>3‑Year Pro</h3>
-              <p>Our most popular balance of longevity, gloss, and value.</p>
-              <span class="pill">From $899 (S)</span> <span class="pill">$999 (M)</span> <span class="pill">$1199 (L)</span>
-              <p style="margin-top:10px"><a href="https://booknow.shinedesignaz.com/" class="cta">Book</a> <a href="#faq" style="margin-left:10px">What’s included →</a></p>
+              <h3>Premium - 5+ Year Protection <span class="carfax-badge">CARFAX</span></h3>
+              <p><strong>Includes:</strong> Enhancement polish + professional ceramic coating, trim included</p>
+              <div style="margin:12px 0">
+                <span class="pill">Small $1,399</span>
+                <span class="pill">Medium $1,599</span>
+                <span class="pill">Large $1,899</span>
+                <span class="pill">XL $2,199</span>
+                <span class="pill">XXL $2,599</span>
+              </div>
+              <p style="color:#059669;font-weight:600;font-size:13px">👉 Best for: Daily drivers, long-term protection, ease of maintenance</p>
+              <p style="margin-top:10px">
+                <a href="/service-calculator.html" class="cta">Calculate</a> 
+                <a href="https://booknow.shinedesignaz.com/" style="margin-left:10px">Book Now</a>
+              </p>
             </div>
           </article>
+
+          <!-- Elite 7+ Year/Lifetime -->
           <article class="card">
-            <img loading="lazy" src="/assets/images/packages/5-year.jpg" alt="5 year ceramic coating self cleaning">
+            <img loading="lazy" src="/assets/images/packages/7-year.jpg" alt="7 year elite ceramic coating">
             <div class="pad">
-              <h3>5‑Year Elite</h3>
-              <p>Maximum gloss and protection with premium resin technology.</p>
-              <span class="pill">From $1399 (S)</span> <span class="pill">$1599 (M)</span> <span class="pill">$1799 (L)</span>
-              <p style="margin-top:10px"><a href="https://booknow.shinedesignaz.com/" class="cta">Book</a> <a href="#faq" style="margin-left:10px">What’s included →</a></p>
-            </div>
-          </article>
-          <article class="card">
-            <img loading="lazy" src="/assets/images/packages/7-year.jpg" alt="7 year ceramic coating premium package">
-            <div class="pad">
-              <h3>7‑Year Signature</h3>
-              <p>Flagship system for long‑term ownership and show‑car finish.</p>
-              <span class="pill">From $1699 (S)</span> <span class="pill">$1899 (M)</span> <span class="pill">$1999 (L/XL)</span>
-              <p style="margin-top:10px"><a href="https://booknow.shinedesignaz.com/" class="cta">Book</a> <a href="#faq" style="margin-left:10px">What’s included →</a></p>
+              <h3>Elite - 7+ Year/Lifetime <span class="carfax-badge">CARFAX</span></h3>
+              <p><strong>Includes:</strong> Paint correction + premium ceramic system, trim/glass/rims included ($550 Value)</p>
+              <div style="margin:12px 0">
+                <span class="pill">Small $1,999</span>
+                <span class="pill">Medium $2,299</span>
+                <span class="pill">Large $2,599</span>
+                <span class="pill">XL $2,999</span>
+                <span class="pill">XXL $3,499</span>
+              </div>
+              <p style="color:#059669;font-weight:600;font-size:13px">👉 Best for: Luxury vehicles, dark colors, maximum protection</p>
+              <p style="margin-top:10px">
+                <a href="/service-calculator.html" class="cta">Calculate</a> 
+                <a href="https://booknow.shinedesignaz.com/" style="margin-left:10px">Book Now</a>
+              </p>
             </div>
           </article>
         </div>
-        <p class="small" style="margin-top:10px;color:var(--muted)">Add‑ons: wheels‑off coating, glass coating, plastic trim coating, interior ceramic, engine bay detail. See <a href="/pricing.html">full pricing</a>.</p>
+
+        <!-- Vehicle Size Guide -->
+        <div style="margin-top:32px;padding:16px;background:#f8fafc;border-radius:12px">
+          <h3 style="margin-top:0">Vehicle Size Categories</h3>
+          <div style="display:grid;gap:8px;font-size:14px">
+            <div><strong>Small:</strong> Compact Cars, Sedans, Coupes, Hatchbacks</div>
+            <div><strong>Medium:</strong> Small/Mid SUVs, Crossovers, Compact Trucks</div>
+            <div><strong>Large:</strong> Full-Size Trucks, Large Sedans</div>
+            <div><strong>XL:</strong> Full-Size SUVs, Minivans, Vans</div>
+            <div><strong>XXL:</strong> Lifted Trucks, Extended Vans, RVs, Commercial Vehicles</div>
+          </div>
+        </div>
+
+        <!-- Add-ons Section -->
+        <div style="margin-top:32px">
+          <h3>Ceramic Coating Add-Ons</h3>
+          <div class="addon-grid">
+            <div class="addon-item">
+              <span class="addon-name">Wheels & Calipers (faces only)</span>
+              <span class="addon-price">$149</span>
+            </div>
+            <div class="addon-item">
+              <span class="addon-name">Wheels OFF + Calipers (complete)</span>
+              <span class="addon-price">$249</span>
+            </div>
+            <div class="addon-item">
+              <span class="addon-name">Glass Ceramic Coating</span>
+              <span class="addon-price">$149</span>
+            </div>
+            <div class="addon-item">
+              <span class="addon-name">Trim Ceramic Coating</span>
+              <span class="addon-price">$99</span>
+            </div>
+            <div class="addon-item">
+              <span class="addon-name">Interior Ceramic Protection</span>
+              <span class="addon-price">$299</span>
+            </div>
+            <div class="addon-item">
+              <span class="addon-name">Paint Protection Film (PPF)</span>
+              <span class="addon-price">Quote</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -281,9 +371,11 @@
           <h2>Why Ceramic in Arizona?</h2>
           <p>Our climate is brutal: sun, dust, sprinklers, and freeway debris. Ceramic coatings deliver a hardened sacrificial layer that resists UV, makes washes faster, and keeps paint glossier for years.</p>
           <ul class="list">
-            <li>Hydrophobic top‑coat sheds dust and water spots</li>
-            <li>UV inhibitors fight oxidation and clear‑coat failure</li>
-            <li>Enhances color depth and mirror‑like reflections</li>
+            <li>Hydrophobic top-coat sheds dust and water spots</li>
+            <li>UV inhibitors fight oxidation and clear-coat failure</li>
+            <li>Enhances color depth and mirror-like reflections</li>
+            <li>Reduces washing frequency and effort</li>
+            <li>Protection verified and added to vehicle's CARFAX report</li>
           </ul>
         </div>
         <img src="/assets/images/services/ceramic-closeup.jpg" alt="Close-up of hydrophobic ceramic coating beading" style="width:100%;border-radius:16px;border:1px solid #e2e8f0">
@@ -295,11 +387,12 @@
       <div class="container">
         <h2>Our Process</h2>
         <ol class="steps">
-          <li>Decon wash, iron removal, and clay bar to strip contaminants.</li>
-          <li>Tape‑off trim and perform gloss‑enhancement or multi‑step correction.</li>
-          <li>Panel wipe to remove polishing oils for proper bond.</li>
-          <li>Apply ceramic coating and level for a uniform, slick finish.</li>
-          <li>IR cure (where applicable) and final inspection.</li>
+          <li>Decon wash, iron removal, and clay bar to strip contaminants</li>
+          <li>Tape-off trim and perform appropriate paint prep (light polish, enhancement, or correction)</li>
+          <li>Panel wipe to remove polishing oils for proper bond</li>
+          <li>Apply ceramic coating and level for a uniform, slick finish</li>
+          <li>IR cure (where applicable) and final inspection</li>
+          <li>Document service and add to CARFAX vehicle history</li>
         </ol>
       </div>
     </section>
@@ -308,11 +401,11 @@
     <section class="section reviews">
       <div class="container">
         <h2>What Coating Clients Say</h2>
-        <p class="lead" style="color:var(--muted);margin:0 0 16px">Hundreds of local 5‑star reviews.</p>
+        <p class="lead" style="color:var(--muted);margin:0 0 16px">Hundreds of local 5-star reviews</p>
         <div class="review-grid">
-          <blockquote class="quote">“Dust rinses right off now and the gloss is wild. Wish I did this sooner.”</blockquote>
-          <blockquote class="quote">“Perfect prep and no high spots. These guys are meticulous.”</blockquote>
-          <blockquote class="quote">“3‑year package on my daily—holds up amazing to the sun and sprinklers.”</blockquote>
+          <blockquote class="quote">"Dust rinses right off now and the gloss is wild. Wish I did this sooner."</blockquote>
+          <blockquote class="quote">"Perfect prep and no high spots. These guys are meticulous."</blockquote>
+          <blockquote class="quote">"Elite package on my BMW - the paint correction was flawless and coating is holding up amazing."</blockquote>
         </div>
       </div>
     </section>
@@ -334,32 +427,34 @@
     <!-- CTA Banner -->
     <section class="container cta-banner">
       <div>
-        <h2 style="margin:0">Ready to get coated?</h2>
-        <p style="margin:4px 0 0">Book online in 60 seconds. We bring water & power. 100% satisfaction guarantee.</p>
+        <h2 style="margin:0">Ready to protect your investment?</h2>
+        <p style="margin:4px 0 0">Professional ceramic coating with paint prep included. Book online in 60 seconds.</p>
       </div>
-      <a class="cta" href="https://booknow.shinedesignaz.com/" rel="nofollow">Book Now</a>
+      <a class="cta" href="/service-calculator.html" style="background:#fff;color:var(--brand)">Calculate Price</a>
     </section>
 
     <!-- FAQ -->
     <section class="section" id="faq">
       <div class="container">
         <h2>FAQ</h2>
-        <details><summary>How long before I can wash the car?</summary><p>Gentle hand‑wash after 7 days; avoid harsh chemicals for 2 weeks while the coating fully cures.</p></details>
+        <details><summary>How long before I can wash the car?</summary><p>Gentle hand-wash after 7 days; avoid harsh chemicals for 2 weeks while the coating fully cures.</p></details>
         <details><summary>Will a coating stop rock chips?</summary><p>No—use <a href="/services/paint-protection-film.html">PPF</a> for impact protection. Many clients do PPF up front and ceramic over the rest.</p></details>
-        <details><summary>Do you offer maintenance?</summary><p>Yes—monthly, bi‑monthly, and quarterly plans keep performance at its peak. See <a href="/pricing.html">Pricing</a>.</p></details>
+        <details><summary>Do you offer maintenance?</summary><p>Yes—monthly, bi-monthly, and quarterly plans keep performance at its peak. See <a href="/pricing.html">Pricing</a>.</p></details>
+        <details><summary>What's the difference between the packages?</summary><p>Essential includes light polish, Premium includes enhancement polish, and Elite includes full paint correction. Higher tiers also use more advanced coating systems with longer durability.</p></details>
+        <details><summary>Is the CARFAX addition worth it?</summary><p>Absolutely. It documents professional ceramic coating on your vehicle's history report, which can increase resale value and buyer confidence.</p></details>
       </div>
     </section>
   </main>
 
   <div class="micro-footer">
-    <div class="container">Ceramic coating, PPF & mobile detailing across Gilbert, Mesa, Chandler, Queen Creek, San Tan Valley. <a href="tel:+14805288227" style="color:#0ea5e9;font-weight:700">Call 480‑528‑8227</a></div>
+    <div class="container">Ceramic coating, PPF & mobile detailing across Gilbert, Mesa, Chandler, Queen Creek, San Tan Valley. <a href="tel:+14805288227" style="color:#0ea5e9;font-weight:700">Call 480-528-8227</a></div>
   </div>
 
   <footer>
     <div class="container foot-grid">
       <div>
         <img src="/assets/images/logo-sqaure-white.png" alt="Shine Design logo (white square)" style="height:36px">
-        <p class="small">© {year} Shine Design, LLC • Insured • East Valley, AZ</p>
+        <p class="small">© 2025 Shine Design, LLC • Insured • East Valley, AZ</p>
         <p class="small"><a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a> • <a href="/contact.html">Contact</a> • <a href="/sitemap.xml">Sitemap</a></p>
       </div>
       <div>
@@ -391,6 +486,6 @@
   </footer>
 
   <script defer src="/navigation.js"></script>
-  <script>document.querySelectorAll('footer .small').forEach(el=>el.innerHTML=el.innerHTML.replace('{year}', new Date().getFullYear()));</script>
+  <script>document.querySelector('.menu-btn').addEventListener('click',function(){const nav=document.getElementById('mobile-nav');const isOpen=!nav.hidden;nav.hidden=isOpen;this.setAttribute('aria-expanded',!isOpen);this.textContent=isOpen?'☰':'✕';});</script>
 </body>
 </html>
