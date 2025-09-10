@@ -10,32 +10,237 @@
   <link rel="icon" href="/assets/images/favicon.ico">
   <meta name="theme-color" content="#0ea5e9">
   
-  <!-- Schema.org structured data for pricing -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "PriceSpecification",
-    "url": "https://shinedesignaz.com/pricing/",
-    "priceCurrency": "USD",
-    "eligibleTransactionVolume": {
-      "@type": "QuantitativeValue",
-      "value": "1",
-      "unitCode": "C62"
+<!-- JSON-LD for /pricing/: WebPage + OfferCatalog (+ optional Breadcrumbs) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    /* --- WebPage (Pricing) --- */
+    {
+      "@type": "WebPage",
+      "@id": "https://shinedesignaz.com/pricing/#webpage",
+      "url": "https://shinedesignaz.com/pricing/",
+      "name": "Pricing — Shine Design Mobile Detailing",
+      "description": "Clear pricing for interior & exterior detailing, full detail, paint correction, ceramic coating, PPF, tint, RV & boat.",
+      "isPartOf": { "@id": "https://shinedesignaz.com/#website" },
+      "inLanguage": "en"
     },
-    "validFrom": "2025-01-01",
-    "validThrough": "2025-12-31",
-    "itemOffered": {
-      "@type": "Service",
-      "name": "Auto Detailing Services",
-      "provider": {
-        "@type": "AutoDetailing",
-        "name": "Shine Design",
-        "telephone": "+14805288227",
-        "areaServed": ["Gilbert", "Mesa", "Chandler", "Queen Creek", "San Tan Valley", "Tempe", "Scottsdale", "Phoenix"]
-      }
+
+    /* --- OfferCatalog for packages shown on the page --- */
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://shinedesignaz.com/pricing/#offers",
+      "name": "Detailing & Protection Pricing",
+      "itemListElement": [
+
+        {
+          "@type": "OfferCatalog",
+          "name": "Detailing Packages",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Interior Detailing",
+              "priceCurrency": "USD",
+              "priceSpecification": { "@type": "PriceSpecification", "price": "149" },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Interior Detailing",
+                "url": "https://shinedesignaz.com/services/interior-detailing.html",
+                "description": "Vacuum, steam, shampoo & extraction, leather care; odor/pet hair options."
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Exterior Detailing — Level 1",
+              "priceCurrency": "USD",
+              "priceSpecification": { "@type": "PriceSpecification", "price": "99" },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Exterior Detailing",
+                "url": "https://shinedesignaz.com/services/exterior-detailing.html",
+                "description": "Hand wash, wheels & tires, windows; light spray wax."
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Exterior Detailing — Level 2",
+              "priceCurrency": "USD",
+              "priceSpecification": { "@type": "PriceSpecification", "price": "249" },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Exterior Detailing (Level 2)",
+                "url": "https://shinedesignaz.com/services/exterior-detailing.html#level-2",
+                "description": "Everything in Level 1 + clay bar, iron decon, bug/tar, 6-month sealant."
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Full Detail",
+              "priceCurrency": "USD",
+              "priceSpecification": { "@type": "PriceSpecification", "price": "329" },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Full Detail",
+                "url": "https://shinedesignaz.com/services/full-detail.html",
+                "description": "Complete interior deep clean + exterior decon & sealant."
+              }
+            }
+          ]
+        },
+
+        {
+          "@type": "OfferCatalog",
+          "name": "Paint Enhancement & Correction",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Enhancement Polish (50–70% correction)",
+              "priceCurrency": "USD",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Enhancement Polish",
+                "url": "https://shinedesignaz.com/services/paint-correction.html#enhancement",
+                "description": "Single-stage machine polish; wash, decon, sealant."
+              },
+              "priceSpecification": [
+                { "@type": "UnitPriceSpecification", "name": "Small",  "price": "499",  "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "Medium", "price": "599",  "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "Large",  "price": "699",  "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "XL",     "price": "849",  "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "XXL",    "price": "999",  "priceCurrency": "USD" }
+              ]
+            },
+            {
+              "@type": "Offer",
+              "name": "Paint Correction (70–85% correction)",
+              "priceCurrency": "USD",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Paint Correction",
+                "url": "https://shinedesignaz.com/services/paint-correction.html#correction",
+                "description": "Two-stage correction; premium sealant."
+              },
+              "priceSpecification": [
+                { "@type": "UnitPriceSpecification", "name": "Small",  "price": "799",   "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "Medium", "price": "999",   "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "Large",  "price": "1199",  "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "XL",     "price": "1399",  "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "XXL",    "price": "1649",  "priceCurrency": "USD" }
+              ]
+            },
+            {
+              "@type": "Offer",
+              "name": "Show Car Finish (85–95% perfection)",
+              "priceCurrency": "USD",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Show Car Finish",
+                "url": "https://shinedesignaz.com/services/paint-correction.html#show",
+                "description": "Multi-stage correction & jeweling; show wax/sealant."
+              },
+              "priceSpecification": [
+                { "@type": "UnitPriceSpecification", "name": "Small",  "price": "1199", "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "Medium", "price": "1499", "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "Large",  "price": "1799", "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "XL",     "price": "2099", "priceCurrency": "USD" },
+                { "@type": "UnitPriceSpecification", "name": "XXL",    "price": "2499", "priceCurrency": "USD" }
+              ]
+            }
+          ]
+        },
+
+        {
+          "@type": "OfferCatalog",
+          "name": "Coatings & Film",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Ceramic Coating (1-Year)",
+              "priceCurrency": "USD",
+              "priceSpecification": { "@type": "PriceSpecification", "price": "499" },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Ceramic Coating",
+                "url": "https://shinedesignaz.com/services/ceramic-coating.html",
+                "description": "Durable nano coating; UV resistance & easy-clean gloss."
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "PPF — Full Front (from)",
+              "priceCurrency": "USD",
+              "priceSpecification": { "@type": "PriceSpecification", "price": "1799" },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Paint Protection Film (PPF)",
+                "url": "https://shinedesignaz.com/services/paint-protection-film.html",
+                "description": "Self-healing film to protect high-impact areas."
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Window Tint — Full Car (from)",
+              "priceCurrency": "USD",
+              "priceSpecification": { "@type": "PriceSpecification", "price": "259" },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Window Tint",
+                "url": "https://shinedesignaz.com/services/window-tinting.html",
+                "description": "Dyed, carbon & ceramic IR films; heat/glare reduction."
+              }
+            }
+          ]
+        },
+
+        {
+          "@type": "OfferCatalog",
+          "name": "RV • Motorhome • Boat",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "RV / Motorhome (by foot, from)",
+              "priceCurrency": "USD",
+              "priceSpecification": { "@type": "UnitPriceSpecification", "unitCode": "FT", "price": "12" },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "RV / Motorhome Detailing",
+                "url": "https://shinedesignaz.com/rv-motorhome.html",
+                "description": "Exterior wash, oxidation removal, gelcoat polish & protectants."
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Boat (by foot, from)",
+              "priceCurrency": "USD",
+              "priceSpecification": { "@type": "UnitPriceSpecification", "unitCode": "FT", "price": "14" },
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Boat Detailing",
+                "url": "https://shinedesignaz.com/boat-detailing.html",
+                "description": "Wash, decon, gelcoat correction & marine coatings."
+              }
+            }
+          ]
+        }
+
+      ]
+    },
+
+    /* --- Breadcrumbs (optional) --- */
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://shinedesignaz.com/pricing/#breadcrumbs",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://shinedesignaz.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://shinedesignaz.com/pricing/" }
+      ]
     }
-  }
-  </script>
+
+  ]
+}
+</script>
+
   
   <!-- OG/Twitter -->
   <meta property="og:type" content="website">

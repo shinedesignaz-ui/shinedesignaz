@@ -14,7 +14,7 @@
   <meta property="og:title" content="Mesa, AZ – Mobile Detailing, Ceramic Coating, PPF & Tint | Shine Design">
   <meta property="og:description" content="We come to you anywhere in Mesa. Detailing, coatings, PPF & tint with transparent pricing and 200+ 5‑star reviews.">
   <meta property="og:url" content="https://shinedesignaz.com/locations/mesa.html">
-  <meta property="og:image" content="/assets/images/og-image.webp">
+  <meta property="og:image" content="/assets/images/og-image-mesa.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mesa, AZ – Mobile Detailing, Ceramic Coating, PPF & Tint | Shine Design">
   <meta name="twitter:description" content="Hard‑water safe methods and pro protection packages. Book in 60 seconds.">
@@ -118,15 +118,122 @@
       },
       {
         "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Home","item":"https://shinedesignaz.com/"},
-          {"@type":"ListItem","position":2,"name":"Locations","item":"https://shinedesignaz.com/locations/"},
-          {"@type":"ListItem","position":3,"name":"Mesa, AZ","item":"https://shinedesignaz.com/locations/mesa.html"}
-        ]
+          ...existing code...
       }
     ]
   }
   </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+
+        { "@type": "ImageObject", "@id": "https://shinedesignaz.com/#logo",
+          "url": "https://shinedesignaz.com/assets/images/logo.png",
+          "contentUrl": "https://shinedesignaz.com/assets/images/logo.png"
+        },
+        { "@type": "ImageObject", "@id": "https://shinedesignaz.com/#og-image",
+          "url": "https://shinedesignaz.com/assets/images/og-image.jpg",
+          "contentUrl": "https://shinedesignaz.com/assets/images/og-image.jpg"
+        },
+
+        { "@type": "Organization", "@id": "https://shinedesignaz.com/#org",
+          "name": "Shine Design, LLC",
+          "alternateName": "Shine Design Mobile Detailing",
+          "url": "https://shinedesignaz.com",
+          "logo": { "@id": "https://shinedesignaz.com/#logo" }
+        },
+
+        { "@type": "WebSite", "@id": "https://shinedesignaz.com/#website",
+          "url": "https://shinedesignaz.com",
+          "name": "Shine Design Mobile Detailing",
+          "publisher": { "@id": "https://shinedesignaz.com/#org" },
+          "inLanguage": "en"
+        },
+
+        { "@type": "WebPage", "@id": "https://shinedesignaz.com/locations/mesa#webpage",
+          "url": "https://shinedesignaz.com/locations/mesa",
+          "name": "Auto Detailing in Mesa, AZ — Shine Design",
+          "description": "Mobile detailing, ceramic coating, PPF, window tint, and paint correction — serving all of Mesa, AZ.",
+          "isPartOf": { "@id": "https://shinedesignaz.com/#website" },
+          "primaryImageOfPage": { "@id": "https://shinedesignaz.com/#og-image" },
+          "breadcrumb": { "@id": "https://shinedesignaz.com/locations/mesa#breadcrumbs" },
+          "inLanguage": "en"
+        },
+
+        { "@type": "AutomotiveBusiness", "@id": "https://shinedesignaz.com/locations/mesa#local",
+          "name": "Shine Design Mobile Detailing — Mesa",
+          "url": "https://shinedesignaz.com/locations/mesa",
+          "image": { "@id": "https://shinedesignaz.com/#og-image" },
+          "telephone": "+1-480-528-8227",
+          "priceRange": "$$",
+          "parentOrganization": { "@id": "https://shinedesignaz.com/#org" },
+          "areaServed": "US-AZ",
+          "serviceArea": [{ "@type": "Place", "name": "Mesa, AZ" }],
+          "knowsAbout": [
+            "mobile auto detailing","interior detailing","exterior detailing",
+            "ceramic coating","paint protection film","PPF","paint correction",
+            "window tint","fleet detailing"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Services in Mesa",
+            "itemListElement": [
+              { "@type": "Offer", "name": "Interior Detailing",
+                "itemOffered": { "@type": "Service", "name": "Interior Detailing",
+                  "url": "https://shinedesignaz.com/services/interior-detailing.html" } },
+              { "@type": "Offer", "name": "Exterior Detailing",
+                "itemOffered": { "@type": "Service", "name": "Exterior Detailing",
+                  "url": "https://shinedesignaz.com/services/exterior-detailing.html" } },
+              { "@type": "Offer", "name": "Full Detail",
+                "itemOffered": { "@type": "Service", "name": "Full Detail",
+                  "url": "https://shinedesignaz.com/services/full-detail.html" } },
+              { "@type": "Offer", "name": "Paint Correction",
+                "itemOffered": { "@type": "Service", "name": "Paint Correction",
+                  "url": "https://shinedesignaz.com/services/paint-correction.html" } },
+              { "@type": "Offer", "name": "Ceramic Coating",
+                "itemOffered": { "@type": "Service", "name": "Ceramic Coating",
+                  "url": "https://shinedesignaz.com/services/ceramic-coating.html" } },
+              { "@type": "Offer", "name": "Paint Protection Film (PPF)",
+                "itemOffered": { "@type": "Service", "name": "Paint Protection Film (PPF)",
+                  "url": "https://shinedesignaz.com/services/paint-protection-film.html" } },
+              { "@type": "Offer", "name": "Window Tint",
+                "itemOffered": { "@type": "Service", "name": "Window Tint",
+                  "url": "https://shinedesignaz.com/services/window-tinting.html" } }
+            ]
+          },
+          "potentialAction": {
+            "@type": "ScheduleAction",
+            "name": "Book Appointment",
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://booknow.shinedesignaz.com/" }
+          }
+        },
+
+        { "@type": "FAQPage", "@id": "https://shinedesignaz.com/locations/mesa#faq",
+          "mainEntity": [
+            { "@type": "Question", "name": "Do you service all of Mesa?",
+              "acceptedAnswer": { "@type": "Answer",
+                "text": "Yes. We serve all neighborhoods in Mesa with our fully mobile setup." } },
+            { "@type": "Question", "name": "Do I need water or power on site?",
+              "acceptedAnswer": { "@type": "Answer",
+                "text": "No—our vans are self-contained. Driveway access helps, but street parking works too." } },
+            { "@type": "Question", "name": "Can I get same-day or next-day service in Mesa?",
+              "acceptedAnswer": { "@type": "Answer",
+                "text": "Often yes. Check current openings on our booking page or call/text 480-528-8227." } }
+          ]
+        },
+
+        { "@type": "BreadcrumbList", "@id": "https://shinedesignaz.com/locations/mesa#breadcrumbs",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://shinedesignaz.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://shinedesignaz.com/locations/" },
+            { "@type": "ListItem", "position": 3, "name": "Mesa" }
+          ]
+        }
+
+      ]
+    }
+    </script>
 </head>
 <body>
   <a class="sr-only" href="#main">Skip to content</a>
