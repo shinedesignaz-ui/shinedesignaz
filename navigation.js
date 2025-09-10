@@ -1,22 +1,31 @@
-// navigation.js 
+// navigation.js
 
-// 1. MOBILE MENU TOGGLE
-(function(){
-  const btn = document.querySelector('.menu-btn');
-  const mobile = document.getElementById('mobile-nav');
-  if(!btn || !mobile) return;
-  
-  btn.addEventListener('click', () => {
-    const open = !mobile.hasAttribute('hidden');
-    if(open){ 
-      mobile.setAttribute('hidden',''); 
-      btn.setAttribute('aria-expanded','false'); 
-    } else { 
-      mobile.removeAttribute('hidden'); 
-      btn.setAttribute('aria-expanded','true'); 
+// 1. LOAD SHARED HEADER AND MOBILE MENU TOGGLE
+fetch('/header.html')
+  .then(r => r.text())
+  .then(html => {
+    const current = document.querySelector('header');
+    if (current) {
+      current.outerHTML = html;
+    } else {
+      document.body.insertAdjacentHTML('afterbegin', html);
     }
+
+    const btn = document.querySelector('.menu-btn');
+    const mobile = document.getElementById('mobile-nav');
+    if (!btn || !mobile) return;
+
+    btn.addEventListener('click', () => {
+      const open = !mobile.hasAttribute('hidden');
+      if (open) {
+        mobile.setAttribute('hidden', '');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        mobile.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
-})();
 
 // 2. FIELDD FORM LAZY LOADING
 function loadFielddForm() {
@@ -48,28 +57,3 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// 3. LOAD ACTION BUTTONS (Single external file approach)
-(function() {
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(function() {
-      const script = document.createElement('script');
-      script.src = '/action-buttons.js';
-      script.defer = true;
-      document.body.appendChild(script);
-    });
-  } else {
-    setTimeout(function() {
-      const script = document.createElement('script');
-      script.src = '/action-buttons.js';
-      script.defer = true;
-      document.body.appendChild(script);
-    }, 1);
-  }
-})();
-// Add this at the end of your navigation.js file
-(function() {
-  const script = document.createElement('script');
-  script.src = '/action-buttons.js';
-  script.defer = true;
-  document.body.appendChild(script);
-})();
