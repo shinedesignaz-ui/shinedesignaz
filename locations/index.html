@@ -362,8 +362,6 @@
       <p class="small">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
     </div>
   </footer>
-
-  <script defer src="/navigation.js"></script>
   <script>
     // Year in footer
     document.querySelectorAll('footer .small').forEach(el=>el.innerHTML=el.innerHTML.replace('{year}', new Date().getFullYear()));
@@ -380,5 +378,6 @@
       }
     })();
   </script>
+  <script defer src="/navigation.js"></script>
 </body>
 </html>
