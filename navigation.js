@@ -66,3 +66,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1);
   }
 })();
+// Add this at the end of your navigation.js file
+(function() {
+  const script = document.createElement('script');
+  script.src = '/action-buttons.js';
+  script.defer = true;
+  document.body.appendChild(script);
+})();
