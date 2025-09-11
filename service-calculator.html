@@ -22,24 +22,371 @@
   <link rel="preload" href="/assets/images/hero-bg.jpg" as="image">
 
   <style>
-    :root{--brand:#0ea5e9;--brand-dark:#0284c7;--text:#0f172a;--muted:#475569;--bg:#fff}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg);line-height:1.6}
-    a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
-    .container{max-width:1200px;margin:0 auto;padding:0 16px}
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:saturate(150%) blur(6px);border-bottom:1px solid #e2e8f0}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
-    .brand img{height:36px;width:auto}
-    .nav-links{display:none;gap:16px;align-items:center}
-    .nav-links a{font-weight:600;color:#0f172a}
-    .cta{display:inline-block;background:var(--brand);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;border:2px solid var(--brand)}
-    .cta:hover{background:#fff;color:var(--brand);text-decoration:none}
-    .menu-btn{background:none;border:none;padding:8px;font-size:28px;cursor:pointer}
-    @media(min-width:920px){.nav-links{display:flex}.menu-btn{display:none}}
+    :root {
+      --brand: #0ea5e9;
+      --brand-dark: #0284c7;
+      --text: #0f172a;
+      --muted: #475569;
+      --bg: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* =====================
+       HEADER STYLES
+    ===================== */
+    
+    /* Main Header */
+    .main-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: saturate(150%) blur(10px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    /* Scrolled state */
+    .main-header.scrolled {
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    /* Logo Section */
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text);
+    }
+
+    /* Navigation - Desktop */
+    .nav-desktop {
+      display: none;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-desktop a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav-desktop a:hover {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    /* Animated underline */
+    .nav-desktop a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--brand);
+      transition: width 0.3s ease;
+    }
+
+    .nav-desktop a:hover::after {
+      width: 100%;
+    }
+
+    /* Services Dropdown */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .dropdown-toggle svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s;
+    }
+
+    .dropdown:hover .dropdown-toggle svg {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: -20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      padding: 12px 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .dropdown-menu a:hover {
+      background: #f8fafc;
+      color: var(--brand);
+      padding-left: 25px;
+    }
+
+    .dropdown-menu a:hover::after {
+      width: 0;
+    }
+
+    /* CTA Buttons */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cta-header {
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      color: white;
+      padding: 10px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: all 0.2s ease;
+      display: none;
+    }
+
+    .cta-header:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+      text-decoration: none;
+    }
+
+    /* Mobile Menu Button */
+    .menu-btn {
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 0;
+    }
+
+    .menu-btn span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-btn[aria-expanded="true"] span:nth-child(1) {
+      transform: rotate(45deg) translateY(7px);
+    }
+
+    .menu-btn[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-btn[aria-expanded="true"] span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-7px);
+    }
+
+    /* Mobile Navigation */
+    .nav-mobile {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+
+    .nav-mobile:not([hidden]) {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 80%;
+      max-width: 320px;
+      background: white;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-mobile:not([hidden]) .mobile-menu {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-items {
+      flex: 1;
+      padding: 20px 0;
+    }
+
+    .mobile-menu-items a {
+      display: block;
+      padding: 15px 24px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .mobile-menu-items a:hover {
+      background: #f8fafc;
+      color: var(--brand);
+      padding-left: 30px;
+    }
+
+    .mobile-menu-bottom {
+      padding: 20px;
+      background: #f8fafc;
+      border-top: 2px solid var(--border);
+    }
+
+    .mobile-cta {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      color: white;
+      padding: 14px;
+      border-radius: 999px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .mobile-phone {
+      display: block;
+      text-align: center;
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    /* Desktop Styles */
+    @media (min-width: 920px) {
+      .nav-desktop {
+        display: flex;
+      }
+
+      .cta-header {
+        display: inline-block;
+      }
+
+      .menu-btn {
+        display: none;
+      }
+    }
+
+    /* Page Content Styles */
     main{min-height:52vh}
     .section{padding:48px 0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+    .cta{display:inline-block;background:var(--brand);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;border:2px solid var(--brand)}
+    .cta:hover{background:#fff;color:var(--brand);text-decoration:none}
+    .cta-alt{display:inline-block;background:#fff;color:var(--brand);padding:10px 16px;border-radius:999px;font-weight:700;border:2px solid #fff}
+    .cta-alt:hover{background:transparent;color:#fff;text-decoration:none}
 
     /* Hero */
     .hero{position:relative;overflow:hidden;color:#fff;text-align:left;background:linear-gradient(180deg,rgba(2,132,199,.95),rgba(14,165,233,.85)),url('/assets/images/hero-bg.jpg') center/cover no-repeat}
@@ -49,8 +396,6 @@
     .hero h1{font-size:32px;line-height:1.15;margin:0 0 10px}
     .hero p{font-size:16px;opacity:.95;margin:0 0 18px}
     .hero .cta-wrap{display:flex;gap:10px;flex-wrap:wrap}
-    .cta-alt{display:inline-block;background:#fff;color:var(--brand);padding:10px 16px;border-radius:999px;font-weight:700;border:2px solid #fff}
-    .cta-alt:hover{background:transparent;color:#fff}
 
     /* Trust row */
     .trust{background:#f8fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}
@@ -145,62 +490,82 @@
 </head>
 <body>
   <a class="sr-only" href="#main">Skip to content</a>
-  <header>
-  <div class="container nav">
-    <a class="brand" href="/">
-      <img src="/assets/images/logo.webp" alt="Shine Design logo">
-    </a>
-
-    <!-- Desktop nav -->
-    <nav class="nav-links" aria-label="Primary">
-      <a href="/services/">Services</a>
-      <a href="/locations/">Locations</a>
-      <a href="/pricing/">Pricing</a>
-      <a href="/gallery.html">Gallery</a>
-      <a href="/reviews.html">Reviews</a>
-      <a href="/faq.html">FAQ</a>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-      <a class="cta" href="https://booknow.shinedesignaz.com/" target="_blank" rel="noopener">Book Now</a>
-    </nav>
-
-    <button class="menu-btn" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false">☰</button>
-  </div>
-
-  <!-- Mobile nav -->
-  <nav id="mobile-nav" aria-label="Mobile" hidden>
-    <div class="mobile-panel container">
-      <a href="/services/">Services</a>
-      <a href="/locations/">Locations</a>
-      <a href="/pricing/">Pricing</a>
-      <a href="/gallery.html">Gallery</a>
-      <a href="/reviews.html">Reviews</a>
-      <a href="/faq.html">FAQ</a>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-      <a class="cta" href="https://booknow.shinedesignaz.com/" target="_blank" rel="noopener">Book Now</a>
-
-      <!-- Sticky call/text bar -->
-      <div class="mobile-call">
-        <div class="btn-row">
-          <a class="btn-call" href="tel:+14805288227" aria-label="Call Shine Design at (480) 528-8227">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-phone">
-              <path d="M6.6 10.8a15.8 15.8 0 006.6 6.6l2.2-2.2a1.5 1.5 0 011.6-.36c1.27.46 2.65.7 4.04.7a1 1 0 011 1v3.7a1 1 0 01-1 1C12.3 22 2 11.7 2 3a1 1 0 011-1h3.7a1 1 0 011 1c0 1.39.24 2.77.7 4.04.17.53.04 1.11-.36 1.52L6.6 10.8z"/>
-            </svg>
-            <span>Call</span>
-          </a>
-          <a class="btn-text" href="sms:+14805288227" aria-label="Text Shine Design at (480) 528-8227">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-text">
-              <path d="M4 4h16v12H5.17L4 17.17V4zm0-2a2 2 0 00-2 2v20l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2H4z"/>
-            </svg>
-            <span>Text</span>
+  
+  <!-- Main Header -->
+  <header class="main-header" id="main-header">
+    <div class="header-container">
+      <div class="header-content">
+        
+        <!-- Logo -->
+        <div class="logo-section">
+          <a href="/" class="logo">
+            <img src="/assets/images/logo.webp" alt="Shine Design logo">
           </a>
         </div>
-        <div class="hours">Open Daily: 8am – 6pm</div>
+
+        <!-- Desktop Navigation -->
+        <nav class="nav-desktop">
+          <div class="dropdown">
+            <a href="/services/" class="dropdown-toggle">
+              Services
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="/services/ceramic-coating.html">Ceramic Coating</a>
+              <a href="/services/paint-protection-film.html">Paint Protection Film</a>
+              <a href="/services/paint-correction.html">Paint Correction</a>
+              <a href="/services/interior-detailing.html">Interior Detailing</a>
+              <a href="/services/exterior-detailing.html">Exterior Detailing</a>
+              <a href="/services/window-tinting.html">Window Tinting</a>
+            </div>
+          </div>
+          <a href="/pricing/">Pricing</a>
+          <a href="/locations/">Locations</a>
+          <a href="/gallery.html">Gallery</a>
+          <a href="/reviews.html">Reviews</a>
+          <a href="/about.html">About</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <a href="https://booknow.shinedesignaz.com/" class="cta-header">Book Now</a>
+          
+          <!-- Mobile Menu Button -->
+          <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="nav-mobile" id="mobile-nav" hidden>
+    <div class="mobile-menu">
+      <div class="mobile-menu-items">
+        <a href="/services/">Services</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/locations/">Locations</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/reviews.html">Reviews</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/faq.html">FAQ</a>
+      </div>
+      <div class="mobile-menu-bottom">
+        <a href="https://booknow.shinedesignaz.com/" class="mobile-cta">Book Now</a>
+        <a href="tel:+14805288227" class="mobile-phone">(480) 528-8227</a>
       </div>
     </div>
   </nav>
-</header>
+
+  <!-- HERO -->
   <section class="hero">
     <div class="container">
       <div class="kickers">
@@ -260,23 +625,23 @@
             <div class="calc-section">
               <h3>🚗 Step 1: Select Vehicle Type</h3>
               <div class="size-selector">
-                <div class="size-btn" data-vehicle="standard">
+                <div class="size-btn vehicle-btn" onclick="selectVehicle('standard')">
                   <strong>🚗 Cars & Trucks</strong>
                   <span>Standard vehicles</span>
                 </div>
-                <div class="size-btn" data-vehicle="rv">
+                <div class="size-btn vehicle-btn" onclick="selectVehicle('rv')">
                   <strong>🚐 RV/Motorhome</strong>
                   <span>$15-175/ft</span>
                 </div>
-                <div class="size-btn" data-vehicle="boat">
+                <div class="size-btn vehicle-btn" onclick="selectVehicle('boat')">
                   <strong>🛥️ Boat/Marine</strong>
                   <span>$20-70/ft</span>
                 </div>
-                <div class="size-btn" data-vehicle="motorcycle">
+                <div class="size-btn vehicle-btn" onclick="selectVehicle('motorcycle')">
                   <strong>🏍️ Motorcycle</strong>
                   <span>$149-599</span>
                 </div>
-                <div class="size-btn" data-vehicle="sxs">
+                <div class="size-btn vehicle-btn" onclick="selectVehicle('sxs')">
                   <strong>🏁 SXS/UTV</strong>
                   <span>$89-299</span>
                 </div>
@@ -429,22 +794,18 @@
 
     // Specialty vehicle pricing
     const specialtyPricing = {
-      // RV Services (per foot)
       'rv-wash': 15,
       'rv-wax': 25,
       'rv-correction': 40,
       'rv-ceramic': 60,
       'rv-roof': 175,
-      // Boat Services (per foot)
       'boat-wash': 20,
       'boat-detail': 30,
       'boat-gelcoat': 50,
       'boat-ceramic': 70,
-      // Motorcycle Services (fixed)
       'moto-basic': 149,
       'moto-full': 299,
       'moto-ceramic': 599,
-      // SXS/UTV Services (fixed)
       'sxs-trail': 89,
       'sxs-deep': 189,
       'sxs-show': 299
@@ -536,27 +897,21 @@
       { id: 'rock-chip', name: '🔧 Rock Chip Touch-Up', price: 49, category: 'correction' }
     ];
 
-    // Vehicle type selection
-    document.querySelectorAll('[data-vehicle]').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('[data-vehicle]').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        vehicleType = this.dataset.vehicle;
-        selectedSize = '';
-        selectedServices.clear();
-        selectedAddons.clear();
-        activeTab = vehicleType === 'standard' ? 'detailing' : vehicleType;
-        
-        // Update step 2
-        updateStep2();
-        
-        // Hide services and addons initially
-        document.getElementById('service-selection').style.display = 'none';
-        document.getElementById('addon-section').style.display = 'none';
-        
-        calculateTotal();
-      });
-    });
+    // Vehicle selection function  
+    function selectVehicle(type) {
+      document.querySelectorAll('.vehicle-btn').forEach(b => b.classList.remove('active'));
+      event.target.closest('.vehicle-btn').classList.add('active');
+      vehicleType = type;
+      selectedSize = '';
+      selectedServices.clear();
+      selectedAddons.clear();
+      activeTab = vehicleType === 'standard' ? 'detailing' : vehicleType;
+      
+      updateStep2();
+      document.getElementById('service-selection').style.display = 'none';
+      document.getElementById('addon-section').style.display = 'none';
+      calculateTotal();
+    }
 
     function updateStep2() {
       const step2 = document.getElementById('step2-section');
@@ -581,7 +936,7 @@
         ];
         sizes.forEach(size => {
           html += `
-            <div class="size-btn" data-size="${size.id}">
+            <div class="size-btn" onclick="selectSize('${size.id}')">
               <strong>${size.name}</strong>
               <span>${size.desc}</span>
               <span style="font-size:10px">${size.examples}</span>
@@ -596,7 +951,9 @@
             <label style="display:block;margin-bottom:8px;font-weight:600;color:#0f172a">
               RV Length in Feet:
             </label>
-            <input type="number" id="rv-footage" placeholder="Enter length (e.g., 30)" style="width:100%;padding:12px;font-size:18px;border:2px solid #e2e8f0;border-radius:8px;outline:none">
+            <input type="number" id="rv-footage" placeholder="Enter length (e.g., 30)" 
+              oninput="updateRVFootage(this.value)"
+              style="width:100%;padding:12px;font-size:18px;border:2px solid #e2e8f0;border-radius:8px;outline:none">
             <p style="margin-top:8px;font-size:13px;color:#475569">
               Pricing: $15-175 per foot depending on service
             </p>
@@ -609,12 +966,22 @@
             <label style="display:block;margin-bottom:8px;font-weight:600;color:#0f172a">
               Boat Length in Feet:
             </label>
-            <input type="number" id="boat-footage" placeholder="Enter length (e.g., 25)" style="width:100%;padding:12px;font-size:18px;border:2px solid #e2e8f0;border-radius:8px;outline:none">
+            <input type="number" id="boat-footage" placeholder="Enter length (e.g., 25)" 
+              oninput="updateBoatFootage(this.value)"
+              style="width:100%;padding:12px;font-size:18px;border:2px solid #e2e8f0;border-radius:8px;outline:none">
             <p style="margin-top:8px;font-size:13px;color:#475569">
               Pricing: $20-70 per foot depending on service
             </p>
           </div>
         `;
+      } else if (vehicleType === 'motorcycle') {
+        html += '<h3>🏍️ Step 2: Motorcycle Selected</h3>';
+        html += '<div style="background:#e0f2fe;border:2px solid #0284c7;border-radius:12px;padding:16px;max-width:400px">';
+        html += '<p style="margin:0;font-weight:600;color:#0284c7">Ready to select services!</p>';
+        html += '<p style="margin:8px 0 0;font-size:14px;color:#0f172a">Choose from our motorcycle detailing options below.</p>';
+        html += '</div>';
+        selectedSize = 'motorcycle';
+        setTimeout(() => updateServices(), 100);
       } else if (vehicleType === 'sxs') {
         html += `
           <h3>📏 Step 2: How Many Vehicles?</h3>
@@ -622,7 +989,8 @@
             <label style="display:block;margin-bottom:8px;font-weight:600;color:#0f172a">
               Number of SXS/UTVs:
             </label>
-            <select id="sxs-quantity" style="width:100%;padding:12px;font-size:18px;border:2px solid #e2e8f0;border-radius:8px;outline:none">
+            <select id="sxs-quantity" onchange="updateSXSQuantity(this.value)" 
+              style="width:100%;padding:12px;font-size:18px;border:2px solid #e2e8f0;border-radius:8px;outline:none">
               <option value="1">1 Vehicle</option>
               <option value="2">2 Vehicles (15% off)</option>
               <option value="3">3 Vehicles (15% off)</option>
@@ -634,70 +1002,85 @@
             </p>
           </div>
         `;
-      } else if (vehicleType === 'motorcycle') {
-        // Motorcycle doesn't need size selection, go straight to services
-        selectedSize = 'motorcycle';
-        updateServices();
+        selectedSize = 'sxs';
+        setTimeout(() => updateServices(), 100);
       }
       
       html += '</div>';
       step2.innerHTML = html;
-      
-      // Add event listeners for step 2
-      if (vehicleType === 'standard') {
-        setTimeout(() => {
-          document.querySelectorAll('[data-size]').forEach(btn => {
-            btn.addEventListener('click', function() {
-              document.querySelectorAll('[data-size]').forEach(b => b.classList.remove('active'));
-              this.classList.add('active');
-              selectedSize = this.dataset.size;
-              updateServices();
-              calculateTotal();
-            });
+    }
+
+    function selectSize(size) {
+      document.querySelectorAll('[onclick^="selectSize"]').forEach(b => b.classList.remove('active'));
+      event.target.closest('.size-btn').classList.add('active');
+      selectedSize = size;
+      updateServices();
+      calculateTotal();
+    }
+
+    function updateRVFootage(value) {
+      rvFootage = parseInt(value) || 0;
+      selectedSize = 'rv';
+      updateServices();
+      calculateTotal();
+    }
+
+    function updateBoatFootage(value) {
+      boatFootage = parseInt(value) || 0;
+      selectedSize = 'boat';
+      updateServices();
+      calculateTotal();
+    }
+
+    function updateSXSQuantity(value) {
+      sxsQuantity = parseInt(value) || 1;
+      updateServices();
+      calculateTotal();
+    }
+
+    function selectService(serviceId) {
+      const card = document.querySelector(`[onclick="selectService('${serviceId}')"]`);
+      if (selectedServices.has(serviceId)) {
+        selectedServices.delete(serviceId);
+        card.classList.remove('selected');
+      } else {
+        if (['silver', 'gold', 'platinum'].includes(serviceId)) {
+          ['silver', 'gold', 'platinum'].forEach(id => {
+            selectedServices.delete(id);
+            const el = document.querySelector(`[onclick="selectService('${id}')"]`);
+            if (el) el.classList.remove('selected');
           });
-        }, 100);
-      } else if (vehicleType === 'motorcycle') {
-        // For motorcycle, immediately show services since no size selection needed
-        setTimeout(() => {
-          updateServices();
-        }, 100);
-      } else if (vehicleType === 'rv') {
-        setTimeout(() => {
-          const input = document.getElementById('rv-footage');
-          if (input) {
-            input.addEventListener('input', function() {
-              rvFootage = parseInt(this.value) || 0;
-              selectedSize = 'rv';
-              updateServices();
-              calculateTotal();
-            });
-          }
-        }, 100);
-      } else if (vehicleType === 'boat') {
-        setTimeout(() => {
-          const input = document.getElementById('boat-footage');
-          if (input) {
-            input.addEventListener('input', function() {
-              boatFootage = parseInt(this.value) || 0;
-              selectedSize = 'boat';
-              updateServices();
-              calculateTotal();
-            });
-          }
-        }, 100);
-      } else if (vehicleType === 'sxs') {
-        selectedSize = 'sxs';
-        updateServices();
-        setTimeout(() => {
-          const select = document.getElementById('sxs-quantity');
-          if (select) {
-            select.addEventListener('change', function() {
-              sxsQuantity = parseInt(this.value) || 1;
-              calculateTotal();
-            });
-          }
-        }, 100);
+        }
+        selectedServices.add(serviceId);
+        card.classList.add('selected');
       }
+      calculateTotal();
+    }
+
+    function toggleAddon(addonId) {
+      const item = event.target.closest('.addon-item');
+      const checkbox = item.querySelector('input[type="checkbox"]');
+      
+      if (event.target.type !== 'checkbox') {
+        checkbox.checked = !checkbox.checked;
+      }
+      
+      if (checkbox.checked) {
+        selectedAddons.add(addonId);
+        item.classList.add('selected');
+      } else {
+        selectedAddons.delete(addonId);
+        item.classList.remove('selected');
+      }
+      calculateTotal();
+    }
+
+    function selectTab(tab) {
+      document.querySelectorAll('[onclick^="selectTab"]').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.service-panel').forEach(p => p.classList.remove('active'));
+      event.target.classList.add('active');
+      const panel = document.querySelector(`[data-panel="${tab}"]`);
+      if (panel) panel.classList.add('active');
     }
 
     function updateServices() {
@@ -713,25 +1096,23 @@
       let html = '<h3>🎯 Step 3: Choose Services</h3>';
       
       if (vehicleType === 'standard') {
-        // Add service tabs
         html += `
           <div class="service-tabs">
-            <div class="service-tab active" data-tab="detailing">
+            <div class="service-tab active" onclick="selectTab('detailing')">
               <span class="service-tab-icon">🧽</span>Detailing
             </div>
-            <div class="service-tab" data-tab="bundle">
+            <div class="service-tab" onclick="selectTab('bundle')">
               <span class="service-tab-icon">💎</span>Bundles
             </div>
-            <div class="service-tab" data-tab="ceramic">
+            <div class="service-tab" onclick="selectTab('ceramic')">
               <span class="service-tab-icon">🛡️</span>Ceramic
             </div>
-            <div class="service-tab" data-tab="correction">
+            <div class="service-tab" onclick="selectTab('correction')">
               <span class="service-tab-icon">✨</span>Correction
             </div>
           </div>
         `;
         
-        // Add service panels
         html += '<div id="service-panels">';
         
         // Detailing panel
@@ -790,10 +1171,8 @@
         
         html += '</div>';
         
-        // Update add-ons
         updateAddons();
       } else {
-        // Specialty vehicles
         html += '<div class="package-selector">';
         const services = servicesData[vehicleType];
         if (services) {
@@ -809,9 +1188,10 @@
               html += createSpecialtyCard(service, priceNum);
             } else if (vehicleType === 'sxs') {
               const basePrice = specialtyPricing[service.id];
-              const totalPrice = sxsQuantity >= 2 ? Math.round(basePrice * sxsQuantity * 0.85) : basePrice;
-              const note = sxsQuantity >= 2 ? `Total: $${totalPrice} for ${sxsQuantity} vehicles (15% discount!)` : '';
-              html += createSpecialtyCard(service, basePrice, note, service.popular);
+              const totalPrice = sxsQuantity >= 2 ? Math.round(basePrice * sxsQuantity * 0.85) : basePrice * sxsQuantity;
+              const displayPrice = totalPrice;
+              const note = sxsQuantity >= 2 ? `Total: $${totalPrice} for ${sxsQuantity} vehicles (15% discount!)` : (sxsQuantity === 1 ? '' : `Total: $${totalPrice} for ${sxsQuantity} vehicles`);
+              html += createSpecialtyCard(service, displayPrice, note, service.popular);
             }
           });
         }
@@ -819,50 +1199,11 @@
       }
       
       serviceSection.innerHTML = html;
-      
-      // Add event listeners
-      setTimeout(() => {
-        // Service tabs for standard vehicles
-        if (vehicleType === 'standard') {
-          document.querySelectorAll('[data-tab]').forEach(tab => {
-            tab.addEventListener('click', function() {
-              document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('active'));
-              document.querySelectorAll('[data-panel]').forEach(p => p.classList.remove('active'));
-              this.classList.add('active');
-              const panel = document.querySelector(`[data-panel="${this.dataset.tab}"]`);
-              if (panel) panel.classList.add('active');
-            });
-          });
-        }
-        
-        // Service selection
-        document.querySelectorAll('[data-service]').forEach(card => {
-          card.addEventListener('click', function() {
-            const serviceId = this.dataset.service;
-            if (selectedServices.has(serviceId)) {
-              selectedServices.delete(serviceId);
-              this.classList.remove('selected');
-            } else {
-              // If it's a bundle, remove other bundles
-              if (['silver', 'gold', 'platinum'].includes(serviceId)) {
-                ['silver', 'gold', 'platinum'].forEach(id => {
-                  selectedServices.delete(id);
-                  const el = document.querySelector(`[data-service="${id}"]`);
-                  if (el) el.classList.remove('selected');
-                });
-              }
-              selectedServices.add(serviceId);
-              this.classList.add('selected');
-            }
-            calculateTotal();
-          });
-        });
-      }, 100);
     }
 
     function createServiceCard(service, price) {
       return `
-        <div class="package-card" data-service="${service.id}">
+        <div class="package-card" onclick="selectService('${service.id}')">
           <div class="package-header">
             <span class="package-title">${service.name}</span>
             <span class="package-price">$${price}</span>
@@ -876,323 +1217,12 @@
     }
 
     function createSpecialtyCard(service, basePrice, note = '', popular = false) {
-      // For SXS with multiple vehicles, show calculated price instead of base price
       const priceDisplay = vehicleType === 'sxs' && sxsQuantity > 1 
-        ? '
-
-    function updateAddons() {
-      if (vehicleType !== 'standard') {
-        document.getElementById('addon-section').style.display = 'none';
-        return;
-      }
-      
-      const addonSection = document.getElementById('addon-section');
-      addonSection.style.display = 'block';
-      addonSection.className = 'calc-section';
-      
-      let html = '<h3>➕ Step 4: Select Add-Ons (Optional)</h3>';
-      
-      // Interior add-ons
-      html += '<h4 style="margin:16px 0 12px;font-size:15px">Interior Add-Ons</h4>';
-      html += '<div class="addon-grid">';
-      addons.filter(a => a.category === 'interior').forEach(addon => {
-        html += createAddonItem(addon);
-      });
-      html += '</div>';
-      
-      // Exterior add-ons
-      html += '<h4 style="margin:16px 0 12px;font-size:15px">Exterior Add-Ons</h4>';
-      html += '<div class="addon-grid">';
-      addons.filter(a => a.category === 'exterior').forEach(addon => {
-        html += createAddonItem(addon);
-      });
-      html += '</div>';
-      
-      // Ceramic & Correction add-ons
-      html += '<h4 style="margin:16px 0 12px;font-size:15px">Ceramic & Correction Add-Ons</h4>';
-      html += '<div class="addon-grid">';
-      addons.filter(a => a.category === 'ceramic' || a.category === 'correction').forEach(addon => {
-        html += createAddonItem(addon);
-      });
-      html += '</div>';
-      
-      addonSection.innerHTML = html;
-      
-      // Add event listeners
-      setTimeout(() => {
-        document.querySelectorAll('[data-addon]').forEach(item => {
-          item.addEventListener('click', function(e) {
-            const addonId = this.dataset.addon;
-            const checkbox = this.querySelector('input[type="checkbox"]');
-            
-            if (e.target.type !== 'checkbox') {
-              checkbox.checked = !checkbox.checked;
-            }
-            
-            if (checkbox.checked) {
-              selectedAddons.add(addonId);
-              this.classList.add('selected');
-            } else {
-              selectedAddons.delete(addonId);
-              this.classList.remove('selected');
-            }
-            calculateTotal();
-          });
-        });
-      }, 100);
-    }
-
-    function createAddonItem(addon) {
-      return `
-        <div class="addon-item" data-addon="${addon.id}">
-          <input type="checkbox" id="addon-${addon.id}">
-          <label for="addon-${addon.id}">${addon.name}</label>
-          <span class="addon-price">+$${addon.price}</span>
-        </div>
-      `;
-    }
-
-    function getServicePrice(serviceId) {
-      if (vehicleType === 'rv' && rvFootage) {
-        return specialtyPricing[serviceId] * rvFootage;
-      }
-      if (vehicleType === 'boat' && boatFootage) {
-        return specialtyPricing[serviceId] * boatFootage;
-      }
-      if (vehicleType === 'motorcycle') {
-        return specialtyPricing[serviceId];
-      }
-      if (vehicleType === 'sxs') {
-        const basePrice = specialtyPricing[serviceId];
-        return sxsQuantity >= 2 ? Math.round(basePrice * sxsQuantity * 0.85) : basePrice * sxsQuantity;
-      }
-      if (vehicleType === 'standard' && selectedSize && pricing[serviceId]) {
-        return pricing[serviceId][selectedSize];
-      }
-      return 0;
-    }
-
-    function calculateTotal() {
-      let total = 0;
-      let breakdown = '';
-      
-      if (vehicleType === 'standard' && selectedSize) {
-        breakdown = `<div style="font-size:13px;margin-bottom:8px;opacity:.8">Vehicle: ${selectedSize.toUpperCase()}</div>`;
-      } else if (vehicleType === 'rv' && rvFootage) {
-        breakdown = `<div style="font-size:13px;margin-bottom:8px;opacity:.8">RV: ${rvFootage} ft</div>`;
-      } else if (vehicleType === 'boat' && boatFootage) {
-        breakdown = `<div style="font-size:13px;margin-bottom:8px;opacity:.8">Boat: ${boatFootage} ft</div>`;
-      } else if (vehicleType === 'motorcycle') {
-        breakdown = `<div style="font-size:13px;margin-bottom:8px;opacity:.8">Motorcycle</div>`;
-      } else if (vehicleType === 'sxs') {
-        breakdown = `<div style="font-size:13px;margin-bottom:8px;opacity:.8">SXS/UTV: ${sxsQuantity} vehicle${sxsQuantity > 1 ? 's' : ''}</div>`;
-      }
-      
-      if (selectedServices.size > 0) {
-        breakdown += '<div class="service-type-header">Services</div>';
-        selectedServices.forEach(serviceId => {
-          const price = getServicePrice(serviceId);
-          if (price > 0) {
-            total += price;
-            const name = serviceId.replace(/-/g, ' ').replace(/rv |boat |moto |sxs /g, '');
-            breakdown += `<div class="breakdown-item"><span>${name}</span><span>$${price}</span></div>`;
-          }
-        });
-        
-        if (vehicleType === 'sxs' && sxsQuantity >= 2) {
-          breakdown += '<div class="breakdown-item" style="color:#90ee90;font-size:12px"><span>Multi-vehicle discount</span><span>-15%</span></div>';
-        }
-      }
-      
-      if (selectedAddons.size > 0) {
-        breakdown += '<div class="service-type-header">Add-ons</div>';
-        selectedAddons.forEach(addonId => {
-          const addon = addons.find(a => a.id === addonId);
-          if (addon) {
-            total += addon.price;
-            breakdown += `<div class="breakdown-item"><span>${addon.name.replace(/^[^ ]+ /, '')}</span><span>+$${addon.price}</span></div>`;
-          }
-        });
-      }
-      
-      // Update display
-      document.getElementById('quote-breakdown').innerHTML = breakdown || '<p style="text-align:center;opacity:.8;font-size:14px">Select your vehicle type to begin</p>';
-      document.getElementById('total-price').textContent = '$' + total.toLocaleString();
-    }
-
-    // Mobile menu toggle
-    document.querySelector('.menu-btn').addEventListener('click', function() {
-      const nav = document.getElementById('mobile-nav');
-      const isOpen = !nav.hidden;
-      nav.hidden = isOpen;
-      this.setAttribute('aria-expanded', !isOpen);
-      this.textContent = isOpen ? '☰' : '✕';
-    });
-    
-    // Initialize
-    calculateTotal();
-  </script>
-</body>
-</html> + basePrice 
-        : (service.price || '
-
-    function updateAddons() {
-      if (vehicleType !== 'standard') {
-        document.getElementById('addon-section').style.display = 'none';
-        return;
-      }
-      
-      const addonSection = document.getElementById('addon-section');
-      addonSection.style.display = 'block';
-      addonSection.className = 'calc-section';
-      
-      let html = '<h3>➕ Step 4: Select Add-Ons (Optional)</h3>';
-      
-      // Interior add-ons
-      html += '<h4 style="margin:16px 0 12px;font-size:15px">Interior Add-Ons</h4>';
-      html += '<div class="addon-grid">';
-      addons.filter(a => a.category === 'interior').forEach(addon => {
-        html += createAddonItem(addon);
-      });
-      html += '</div>';
-      
-      // Exterior add-ons
-      html += '<h4 style="margin:16px 0 12px;font-size:15px">Exterior Add-Ons</h4>';
-      html += '<div class="addon-grid">';
-      addons.filter(a => a.category === 'exterior').forEach(addon => {
-        html += createAddonItem(addon);
-      });
-      html += '</div>';
-      
-      // Ceramic & Correction add-ons
-      html += '<h4 style="margin:16px 0 12px;font-size:15px">Ceramic & Correction Add-Ons</h4>';
-      html += '<div class="addon-grid">';
-      addons.filter(a => a.category === 'ceramic' || a.category === 'correction').forEach(addon => {
-        html += createAddonItem(addon);
-      });
-      html += '</div>';
-      
-      addonSection.innerHTML = html;
-      
-      // Add event listeners
-      setTimeout(() => {
-        document.querySelectorAll('[data-addon]').forEach(item => {
-          item.addEventListener('click', function(e) {
-            const addonId = this.dataset.addon;
-            const checkbox = this.querySelector('input[type="checkbox"]');
-            
-            if (e.target.type !== 'checkbox') {
-              checkbox.checked = !checkbox.checked;
-            }
-            
-            if (checkbox.checked) {
-              selectedAddons.add(addonId);
-              this.classList.add('selected');
-            } else {
-              selectedAddons.delete(addonId);
-              this.classList.remove('selected');
-            }
-            calculateTotal();
-          });
-        });
-      }, 100);
-    }
-
-    function createAddonItem(addon) {
-      return `
-        <div class="addon-item" data-addon="${addon.id}">
-          <input type="checkbox" id="addon-${addon.id}">
-          <label for="addon-${addon.id}">${addon.name}</label>
-          <span class="addon-price">+$${addon.price}</span>
-        </div>
-      `;
-    }
-
-    function getServicePrice(serviceId) {
-      if (vehicleType === 'rv' && rvFootage) {
-        return specialtyPricing[serviceId] * rvFootage;
-      }
-      if (vehicleType === 'boat' && boatFootage) {
-        return specialtyPricing[serviceId] * boatFootage;
-      }
-      if (vehicleType === 'motorcycle') {
-        return specialtyPricing[serviceId];
-      }
-      if (vehicleType === 'sxs') {
-        const basePrice = specialtyPricing[serviceId];
-        return sxsQuantity >= 2 ? Math.round(basePrice * sxsQuantity * 0.85) : basePrice * sxsQuantity;
-      }
-      if (vehicleType === 'standard' && selectedSize && pricing[serviceId]) {
-        return pricing[serviceId][selectedSize];
-      }
-      return 0;
-    }
-
-    function calculateTotal() {
-      let total = 0;
-      let breakdown = '';
-      
-      if (vehicleType === 'standard' && selectedSize) {
-        breakdown = `<div style="font-size:13px;margin-bottom:8px;opacity:.8">Vehicle: ${selectedSize.toUpperCase()}</div>`;
-      } else if (vehicleType === 'rv' && rvFootage) {
-        breakdown = `<div style="font-size:13px;margin-bottom:8px;opacity:.8">RV: ${rvFootage} ft</div>`;
-      } else if (vehicleType === 'boat' && boatFootage) {
-        breakdown = `<div style="font-size:13px;margin-bottom:8px;opacity:.8">Boat: ${boatFootage} ft</div>`;
-      } else if (vehicleType === 'motorcycle') {
-        breakdown = `<div style="font-size:13px;margin-bottom:8px;opacity:.8">Motorcycle</div>`;
-      } else if (vehicleType === 'sxs') {
-        breakdown = `<div style="font-size:13px;margin-bottom:8px;opacity:.8">SXS/UTV: ${sxsQuantity} vehicle${sxsQuantity > 1 ? 's' : ''}</div>`;
-      }
-      
-      if (selectedServices.size > 0) {
-        breakdown += '<div class="service-type-header">Services</div>';
-        selectedServices.forEach(serviceId => {
-          const price = getServicePrice(serviceId);
-          if (price > 0) {
-            total += price;
-            const name = serviceId.replace(/-/g, ' ').replace(/rv |boat |moto |sxs /g, '');
-            breakdown += `<div class="breakdown-item"><span>${name}</span><span>$${price}</span></div>`;
-          }
-        });
-        
-        if (vehicleType === 'sxs' && sxsQuantity >= 2) {
-          breakdown += '<div class="breakdown-item" style="color:#90ee90;font-size:12px"><span>Multi-vehicle discount</span><span>-15%</span></div>';
-        }
-      }
-      
-      if (selectedAddons.size > 0) {
-        breakdown += '<div class="service-type-header">Add-ons</div>';
-        selectedAddons.forEach(addonId => {
-          const addon = addons.find(a => a.id === addonId);
-          if (addon) {
-            total += addon.price;
-            breakdown += `<div class="breakdown-item"><span>${addon.name.replace(/^[^ ]+ /, '')}</span><span>+$${addon.price}</span></div>`;
-          }
-        });
-      }
-      
-      // Update display
-      document.getElementById('quote-breakdown').innerHTML = breakdown || '<p style="text-align:center;opacity:.8;font-size:14px">Select your vehicle type to begin</p>';
-      document.getElementById('total-price').textContent = '$' + total.toLocaleString();
-    }
-
-    // Mobile menu toggle
-    document.querySelector('.menu-btn').addEventListener('click', function() {
-      const nav = document.getElementById('mobile-nav');
-      const isOpen = !nav.hidden;
-      nav.hidden = isOpen;
-      this.setAttribute('aria-expanded', !isOpen);
-      this.textContent = isOpen ? '☰' : '✕';
-    });
-    
-    // Initialize
-    calculateTotal();
-  </script>
-</body>
-</html> + basePrice);
+        ? '$' + basePrice 
+        : (service.price || '$' + basePrice);
       
       return `
-        <div class="package-card" data-service="${service.id}">
+        <div class="package-card" onclick="selectService('${service.id}')">
           <div class="package-header">
             <span class="package-title">${service.name}</span>
             <span class="package-price" style="font-size:20px;font-weight:bold;color:#0ea5e9">
@@ -1219,7 +1249,6 @@
       
       let html = '<h3>➕ Step 4: Select Add-Ons (Optional)</h3>';
       
-      // Interior add-ons
       html += '<h4 style="margin:16px 0 12px;font-size:15px">Interior Add-Ons</h4>';
       html += '<div class="addon-grid">';
       addons.filter(a => a.category === 'interior').forEach(addon => {
@@ -1227,7 +1256,6 @@
       });
       html += '</div>';
       
-      // Exterior add-ons
       html += '<h4 style="margin:16px 0 12px;font-size:15px">Exterior Add-Ons</h4>';
       html += '<div class="addon-grid">';
       addons.filter(a => a.category === 'exterior').forEach(addon => {
@@ -1235,7 +1263,6 @@
       });
       html += '</div>';
       
-      // Ceramic & Correction add-ons
       html += '<h4 style="margin:16px 0 12px;font-size:15px">Ceramic & Correction Add-Ons</h4>';
       html += '<div class="addon-grid">';
       addons.filter(a => a.category === 'ceramic' || a.category === 'correction').forEach(addon => {
@@ -1244,34 +1271,11 @@
       html += '</div>';
       
       addonSection.innerHTML = html;
-      
-      // Add event listeners
-      setTimeout(() => {
-        document.querySelectorAll('[data-addon]').forEach(item => {
-          item.addEventListener('click', function(e) {
-            const addonId = this.dataset.addon;
-            const checkbox = this.querySelector('input[type="checkbox"]');
-            
-            if (e.target.type !== 'checkbox') {
-              checkbox.checked = !checkbox.checked;
-            }
-            
-            if (checkbox.checked) {
-              selectedAddons.add(addonId);
-              this.classList.add('selected');
-            } else {
-              selectedAddons.delete(addonId);
-              this.classList.remove('selected');
-            }
-            calculateTotal();
-          });
-        });
-      }, 100);
     }
 
     function createAddonItem(addon) {
       return `
-        <div class="addon-item" data-addon="${addon.id}">
+        <div class="addon-item" onclick="toggleAddon('${addon.id}')">
           <input type="checkbox" id="addon-${addon.id}">
           <label for="addon-${addon.id}">${addon.name}</label>
           <span class="addon-price">+$${addon.price}</span>
@@ -1342,21 +1346,60 @@
         });
       }
       
-      // Update display
       document.getElementById('quote-breakdown').innerHTML = breakdown || '<p style="text-align:center;opacity:.8;font-size:14px">Select your vehicle type to begin</p>';
       document.getElementById('total-price').textContent = '$' + total.toLocaleString();
     }
 
-    // Mobile menu toggle
-    document.querySelector('.menu-btn').addEventListener('click', function() {
-      const nav = document.getElementById('mobile-nav');
-      const isOpen = !nav.hidden;
-      nav.hidden = isOpen;
-      this.setAttribute('aria-expanded', !isOpen);
-      this.textContent = isOpen ? '☰' : '✕';
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('main-header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     });
+
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    if (menuBtn && mobileNav) {
+      menuBtn.addEventListener('click', function() {
+        const isOpen = !mobileNav.hasAttribute('hidden');
+        
+        if (isOpen) {
+          mobileNav.setAttribute('hidden', '');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        } else {
+          mobileNav.removeAttribute('hidden');
+          menuBtn.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+
+      // Close on overlay click
+      mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+          mobileNav.setAttribute('hidden', '');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+      });
+
+      // Close on link click
+      const mobileLinks = mobileNav.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileNav.setAttribute('hidden', '');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    }
     
-    // Initialize
+    // Initialize calculator
     calculateTotal();
   </script>
 </body>

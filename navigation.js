@@ -1,4 +1,4 @@
-// navigation.js
+// navigation.js - COMPLETE VERSION WITH STICKY HEADER
 
 // 1. MOBILE MENU TOGGLE
 (function(){
@@ -21,8 +21,17 @@
   });
 })();
 
+// 2. STICKY HEADER EFFECT (ADD THIS)
+window.addEventListener('scroll', function() {
+  const header = document.getElementById('main-header') || document.querySelector('header');
+  if (header && window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else if (header) {
+    header.classList.remove('scrolled');
+  }
+});
 
-// 2. FIELDD FORM LAZY LOADING
+// 3. FIELDD FORM LAZY LOADING
 function loadFielddForm() {
   if (!window.FielddBooking) {
     var script = document.createElement('script');
@@ -52,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// 3. LOAD ACTION BUTTONS (Single external file approach)
+// 4. LOAD ACTION BUTTONS (Single external file approach)
 (function() {
   if ('requestIdleCallback' in window) {
     requestIdleCallback(function() {
@@ -70,4 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1);
   }
 })();
-
+/* Sticky header scroll effect */
+header.scrolled {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
