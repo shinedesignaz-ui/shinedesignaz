@@ -999,7 +999,7 @@
     </nav>
   </header>
   <!-- END HEADER COMPONENT -->
-   
+
   <script>
     // Mobile menu toggle
     (function() {
@@ -1070,6 +1070,24 @@
       });
     })();
   </script>
+  <script>
+window.addEventListener('load', function() {
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobileMenu = document.querySelector('#mobile-nav');
+  
+  if (menuBtn && mobileMenu) {
+    menuBtn.onclick = function() {
+      if (mobileMenu.style.display === 'block') {
+        mobileMenu.style.display = 'none';
+        menuBtn.textContent = '☰';
+      } else {
+        mobileMenu.style.display = 'block';
+        menuBtn.textContent = '✕';
+      }
+    };
+  }
+});
+</script>
 </body>
 </html>
 </header>
