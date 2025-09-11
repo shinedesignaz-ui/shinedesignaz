@@ -110,61 +110,75 @@
   <header class="main-header" id="main-header">
   <div class="header-container">
     <div class="header-content">
-
-    <a class="brand" href="/">
-      <img src="/assets/images/logo.webp" alt="Shine Design logo">
-    </a>
-
-    <!-- Desktop nav -->
-    <nav class="nav-links" aria-label="Primary">
-      <a href="/services/">Services</a>
-      <a href="/locations/">Locations</a>
-      <a href="/pricing/">Pricing</a>
-      <a href="/gallery.html">Gallery</a>
-      <a href="/reviews.html">Reviews</a>
-      <a href="/faq.html">FAQ</a>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-      <a class="cta" href="https://booknow.shinedesignaz.com/" target="_blank" rel="noopener">Book Now</a>
-    </nav>
-
-    <button class="menu-btn" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false">☰</button>
-  </div>
-
-  <!-- Mobile nav -->
-  <nav id="mobile-nav" aria-label="Mobile" hidden>
-    <div class="mobile-panel container">
-      <a href="/services/">Services</a>
-      <a href="/locations/">Locations</a>
-      <a href="/pricing/">Pricing</a>
-      <a href="/gallery.html">Gallery</a>
-      <a href="/reviews.html">Reviews</a>
-      <a href="/faq.html">FAQ</a>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-      <a class="cta" href="https://booknow.shinedesignaz.com/" target="_blank" rel="noopener">Book Now</a>
-
-      <!-- Sticky call/text bar -->
-      <div class="mobile-call">
-        <div class="btn-row">
-          <a class="btn-call" href="tel:+14805288227" aria-label="Call Shine Design at (480) 528-8227">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-phone">
-              <path d="M6.6 10.8a15.8 15.8 0 006.6 6.6l2.2-2.2a1.5 1.5 0 011.6-.36c1.27.46 2.65.7 4.04.7a1 1 0 011 1v3.7a1 1 0 01-1 1C12.3 22 2 11.7 2 3a1 1 0 011-1h3.7a1 1 0 011 1c0 1.39.24 2.77.7 4.04.17.53.04 1.11-.36 1.52L6.6 10.8z"/>
-            </svg>
-            <span>Call</span>
-          </a>
-          <a class="btn-text" href="sms:+14805288227" aria-label="Text Shine Design at (480) 528-8227">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-text">
-              <path d="M4 4h16v12H5.17L4 17.17V4zm0-2a2 2 0 00-2 2v20l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2H4z"/>
-            </svg>
-            <span>Text</span>
-          </a>
-        </div>
-        <div class="hours">Open Daily: 8am – 6pm</div>
+      
+      <!-- Logo -->
+      <div class="logo-section">
+        <a href="/" class="logo">
+          <img src="/assets/images/logo.webp" alt="Shine Design logo">
+        </a>
       </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop">
+        <div class="dropdown">
+          <a href="/services/" class="dropdown-toggle">
+            Services
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="/services/ceramic-coating.html">Ceramic Coating</a>
+            <a href="/services/paint-protection-film.html">Paint Protection Film</a>
+            <a href="/services/paint-correction.html">Paint Correction</a>
+            <a href="/services/interior-detailing.html">Interior Detailing</a>
+            <a href="/services/exterior-detailing.html">Exterior Detailing</a>
+            <a href="/services/window-tinting.html">Window Tinting</a>
+          </div>
+        </div>
+        <a href="/pricing/">Pricing</a>
+        <a href="/locations/">Locations</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/reviews.html">Reviews</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <a href="https://booknow.shinedesignaz.com/" class="cta-header">Book Now</a>
+        
+        <!-- Mobile Menu Button -->
+        <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
     </div>
-  </nav>
+  </div>
 </header>
+
+<!-- Mobile Navigation -->
+<nav class="nav-mobile" id="mobile-nav" hidden>
+  <div class="mobile-menu">
+    <div class="mobile-menu-items">
+      <a href="/services/">Services</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/locations/">Locations</a>
+      <a href="/gallery.html">Gallery</a>
+      <a href="/reviews.html">Reviews</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/faq.html">FAQ</a>
+    </div>
+    <div class="mobile-menu-bottom">
+      <a href="https://booknow.shinedesignaz.com/" class="mobile-cta">Book Now</a>
+      <a href="tel:+14805288227" class="mobile-phone">(480) 528-8227</a>
+    </div>
+  </div>
+</nav>
   <section class="hero">
     <div class="container">
       <div class="kickers"><span>Real Customers</span><span>Unfiltered Feedback</span><span>Visible Results</span></div>
@@ -378,5 +392,6 @@
     }
   </script>
 <script defer src="/action-buttons.js"></script>
+  <script defer src="/navigation.js"></script>
 </body>
 </html>
