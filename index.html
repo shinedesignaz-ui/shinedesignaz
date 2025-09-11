@@ -362,6 +362,23 @@
   ]
 }
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var menuBtn = document.querySelector('.menu-btn');
+    var mobileNav = document.getElementById('mobile-nav');
+    if (menuBtn && mobileNav) {
+      menuBtn.addEventListener('click', function() {
+        var expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', !expanded);
+        if (mobileNav.hasAttribute('hidden')) {
+          mobileNav.removeAttribute('hidden');
+        } else {
+          mobileNav.setAttribute('hidden', '');
+        }
+      });
+    }
+  });
+</script>
 </head>
 <body>
 
