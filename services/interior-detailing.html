@@ -150,35 +150,61 @@
 <body>
   <a class="sr-only" href="#main">Skip to content</a>
   <header>
-    <div class="container nav">
-      <a class="brand" href="/"><img src="/assets/images/logo.webp" alt="Shine Design logo"></a>
-      <a href="tel:+14805288227" style="margin-left:16px;display:flex;align-items:center;color:#22c55e;font-weight:700;font-size:20px;text-decoration:none" aria-label="Call Shine Design">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" style="margin-right:6px"><circle cx="12" cy="12" r="12" fill="#22c55e"/><path d="M16.5 14.5c-.7 0-1.4-.1-2-.4-.2-.1-.5 0-.6.2l-1.1 1.1c-2.2-1.1-4-2.9-5.1-5.1l1.1-1.1c.2-.2.3-.4.2-.6-.3-.6-.4-1.3-.4-2C8.6 6.7 8.3 6.5 8 6.5H5.5C5.2 6.5 5 6.7 5 7c0 6.1 4.9 11 11 11 .3 0 .5-.2 .5-.5V16c0-.3-.2-.5-.5-.5z" fill="#fff"/></svg>
-        <span style="color:#22c55e;font-size:16px">(480) 528-8227</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="/services/">Services</a>
-        <a href="/locations/">Locations</a>
-        <a href="/pricing.html">Pricing</a>
-        <a href="/gallery.html">Gallery</a>
-        <a href="/reviews.html">Reviews</a>
-        <a href="/faq.html">FAQ</a>
-        <a class="cta" href="https://booknow.shinedesignaz.com/" rel="nofollow">Book Now</a>
-      </nav>
-      <button class="menu-btn" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false">☰</button>
-    </div>
-    <nav id="mobile-nav" hidden>
-      <div class="container" style="padding:8px 16px 16px">
-        <a href="/services/">Services</a> •
-        <a href="/locations/">Locations</a> •
-    <a href="/pricing/">Pricing</a> •
-        <a href="/gallery.html">Gallery</a> •
-        <a href="/reviews.html">Reviews</a> •
-        <a href="/faq.html">FAQ</a> •
-        <a class="cta" href="https://booknow.shinedesignaz.com/" rel="nofollow">Book Now</a>
-      </div>
+  <div class="container nav">
+    <a class="brand" href="/">
+      <img src="/assets/images/logo.webp" alt="Shine Design logo">
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/services/">Services</a>
+      <a href="/locations/">Locations</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/gallery.html">Gallery</a>
+      <a href="/reviews.html">Reviews</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a class="cta" href="https://booknow.shinedesignaz.com/" target="_blank" rel="noopener">Book Now</a>
     </nav>
-  </header>
+
+    <button class="menu-btn" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false">☰</button>
+  </div>
+
+  <!-- Mobile nav -->
+  <nav id="mobile-nav" aria-label="Mobile" hidden>
+    <div class="mobile-panel container">
+      <a href="/services/">Services</a>
+      <a href="/locations/">Locations</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/gallery.html">Gallery</a>
+      <a href="/reviews.html">Reviews</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a class="cta" href="https://booknow.shinedesignaz.com/" target="_blank" rel="noopener">Book Now</a>
+
+      <!-- Sticky call/text bar -->
+      <div class="mobile-call">
+        <div class="btn-row">
+          <a class="btn-call" href="tel:+14805288227" aria-label="Call Shine Design at (480) 528-8227">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-phone">
+              <path d="M6.6 10.8a15.8 15.8 0 006.6 6.6l2.2-2.2a1.5 1.5 0 011.6-.36c1.27.46 2.65.7 4.04.7a1 1 0 011 1v3.7a1 1 0 01-1 1C12.3 22 2 11.7 2 3a1 1 0 011-1h3.7a1 1 0 011 1c0 1.39.24 2.77.7 4.04.17.53.04 1.11-.36 1.52L6.6 10.8z"/>
+            </svg>
+            <span>Call</span>
+          </a>
+          <a class="btn-text" href="sms:+14805288227" aria-label="Text Shine Design at (480) 528-8227">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-text">
+              <path d="M4 4h16v12H5.17L4 17.17V4zm0-2a2 2 0 00-2 2v20l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2H4z"/>
+            </svg>
+            <span>Text</span>
+          </a>
+        </div>
+        <div class="hours">Open Daily: 8am – 6pm</div>
+      </div>
+    </div>
+  </nav>
+</header>
 
   <!-- HERO -->
   <section class="hero">
@@ -407,8 +433,7 @@
       <p class="small">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
     </div>
   </footer>
-
-  <script defer src="/navigation.js"></script>
   <script>document.querySelectorAll('footer .small').forEach(el=>el.innerHTML=el.innerHTML.replace('{year}', new Date().getFullYear()));</script>
+  <script defer src="/navigation.js"></script>
 </body>
 </html>

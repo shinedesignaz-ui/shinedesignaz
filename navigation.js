@@ -1,22 +1,26 @@
-// navigation.js 
+// navigation.js
 
 // 1. MOBILE MENU TOGGLE
 (function(){
   const btn = document.querySelector('.menu-btn');
   const mobile = document.getElementById('mobile-nav');
   if(!btn || !mobile) return;
-  
-  btn.addEventListener('click', () => {
+
+  const newBtn = btn.cloneNode(true);
+  btn.replaceWith(newBtn);
+
+  newBtn.addEventListener('click', () => {
     const open = !mobile.hasAttribute('hidden');
-    if(open){ 
-      mobile.setAttribute('hidden',''); 
-      btn.setAttribute('aria-expanded','false'); 
-    } else { 
-      mobile.removeAttribute('hidden'); 
-      btn.setAttribute('aria-expanded','true'); 
+    if(open){
+      mobile.setAttribute('hidden','');
+      newBtn.setAttribute('aria-expanded','false');
+    } else {
+      mobile.removeAttribute('hidden');
+      newBtn.setAttribute('aria-expanded','true');
     }
   });
 })();
+
 
 // 2. FIELDD FORM LAZY LOADING
 function loadFielddForm() {
@@ -66,10 +70,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1);
   }
 })();
-// Add this at the end of your navigation.js file
-(function() {
-  const script = document.createElement('script');
-  script.src = '/action-buttons.js';
-  script.defer = true;
-  document.body.appendChild(script);
-})();
+
