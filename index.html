@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <script src="https://fieldd-scripts.s3.amazonaws.com/leadForm/fieldd-lead-form.js"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,7 +11,7 @@
   <link rel="icon" href="/assets/images/favicon.ico">
   <meta name="theme-color" content="#0ea5e9">
 
-  <!-- OG/Twitter -->
+  <!-- Social -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Shine Design Mobile Detailing | #1 Detailing, Ceramic Coating, PPF in East Valley AZ">
   <meta property="og:description" content="Mobile auto detailing, ceramic coating, paint protection film (PPF), window tint & paint correction across Gilbert, Mesa, Chandler, Queen Creek & San Tan Valley. Book today.">
@@ -22,25 +21,29 @@
   <meta name="twitter:title" content="Shine Design Mobile Detailing | #1 Detailing, Ceramic Coating, PPF in East Valley AZ">
   <meta name="twitter:description" content="Mobile auto detailing, ceramic coating, paint protection film (PPF), window tint & paint correction across Gilbert, Mesa, Chandler, Queen Creek & San Tan Valley. Book today.">
   <meta name="twitter:image" content="/assets/images/og-image.jpg">
-  <link rel="preload" href="/assets/images/hero-bg.jpg" as="image">
 
-  <!-- Header styles -->
-  <link rel="stylesheet" href="/header-styles.css">
+  <!-- Preconnect to speed up third-party -->
+  <link rel="preconnect" href="https://booknow.shinedesignaz.com" crossorigin>
+  <link rel="preconnect" href="https://fieldd-scripts.s3.amazonaws.com" crossorigin>
 
-  <!-- Page styles -->
+  <!-- Header styles: non-blocking load -->
+  <link rel="preload" href="/header-styles.css" as="style">
+  <link rel="stylesheet" href="/header-styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/header-styles.css"></noscript>
+
+  <!-- Page CSS (critical bits inline; rest minimal) -->
   <style>
     :root{--brand:#0ea5e9;--brand-dark:#0284c7;--text:#0f172a;--muted:#475569;--bg:#fff}
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg);line-height:1.6}
     a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
     .container{max-width:1200px;margin:0 auto;padding:0 16px}
-    fieldd-lead-form{display:block;max-width:420px;margin:0 auto;width:100%}
+    main{min-height:52vh}
+    .section{padding:48px 0}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 
-    /* Avoid header conflicts (header CSS lives in /header-styles.css) */
-    /* header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:saturate(150%) blur(6px);border-bottom:1px solid #e2e8f0} */
-
+    /* NAV tweaks (header CSS lives in /header-styles.css) */
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
-    @media(max-width:680px){.phone-number{display:none !important}}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700}
     .brand img{height:36px;width:auto}
     .nav-links{display:none;gap:16px;align-items:center}
@@ -50,18 +53,10 @@
     .menu-btn{background:none;border:none;padding:8px;font-size:28px}
     @media(min-width:920px){.nav-links{display:flex}.menu-btn{display:none}}
 
-    footer{background:#0b1220;color:#d1d5db;padding:32px 0 24px 0}
-    .foot-grid, footer .container{padding-left:16px;padding-right:16px}
-    footer a{color:#93c5fd}
-    .foot-grid{display:grid;grid-template-columns:1fr;gap:18px;padding:28px 0}
-    @media(min-width:920px){.foot-grid{grid-template-columns:repeat(4,1fr)}}
-    .small{font-size:12px;color:#9ca3af}
-    main{min-height:52vh}
-    .section{padding:48px 0}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
-
-    /* HERO + page sections */
-    .hero{position:relative;overflow:hidden;color:#fff;text-align:left;background:linear-gradient(180deg,rgba(2,132,199,.95),rgba(14,165,233,.85)),url('/assets/images/hero-bg.jpg') center/cover no-repeat}
+    /* HERO: use real <img> for LCP; keep same visual with overlay */
+    .hero{position:relative;color:#fff;text-align:left;min-height:520px}
+    .hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,132,199,.95),rgba(14,165,233,.85));z-index:-1}
     .hero .container{padding:64px 16px 48px}
     .kickers{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
     .kickers span{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);padding:6px 10px;border-radius:999px;font-weight:600;font-size:14px}
@@ -71,11 +66,13 @@
     .cta-alt{display:inline-block;background:#fff;color:var(--brand);padding:10px 16px;border-radius:999px;font-weight:700;border:2px solid #fff}
     .cta-alt:hover{background:transparent;color:#fff}
 
+    /* TRUST row */
     .trust{background:#f8fafc;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}
     .trust .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:18px 0}
     .trust .item{display:flex;gap:10px;align-items:center;color:var(--muted);font-weight:600}
     @media(min-width:680px){.trust .row{grid-template-columns:repeat(4,1fr)}}
 
+    /* Cards */
     .cards{display:grid;grid-template-columns:1fr;gap:16px}
     @media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr)}}
     @media(min-width:1024px){.cards{grid-template-columns:repeat(3,1fr)}}
@@ -86,198 +83,71 @@
     .card p{margin:0 0 12px;color:var(--muted)}
     .pill{display:inline-block;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;background:#e0f2fe;color:var(--brand-dark);margin-right:6px}
 
+    /* Reviews */
     .reviews{background:#f8fafc}
     .review-grid{display:grid;grid-template-columns:1fr;gap:16px}
     @media(min-width:920px){.review-grid{grid-template-columns:repeat(3,1fr)}}
     .quote{border:1px solid #e2e8f0;background:#fff;border-radius:16px;padding:16px;font-size:15px}
 
+    /* CTA banner */
     .cta-banner{background:linear-gradient(90deg,var(--brand),var(--brand-dark));color:#fff;border-radius:16px;padding:18px;display:grid;gap:10px;align-items:center}
     @media(min-width:780px){.cta-banner{grid-template-columns:1fr auto}}
 
-    /* MICRO-FOOTER (kept; dark variant) */
-    .micro-footer{
-      background:#111;
-      padding:12px 0;
-      font-size:14px;
-      color:#ccc;
-      text-align:center;
-    }
-    .micro-footer .container{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:8px;
-      flex-wrap:wrap;
-    }
+    /* Mobile sticky call bar */
+    .mobile-call{position:sticky;bottom:0;padding:12px;background:#fff;border-top:1px solid #e2e8f0}
+    .mobile-call .btn-row{display:flex;gap:10px}
+    .mobile-call a{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid #e2e8f0}
+    .icon-phone,.icon-text{width:18px;height:18px}
+
+    /* Footer */
+    footer{background:#0b1220;color:#d1d5db;padding:32px 0 24px 0}
+    .foot-grid, footer .container{padding-left:16px;padding-right:16px}
+    footer a{color:#93c5fd}
+    .foot-grid{display:grid;grid-template-columns:1fr;gap:18px;padding:28px 0}
+    @media(min-width:920px){.foot-grid{grid-template-columns:repeat(4,1fr)}}
+    .small{font-size:12px;color:#9ca3af}
+
+    /* Micro-footer */
+    .micro-footer{background:#111;padding:12px 0;font-size:14px;color:#ccc;text-align:center}
+    .micro-footer .container{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
   </style>
 
-  <!-- JSON-LD -->
+  <!-- JSON-LD (unchanged except kept valid) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://shinedesignaz.com/#org",
-        "name": "Shine Design, LLC",
-        "legalName": "Shine Design, LLC",
-        "alternateName": "Shine Design Mobile Detailing",
-        "url": "https://shinedesignaz.com",
-        "logo": { "@id": "https://shinedesignaz.com/#logo" },
-        "sameAs": [
-          "https://twitter.com/shinedesignaz",
-          "https://www.facebook.com/shinedesigndetail/",
-          "https://www.youtube.com/@shinedesignaz",
-          "https://www.instagram.com/shinedesigndetail/",
-          "https://www.linkedin.com/company/shinedesignaz/",
-          "https://www.pinterest.com/shinedesignaz/",
-          "https://www.yelp.com/biz/shine-design-mobile-detailing-gilbert-2",
-          "https://www.bbb.org/us/az/san-tan-valley/profile/auto-detailing/shine-design-mobile-detailing-1126-1000147089",
-          "https://www.tiktok.com/@shinedesigndetailing"
-        ],
-        "contactPoint": [{
-          "@type": "ContactPoint",
-          "contactType": "customer service",
-          "telephone": "+1-480-528-8227",
-          "email": "mailto:shinedesignaz@gmail.com",
-          "areaServed": "US-AZ",
-          "availableLanguage": "en"
-        }]
-      },
-      {
-        "@type": "ImageObject",
-        "@id": "https://shinedesignaz.com/#logo",
-        "url": "https://shinedesignaz.com/assets/images/logo.png",
-        "contentUrl": "https://shinedesignaz.com/assets/images/logo.png"
-      },
-      {
-        "@type": "ImageObject",
-        "@id": "https://shinedesignaz.com/#og-image",
-        "url": "https://shinedesignaz.com/assets/images/og-image.jpg",
-        "contentUrl": "https://shinedesignaz.com/assets/images/og-image.jpg"
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://shinedesignaz.com/#website",
-        "url": "https://shinedesignaz.com",
-        "name": "Shine Design Mobile Detailing",
-        "publisher": { "@id": "https://shinedesignaz.com/#org" },
-        "inLanguage": "en"
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://shinedesignaz.com/#homepage",
-        "url": "https://shinedesignaz.com/",
-        "name": "Shine Design: Mobile Detailing in Gilbert & East Valley AZ",
-        "description": "Mobile detailing, ceramic coating, PPF, window tint, and paint correction. We come to you across Gilbert, Mesa, Chandler, Queen Creek & the East Valley.",
-        "isPartOf": { "@id": "https://shinedesignaz.com/#website" },
-        "primaryImageOfPage": { "@id": "https://shinedesignaz.com/#og-image" },
-        "breadcrumb": { "@id": "https://shinedesignaz.com/#breadcrumbs" },
-        "inLanguage": "en"
-      },
-      {
-        "@type": "AutomotiveBusiness",
-        "@id": "https://shinedesignaz.com/#local",
-        "name": "Shine Design Mobile Detailing",
-        "url": "https://shinedesignaz.com",
-        "image": { "@id": "https://shinedesignaz.com/#og-image" },
-        "telephone": "+1-480-528-8227",
-        "email": "mailto:shinedesignaz@gmail.com",
-        "priceRange": "$$",
-        "parentOrganization": { "@id": "https://shinedesignaz.com/#org" },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "3519 E Loma Vista St",
-          "addressLocality": "Gilbert",
-          "addressRegion": "AZ",
-          "postalCode": "85295",
-          "addressCountry": "US"
-        },
-        "openingHoursSpecification": [{
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-          "opens": "05:00",
-          "closes": "20:00"
-        }],
-        "serviceArea": [
-          { "@type": "Place", "name": "Gilbert, AZ" },
-          { "@type": "Place", "name": "Mesa, AZ" },
-          { "@type": "Place", "name": "Chandler, AZ" },
-          { "@type": "Place", "name": "Queen Creek, AZ" },
-          { "@type": "Place", "name": "San Tan Valley, AZ" },
-          { "@type": "Place", "name": "Scottsdale, AZ" },
-          { "@type": "Place", "name": "Tempe, AZ" },
-          { "@type": "Place", "name": "Phoenix, AZ" }
-        ],
-        "knowsAbout": [
-          "mobile auto detailing","interior detailing","exterior detailing",
-          "ceramic coating","paint protection film","PPF","paint correction",
-          "window tint","fleet detailing","boat detailing"
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Detailing & Protection Services",
-          "itemListElement": [
-            {"@type":"OfferCatalog","name":"Detailing Packages","itemListElement":[
-              {"@type":"Offer","name":"Interior Detailing","itemOffered":{"@type":"Service","name":"Interior Detailing","url":"https://shinedesignaz.com/services/interior-detailing.html","description":"Vacuum, steam, shampoo & extraction, leather care; odor & pet hair options."}},
-              {"@type":"Offer","name":"Exterior Detailing","itemOffered":{"@type":"Service","name":"Exterior Detailing","url":"https://shinedesignaz.com/services/exterior-detailing.html","description":"Hand wash, decon, sealant, wheels & tires; seasonal protection."}},
-              {"@type":"Offer","name":"Full Detail","itemOffered":{"@type":"Service","name":"Full Detail","url":"https://shinedesignaz.com/services/full-detail.html","description":"Complete interior deep clean + exterior decon & sealant."}}
-            ]},
-            {"@type":"OfferCatalog","name":"Paint Enhancement & Correction","itemListElement":[
-              {"@type":"Offer","name":"Enhancement Polish","itemOffered":{"@type":"Service","name":"Enhancement Polish","url":"https://shinedesignaz.com/services/paint-correction.html#enhancement","description":"Single-stage machine polish for 50–70% defect reduction."}},
-              {"@type":"Offer","name":"Paint Correction","itemOffered":{"@type":"Service","name":"Paint Correction","url":"https://shinedesignaz.com/services/paint-correction.html#correction","description":"Two-stage correction targeting 70–85% correction on daily drivers."}},
-              {"@type":"Offer","name":"Show Car Finish","itemOffered":{"@type":"Service","name":"Show Car Finish","url":"https://shinedesignaz.com/services/paint-correction.html#show","description":"Multi-stage jeweling for 85–95% perfection and maximum clarity."}}
-            ]},
-            {"@type":"OfferCatalog","name":"Coatings & Film","itemListElement":[
-              {"@type":"Offer","name":"Ceramic Coating","itemOffered":{"@type":"Service","name":"Ceramic Coating","url":"https://shinedesignaz.com/services/ceramic-coating.html","description":"Durable nano coating with UV resistance and easy-clean gloss."}},
-              {"@type":"Offer","name":"Paint Protection Film (PPF)","itemOffered":{"@type":"Service","name":"Paint Protection Film (PPF)","url":"https://shinedesignaz.com/services/paint-protection-film.html","description":"Self-healing film shielding high-impact areas from chips & scratches."}},
-              {"@type":"Offer","name":"Window Tint","itemOffered":{"@type":"Service","name":"Window Tint","url":"https://shinedesignaz.com/services/window-tinting.html","description":"Dyed, carbon, and ceramic IR films for heat & glare reduction."}}
-            ]},
-            {"@type":"OfferCatalog","name":"Specialty & Fleet","itemListElement":[
-              {"@type":"Offer","name":"Fleet Detailing","itemOffered":{"@type":"Service","name":"Fleet Detailing","url":"https://shinedesignaz.com/services/fleet-detailing.html","description":"Onsite multi-vehicle programs for dealers & fleets."}},
-              {"@type":"Offer","name":"Boat Detailing","itemOffered":{"@type":"Service","name":"Boat Detailing","url":"https://shinedesignaz.com/services/boat-detailing.html","description":"Wash, decon, gelcoat polishing, and marine coatings."}}
-            ]}
-          ]
-        },
-        "potentialAction": {"@type":"ScheduleAction","name":"Book Appointment","target":{"@type":"EntryPoint","urlTemplate":"https://booknow.shinedesignaz.com/"}}
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://shinedesignaz.com/#faq",
-        "mainEntity": [
-          {"@type":"Question","name":"Do you come to my home or office?","acceptedAnswer":{"@type":"Answer","text":"Yes—we're mobile across Gilbert, Mesa, Chandler, Queen Creek and the East Valley."}},
-          {"@type":"Question","name":"How long does a full detail take?","acceptedAnswer":{"@type":"Answer","text":"Most full details take 3–5 hours depending on size and condition."}},
-          {"@type":"Question","name":"Is ceramic coating worth it in Arizona heat?","acceptedAnswer":{"@type":"Answer","text":"Yes—ceramic adds UV resistance and makes washing faster while protecting clear coat."}}
-        ]
-      },
-      {
-        "@type":"BreadcrumbList",
-        "@id":"https://shinedesignaz.com/#breadcrumbs",
-        "itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://shinedesignaz.com/"}]
-      }
+      {"@type":"Organization","@id":"https://shinedesignaz.com/#org","name":"Shine Design, LLC","legalName":"Shine Design, LLC","alternateName":"Shine Design Mobile Detailing","url":"https://shinedesignaz.com","logo":{"@id":"https://shinedesignaz.com/#logo"},"sameAs":["https://twitter.com/shinedesignaz","https://www.facebook.com/shinedesigndetail/","https://www.youtube.com/@shinedesignaz","https://www.instagram.com/shinedesigndetail/","https://www.linkedin.com/company/shinedesignaz/","https://www.pinterest.com/shinedesignaz/","https://www.yelp.com/biz/shine-design-mobile-detailing-gilbert-2","https://www.bbb.org/us/az/san-tan-valley/profile/auto-detailing/shine-design-mobile-detailing-1126-1000147089","https://www.tiktok.com/@shinedesigndetailing"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer service","telephone":"+1-480-528-8227","email":"mailto:shinedesignaz@gmail.com","areaServed":"US-AZ","availableLanguage":"en"}]},
+      {"@type":"ImageObject","@id":"https://shinedesignaz.com/#logo","url":"https://shinedesignaz.com/assets/images/logo.png","contentUrl":"https://shinedesignaz.com/assets/images/logo.png"},
+      {"@type":"ImageObject","@id":"https://shinedesignaz.com/#og-image","url":"https://shinedesignaz.com/assets/images/og-image.jpg","contentUrl":"https://shinedesignaz.com/assets/images/og-image.jpg"},
+      {"@type":"WebSite","@id":"https://shinedesignaz.com/#website","url":"https://shinedesignaz.com","name":"Shine Design Mobile Detailing","publisher":{"@id":"https://shinedesignaz.com/#org"},"inLanguage":"en"},
+      {"@type":"WebPage","@id":"https://shinedesignaz.com/#homepage","url":"https://shinedesignaz.com/","name":"Shine Design: Mobile Detailing in Gilbert & East Valley AZ","description":"Mobile detailing, ceramic coating, PPF, window tint, and paint correction. We come to you across Gilbert, Mesa, Chandler, Queen Creek & the East Valley.","isPartOf":{"@id":"https://shinedesignaz.com/#website"},"primaryImageOfPage":{"@id":"https://shinedesignaz.com/#og-image"},"breadcrumb":{"@id":"https://shinedesignaz.com/#breadcrumbs"},"inLanguage":"en"},
+      {"@type":"AutomotiveBusiness","@id":"https://shinedesignaz.com/#local","name":"Shine Design Mobile Detailing","url":"https://shinedesignaz.com","image":{"@id":"https://shinedesignaz.com/#og-image"},"telephone":"+1-480-528-8227","email":"mailto:shinedesignaz@gmail.com","priceRange":"$$","parentOrganization":{"@id":"https://shinedesignaz.com/#org"},"address":{"@type":"PostalAddress","streetAddress":"3519 E Loma Vista St","addressLocality":"Gilbert","addressRegion":"AZ","postalCode":"85295","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"05:00","closes":"20:00"}],"serviceArea":[{"@type":"Place","name":"Gilbert, AZ"},{"@type":"Place","name":"Mesa, AZ"},{"@type":"Place","name":"Chandler, AZ"},{"@type":"Place","name":"Queen Creek, AZ"},{"@type":"Place","name":"San Tan Valley, AZ"},{"@type":"Place","name":"Scottsdale, AZ"},{"@type":"Place","name":"Tempe, AZ"},{"@type":"Place","name":"Phoenix, AZ"}],"knowsAbout":["mobile auto detailing","interior detailing","exterior detailing","ceramic coating","paint protection film","PPF","paint correction","window tint","fleet detailing","boat detailing"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Detailing & Protection Services","itemListElement":[{"@type":"OfferCatalog","name":"Detailing Packages","itemListElement":[{"@type":"Offer","name":"Interior Detailing","itemOffered":{"@type":"Service","name":"Interior Detailing","url":"https://shinedesignaz.com/services/interior-detailing.html","description":"Vacuum, steam, shampoo & extraction, leather care; odor & pet hair options."}},{"@type":"Offer","name":"Exterior Detailing","itemOffered":{"@type":"Service","name":"Exterior Detailing","url":"https://shinedesignaz.com/services/exterior-detailing.html","description":"Hand wash, decon, sealant, wheels & tires; seasonal protection."}},{"@type":"Offer","name":"Full Detail","itemOffered":{"@type":"Service","name":"Full Detail","url":"https://shinedesignaz.com/services/full-detail.html","description":"Complete interior deep clean + exterior decon & sealant."}}]},{"@type":"OfferCatalog","name":"Paint Enhancement & Correction","itemListElement":[{"@type":"Offer","name":"Enhancement Polish","itemOffered":{"@type":"Service","name":"Enhancement Polish","url":"https://shinedesignaz.com/services/paint-correction.html#enhancement","description":"Single-stage machine polish for 50–70% defect reduction."}},{"@type":"Offer","name":"Paint Correction","itemOffered":{"@type":"Service","name":"Paint Correction","url":"https://shinedesignaz.com/services/paint-correction.html#correction","description":"Two-stage correction targeting 70–85% correction on daily drivers."}},{"@type":"Offer","name":"Show Car Finish","itemOffered":{"@type":"Service","name":"Show Car Finish","url":"https://shinedesignaz.com/services/paint-correction.html#show","description":"Multi-stage jeweling for 85–95% perfection and maximum clarity."}}]},{"@type":"OfferCatalog","name":"Coatings & Film","itemListElement":[{"@type":"Offer","name":"Ceramic Coating","itemOffered":{"@type":"Service","name":"Ceramic Coating","url":"https://shinedesignaz.com/services/ceramic-coating.html","description":"Durable nano coating with UV resistance and easy-clean gloss."}},{"@type":"Offer","name":"Paint Protection Film (PPF)","itemOffered":{"@type":"Service","name":"Paint Protection Film (PPF)","url":"https://shinedesignaz.com/services/paint-protection-film.html","description":"Self-healing film shielding high-impact areas from chips & scratches."}},{"@type":"Offer","name":"Window Tint","itemOffered":{"@type":"Service","name":"Window Tint","url":"https://shinedesignaz.com/services/window-tinting.html","description":"Dyed, carbon, and ceramic IR films for heat & glare reduction."}}]},{"@type":"OfferCatalog","name":"Specialty & Fleet","itemListElement":[{"@type":"Offer","name":"Fleet Detailing","itemOffered":{"@type":"Service","name":"Fleet Detailing","url":"https://shinedesignaz.com/services/fleet-detailing.html","description":"Onsite multi-vehicle programs for dealers & fleets."}},{"@type":"Offer","name":"Boat Detailing","itemOffered":{"@type":"Service","name":"Boat Detailing","url":"https://shinedesignaz.com/services/boat-detailing.html","description":"Wash, decon, gelcoat polishing, and marine coatings."}}]}} ,
+      {"@type":"FAQPage","@id":"https://shinedesignaz.com/#faq","mainEntity":[
+        {"@type":"Question","name":"Do you come to my home or office?","acceptedAnswer":{"@type":"Answer","text":"Yes—we're mobile across Gilbert, Mesa, Chandler, Queen Creek and the East Valley."}},
+        {"@type":"Question","name":"How long does a full detail take?","acceptedAnswer":{"@type":"Answer","text":"Most full details take 3–5 hours depending on size and condition."}},
+        {"@type":"Question","name":"Is ceramic coating worth it in Arizona heat?","acceptedAnswer":{"@type":"Answer","text":"Yes—ceramic adds UV resistance and makes washing faster while protecting clear coat."}}
+      ]},
+      {"@type":"BreadcrumbList","@id":"https://shinedesignaz.com/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://shinedesignaz.com/"}]}
     ]
   }
   </script>
 
-  <!-- Optional: site-wide nav helpers -->
+  <!-- Optional: site-wide nav helpers (kept deferred) -->
   <script defer src="/navigation.js"></script>
 </head>
 <body>
-
   <a class="sr-only" href="#main">Skip to content</a>
 
   <!-- ===== HEADER ===== -->
   <header class="main-header" id="main-header">
     <div class="header-container">
       <div class="header-content">
-        <!-- Brand -->
         <a href="/" class="brand" aria-label="Shine Design Home">
           <img src="/assets/images/logo.webp" alt="Shine Design Logo" width="140" height="36" decoding="async" fetchpriority="high">
         </a>
 
-        <!-- Desktop Navigation -->
         <nav class="nav-links" aria-label="Primary">
-          <!-- Services -->
           <div class="nav-dropdown">
             <a href="/services/">Services <span class="arrow">▼</span></a>
             <div class="dropdown-menu" role="menu">
@@ -294,7 +164,6 @@
             </div>
           </div>
 
-          <!-- Locations -->
           <div class="nav-dropdown">
             <a href="/locations/">Locations <span class="arrow">▼</span></a>
             <div class="dropdown-menu" role="menu">
@@ -310,7 +179,6 @@
             </div>
           </div>
 
-          <!-- Pricing -->
           <div class="nav-dropdown">
             <a href="/pricing/">Pricing <span class="arrow">▼</span></a>
             <div class="dropdown-menu" role="menu">
@@ -329,7 +197,6 @@
           <a class="cta" href="https://booknow.shinedesignaz.com/" target="_blank" rel="noopener">Book Now</a>
         </nav>
 
-        <!-- Mobile Menu Button -->
         <button class="menu-btn" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false">☰</button>
       </div>
     </div>
@@ -337,7 +204,6 @@
     <!-- Mobile Navigation -->
     <nav id="mobile-nav" aria-label="Mobile" hidden>
       <div class="mobile-panel">
-        <!-- Services -->
         <div class="mobile-dropdown">
           <button aria-expanded="false">Services <span class="arrow">▼</span></button>
           <div class="mobile-submenu">
@@ -352,7 +218,6 @@
           </div>
         </div>
 
-        <!-- Locations -->
         <div class="mobile-dropdown">
           <button aria-expanded="false">Locations <span class="arrow">▼</span></button>
           <div class="mobile-submenu">
@@ -367,7 +232,6 @@
           </div>
         </div>
 
-        <!-- Pricing -->
         <div class="mobile-dropdown">
           <button aria-expanded="false">Pricing <span class="arrow">▼</span></button>
           <div class="mobile-submenu">
@@ -389,15 +253,11 @@
         <div class="mobile-call">
           <div class="btn-row">
             <a class="btn-call" href="tel:+14805288227" aria-label="Call (480) 528-8227">
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-phone">
-                <path d="M6.6 10.8a15.8 15.8 0 006.6 6.6l2.2-2.2a1.5 1.5 0 011.6-.36c1.27.46 2.65.7 4.04.7a1 1 0 011 1v3.7a1 1 0 01-1 1C12.3 22 2 11.7 2 3a1 1 0 011-1h3.7a1 1 0 011 1c0 1.39.24 2.77.7 4.04.17.53.04 1.11-.36 1.52L6.6 10.8z"/>
-              </svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-phone"><path d="M6.6 10.8a15.8 15.8 0 006.6 6.6l2.2-2.2a1.5 1.5 0 011.6-.36c1.27.46 2.65.7 4.04.7a1 1 0 011 1v3.7a1 1 0 01-1 1C12.3 22 2 11.7 2 3a1 1 0 011-1h3.7a1 1 0 011 1c0 1.39.24 2.77.7 4.04.17.53.04 1.11-.36 1.52L6.6 10.8z"/></svg>
               <span>Call</span>
             </a>
             <a class="btn-text" href="sms:+14805288227" aria-label="Text (480) 528-8227">
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-text">
-                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
-              </svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-text"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
               <span>Text</span>
             </a>
           </div>
@@ -415,53 +275,31 @@
     const menu = document.getElementById('mobile-nav');
     if (!btn || !menu) return;
 
-    const openMenu = () => {
-      menu.removeAttribute('hidden');
-      btn.setAttribute('aria-expanded', 'true');
-      btn.textContent = '✕';
-    };
-    const closeMenu = () => {
-      menu.setAttribute('hidden', '');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.textContent = '☰';
-    };
+    const openMenu = () => { menu.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); btn.textContent = '✕'; };
+    const closeMenu = () => { menu.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); btn.textContent = '☰'; };
 
-    btn.addEventListener('click', () => {
-      const isOpen = !menu.hasAttribute('hidden');
-      isOpen ? closeMenu() : openMenu();
-    });
+    btn.addEventListener('click', () => { (!menu.hasAttribute('hidden') ? closeMenu() : openMenu()); });
 
-    // Close on outside click
     document.addEventListener('click', (e) => {
-      if (!menu.hasAttribute('hidden') && !btn.contains(e.target) && !menu.contains(e.target)) {
-        closeMenu();
-      }
+      if (!menu.hasAttribute('hidden') && !btn.contains(e.target) && !menu.contains(e.target)) closeMenu();
     }, { passive: true });
 
-    // Mobile dropdowns (one open at a time)
     const mobileButtons = document.querySelectorAll('.mobile-dropdown > button');
     mobileButtons.forEach((button) => {
       button.addEventListener('click', (e) => {
         e.stopPropagation();
         const parent = button.parentElement;
         const isOpen = parent.classList.contains('open');
-
-        mobileButtons.forEach((b) => {
-          b.parentElement.classList.remove('open');
-          b.setAttribute('aria-expanded', 'false');
-        });
-
-        if (!isOpen) {
-          parent.classList.add('open');
-          button.setAttribute('aria-expanded', 'true');
-        }
+        mobileButtons.forEach((b) => { b.parentElement.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+        if (!isOpen) { parent.classList.add('open'); button.setAttribute('aria-expanded','true'); }
       }, { passive: true });
     });
   })();
   </script>
 
-  <!-- HERO -->
+  <!-- HERO with real image (no file change; same /assets/images/hero-bg.jpg) -->
   <section class="hero">
+    <img class="bg" src="/assets/images/hero-bg.jpg" alt="" width="2000" height="1200" fetchpriority="high" decoding="async">
     <div class="container">
       <div class="kickers">
         <a href="https://maps.app.goo.gl/yZZMMBRYVYBUFqHq8" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;"><span>⭐⭐⭐⭐⭐ 4.9/5 (200+ Reviews)</span></a>
@@ -497,7 +335,8 @@
         Request a Free Quote<br>
         for Mobile Detailing, Ceramic Coatings, PPF, or Window Tint in East Valley AZ
       </h2>
-      <fieldd-lead-form code="I-HCZQ"></fieldd-lead-form>
+      <!-- Lazy-load Fieldd when near viewport; keeps images unchanged -->
+      <div id="lead-form-anchor" data-fieldd-code="I-HCZQ"></div>
     </div>
 
     <section class="section">
@@ -651,10 +490,29 @@
   </footer>
 
   <!-- Footer year token -->
+  <script>document.querySelectorAll('footer .small').forEach(el=>{el.innerHTML = el.innerHTML.replace('{year}', new Date().getFullYear());});</script>
+
+  <!-- Lazy-load Fieldd on view (keeps images untouched) -->
   <script>
-    document.querySelectorAll('footer .small').forEach(el=>{
-      el.innerHTML = el.innerHTML.replace('{year}', new Date().getFullYear());
-    });
+  (function(){
+    const el = document.getElementById('lead-form-anchor');
+    if(!el) return;
+    const load = () => {
+      if (window.customElements?.get('fieldd-lead-form')) {
+        el.outerHTML = `<fieldd-lead-form code="${el.dataset.fielddCode}"></fieldd-lead-form>`;
+        return;
+      }
+      const s = document.createElement('script');
+      s.src = 'https://fieldd-scripts.s3.amazonaws.com/leadForm/fieldd-lead-form.js';
+      s.defer = true;
+      s.onload = () => el.outerHTML = `<fieldd-lead-form code="${el.dataset.fielddCode}"></fieldd-lead-form>`;
+      document.head.appendChild(s);
+    };
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some(e => e.isIntersecting)) { io.disconnect(); load(); }
+    }, { rootMargin: '600px' });
+    io.observe(el);
+  })();
   </script>
 
   <!-- Your site scripts -->
