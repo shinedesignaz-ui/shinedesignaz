@@ -1,85 +1,109 @@
-// navigation.js - COMPLETE VERSION WITH STICKY HEADER
+(() => {
+  // Bump this when you update /partials/header.html or /partials/footer.html
+  const VERSION = '3';
+  const key = p => `chrome:${VERSION}:${p}`;
 
-// 1. MOBILE MENU TOGGLE
-(function(){
-  const btn = document.querySelector('.menu-btn');
-  const mobile = document.getElementById('mobile-nav');
-  if(!btn || !mobile) return;
-
-  const newBtn = btn.cloneNode(true);
-  btn.replaceWith(newBtn);
-
-  newBtn.addEventListener('click', () => {
-    const open = !mobile.hasAttribute('hidden');
-    if(open){
-      mobile.setAttribute('hidden','');
-      newBtn.setAttribute('aria-expanded','false');
-    } else {
-      mobile.removeAttribute('hidden');
-      newBtn.setAttribute('aria-expanded','true');
+  /* 1) Ensure shared header CSS is present once */
+  (function injectHeaderCSS() {
+    const href = '/header-styles.css';
+    const has = [...document.styleSheets].some(s => s.href && s.href.includes(href));
+    if (!has) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
     }
-  });
-})();
+  })();
 
-// 2. STICKY HEADER EFFECT (ADD THIS)
-window.addEventListener('scroll', function() {
-  const header = document.getElementById('main-header') || document.querySelector('header');
-  if (header && window.scrollY > 50) {
-    header.classList.add('scrolled');
-  } else if (header) {
-    header.classList.remove('scrolled');
+  /* 2) Remove any legacy inline header/footer (old pages) */
+  function removeLegacyChrome() {
+    document.querySelectorAll('header.main-header, .micro-footer, footer')
+      .forEach(el => el.parentNode && el.parentNode.removeChild(el));
   }
-});
 
-// 3. FIELDD FORM LAZY LOADING
-function loadFielddForm() {
-  if (!window.FielddBooking) {
-    var script = document.createElement('script');
-    script.src = 'https://fieldd-scripts.s3.amazonaws.com/leadForm/fieldd-lead-form.js';
-    script.onload = function() {
-      if (window.FielddBooking && window.FielddBooking.init) {
-        window.FielddBooking.init('I-HCZQ');
-      }
-    };
-    document.body.appendChild(script);
-  } else {
-    window.FielddBooking.init('I-HCZQ');
+  /* 3) Ensure placeholders exist */
+  function ensurePlaceholders() {
+    // Skip link
+    if (!document.querySelector('.sr-only[href="#main"]')) {
+      const skip = document.createElement('a');
+      skip.className = 'sr-only';
+      skip.href = '#main';
+      skip.textContent = 'Skip to content';
+      document.body.insertBefore(skip, document.body.firstChild);
+    }
+    // Header slot
+    if (!document.getElementById('site-header')) {
+      const top = document.createElement('div');
+      top.id = 'site-header';
+      top.setAttribute('data-chrome-path', '/partials/header.html');
+      document.body.insertBefore(top, document.body.firstChild.nextSibling);
+    }
+    // Footer slot
+    if (!document.getElementById('site-footer')) {
+      const bottom = document.createElement('div');
+      bottom.id = 'site-footer';
+      bottom.setAttribute('data-chrome-path', '/partials/footer.html');
+      document.body.appendChild(bottom);
+    }
   }
-}
 
-// Load Fieldd form when user scrolls to it
-document.addEventListener('DOMContentLoaded', function() {
-  var form = document.querySelector('fieldd-lead-form');
-  if (form) {
-    var observer = new IntersectionObserver(function(entries) {
-      if (entries[0].isIntersecting) {
-        loadFielddForm();
-        observer.disconnect();
-      }
+  /* 4) Fetch & mount helpers (cache-first for speed, version-busted) */
+  async function mount(id, path, after) {
+    const slot = document.getElementById(id);
+    if (!slot) return;
+
+    const cached = localStorage.getItem(key(path));
+    if (cached) slot.outerHTML = cached;
+
+    try {
+      const res = await fetch(path, { cache: 'no-cache' });
+      if (!res.ok) return;
+      const html = await res.text();
+      localStorage.setItem(key(path), html);
+      (document.getElementById(id) || document.querySelector(`[data-chrome-path="${path}"]`))?.outerHTML = html;
+      after && after();
+    } catch {}
+  }
+
+  /* 5) Wire header interactions (menu toggle + mobile dropdowns) */
+  function wireHeader() {
+    const btn = document.querySelector('.menu-btn');
+    const menu = document.getElementById('mobile-nav');
+    if (!btn || !menu) return;
+
+    const open = () => { menu.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); btn.textContent = '✕'; };
+    const close = () => { menu.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); btn.textContent = '☰'; };
+
+    btn.addEventListener('click', () => (!menu.hasAttribute('hidden') ? close() : open()));
+    document.addEventListener('click', (e) => {
+      if (!menu.hasAttribute('hidden') && !btn.contains(e.target) && !menu.contains(e.target)) close();
+    }, { passive: true });
+
+    // Only one mobile dropdown open at a time
+    document.querySelectorAll('.mobile-dropdown > button').forEach((b) => {
+      b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const parent = b.parentElement;
+        const on = parent.classList.contains('open');
+        document.querySelectorAll('.mobile-dropdown').forEach(d => {
+          d.classList.remove('open');
+          d.querySelector('button')?.setAttribute('aria-expanded','false');
+        });
+        if (!on) { parent.classList.add('open'); b.setAttribute('aria-expanded','true'); }
+      }, { passive: true });
     });
-    observer.observe(form);
   }
-});
 
-// 4. LOAD ACTION BUTTONS (Single external file approach)
-(function() {
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(function() {
-      const script = document.createElement('script');
-      script.src = '/action-buttons.js';
-      script.defer = true;
-      document.body.appendChild(script);
+  /* 6) Footer year token */
+  function fixYear() {
+    document.querySelectorAll('footer .small').forEach(el=>{
+      el.innerHTML = el.innerHTML.replace('{year}', new Date().getFullYear());
     });
-  } else {
-    setTimeout(function() {
-      const script = document.createElement('script');
-      script.src = '/action-buttons.js';
-      script.defer = true;
-      document.body.appendChild(script);
-    }, 1);
   }
+
+  // Run
+  removeLegacyChrome();
+  ensurePlaceholders();
+  mount('site-header', '/partials/header.html', wireHeader);
+  mount('site-footer', '/partials/footer.html', fixYear);
 })();
-/* Sticky header scroll effect */
-header.scrolled {
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-}
