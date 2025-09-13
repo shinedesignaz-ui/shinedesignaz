@@ -1,0 +1,313 @@
+# ===================================================================
+# OPTIMIZED .HTACCESS FOR SHINE DESIGN - PAGESPEED 90+ SCORE
+# ===================================================================
+
+# Enable Rewrite Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Force HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+    
+    # Remove trailing slash
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+    
+    # Remove .html extension
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.+)$ $1.html [L,QSA]
+    
+    # Redirect www to non-www
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</IfModule>
+
+# ===================================================================
+# COMPRESSION
+# ===================================================================
+
+# Enable Brotli compression (best compression)
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/plain
+    AddOutputFilterByType BROTLI_COMPRESS text/html
+    AddOutputFilterByType BROTLI_COMPRESS text/xml
+    AddOutputFilterByType BROTLI_COMPRESS text/css
+    AddOutputFilterByType BROTLI_COMPRESS text/javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/xml
+    AddOutputFilterByType BROTLI_COMPRESS application/xhtml+xml
+    AddOutputFilterByType BROTLI_COMPRESS application/rss+xml
+    AddOutputFilterByType BROTLI_COMPRESS application/javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/x-javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/json
+    AddOutputFilterByType BROTLI_COMPRESS application/ld+json
+    AddOutputFilterByType BROTLI_COMPRESS application/vnd.ms-fontobject
+    AddOutputFilterByType BROTLI_COMPRESS application/x-font-ttf
+    AddOutputFilterByType BROTLI_COMPRESS font/opentype
+    AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+    AddOutputFilterByType BROTLI_COMPRESS image/x-icon
+</IfModule>
+
+# Fallback to GZIP if Brotli not available
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/ld+json
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE application/x-font-ttf
+    AddOutputFilterByType DEFLATE font/opentype
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE image/x-icon
+</IfModule>
+
+# ===================================================================
+# BROWSER CACHING
+# ===================================================================
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    
+    # HTML - Cache for 1 hour (frequently updated)
+    ExpiresByType text/html "access plus 1 hour"
+    
+    # CSS and JavaScript - Cache for 1 year (versioned files)
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+    
+    # Images - Cache for 1 year
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/ico "access plus 1 year"
+    
+    # Fonts - Cache for 1 year
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/x-font-ttf "access plus 1 year"
+    ExpiresByType application/x-font-opentype "access plus 1 year"
+    ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+    
+    # Data interchange
+    ExpiresByType application/json "access plus 0 seconds"
+    ExpiresByType application/ld+json "access plus 0 seconds"
+    ExpiresByType application/xml "access plus 0 seconds"
+    ExpiresByType text/xml "access plus 0 seconds"
+    
+    # Manifest files
+    ExpiresByType application/manifest+json "access plus 1 week"
+    ExpiresByType text/cache-manifest "access plus 0 seconds"
+</IfModule>
+
+# Cache Control Headers
+<IfModule mod_headers.c>
+    # Security headers
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Cache Control for static assets
+    <FilesMatch "\.(ico|jpg|jpeg|png|gif|webp|avif|svg|css|js|woff|woff2|ttf|otf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    
+    # Cache Control for HTML
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "public, max-age=3600, must-revalidate"
+    </FilesMatch>
+    
+    # Remove ETag for static content (use Cache-Control instead)
+    <FilesMatch "\.(ico|jpg|jpeg|png|gif|webp|avif|svg|css|js)$">
+        Header unset ETag
+        FileETag None
+    </FilesMatch>
+    
+    # CORS for fonts
+    <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+    
+    # Keep-Alive
+    Header set Connection keep-alive
+</IfModule>
+
+# ===================================================================
+# HTTP/2 SERVER PUSH (if supported)
+# ===================================================================
+
+<IfModule mod_http2.c>
+    # Push critical resources
+    <FilesMatch "index\.html$">
+        Header add Link "</css/critical.min.css>; rel=preload; as=style"
+        Header add Link "</assets/images/logo.webp>; rel=preload; as=image"
+        Header add Link "</assets/images/hero-bg-mobile.webp>; rel=preload; as=image; media=(max-width: 768px)"
+    </FilesMatch>
+</IfModule>
+
+# ===================================================================
+# MIME TYPES
+# ===================================================================
+
+<IfModule mod_mime.c>
+    # Web fonts
+    AddType application/font-woff              woff
+    AddType application/font-woff2             woff2
+    AddType application/vnd.ms-fontobject      eot
+    AddType font/ttf                           ttf
+    AddType font/collection                    ttc
+    AddType font/otf                           otf
+    
+    # Images
+    AddType image/webp                         webp
+    AddType image/avif                         avif
+    AddType image/apng                         apng
+    
+    # Video
+    AddType video/mp4                          mp4 m4v f4v f4p
+    AddType video/ogg                          ogv
+    AddType video/webm                         webm
+    
+    # Data
+    AddType application/json                   json
+    AddType application/ld+json                jsonld
+    AddType application/manifest+json          webmanifest
+    AddType text/cache-manifest                appcache
+    
+    # JavaScript
+    AddType text/javascript                    js mjs
+    
+    # XML
+    AddType application/xml                    xml
+    AddType text/xml                          xml
+</IfModule>
+
+# ===================================================================
+# PERFORMANCE OPTIMIZATIONS
+# ===================================================================
+
+# Disable directory browsing
+Options -Indexes
+
+# Follow symbolic links
+Options +FollowSymLinks
+
+# Disable multiviews
+Options -MultiViews
+
+# Set default charset
+AddDefaultCharset utf-8
+
+# Set charset for specific file types
+<IfModule mod_mime.c>
+    AddCharset utf-8 .css .js .json .jsonld .xml .rss .atom
+</IfModule>
+
+# ===================================================================
+# SECURITY ENHANCEMENTS
+# ===================================================================
+
+# Prevent script injection
+<IfModule mod_rewrite.c>
+    RewriteCond %{QUERY_STRING} (<|%3C)([^s]*s)+cript.*(>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} GLOBALS(=|[|%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} _REQUEST(=|[|%[0-9A-Z]{0,2})
+    RewriteRule ^(.*)$ index.html [F]
+</IfModule>
+
+# Block access to sensitive files
+<FilesMatch "(^#.*#|~|\.bak|\.config|\.dist|\.fla|\.inc|\.ini|\.log|\.psd|\.sh|\.sql|\.sw[op]|\.dat)$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
+
+# ===================================================================
+# ERROR PAGES
+# ===================================================================
+
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+ErrorDocument 500 /500.html
+
+# ===================================================================
+# REDIRECTS FOR OLD URLS (customize as needed)
+# ===================================================================
+
+# Redirect old service pages to new structure
+Redirect 301 /auto-detailing.html /services/mobile-detailing.html
+Redirect 301 /ceramic.html /services/ceramic-coating.html
+Redirect 301 /ppf.html /services/paint-protection-film.html
+
+# ===================================================================
+# SPEED OPTIMIZATIONS FOR WORDPRESS (if applicable)
+# ===================================================================
+
+# BEGIN WordPress
+# <IfModule mod_rewrite.c>
+# RewriteEngine On
+# RewriteBase /
+# RewriteRule ^index\.php$ - [L]
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule . /index.php [L]
+# </IfModule>
+# END WordPress
+
+# ===================================================================
+# CUSTOM OPTIMIZATIONS FOR SHINE DESIGN
+# ===================================================================
+
+# Serve WebP images when supported
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Check if browser supports WebP
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    
+    # Check if WebP replacement exists
+    RewriteCond %{REQUEST_FILENAME}.webp -f
+    
+    # Serve WebP instead
+    RewriteRule ^(.+)\.(jpe?g|png)$ $1.$2.webp [T=image/webp,E=accept:1]
+    
+    <IfModule mod_headers.c>
+        Header append Vary Accept env=REDIRECT_accept
+    </IfModule>
+</IfModule>
+
+# Enable HTTP Strict Transport Security (HSTS)
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# Content Security Policy (adjust as needed)
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://fieldd-scripts.s3.amazonaws.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com; frame-src https://booknow.shinedesignaz.com"
+</IfModule>
+
+# ===================================================================
+# END OF OPTIMIZED .HTACCESS
+# ===================================================================
