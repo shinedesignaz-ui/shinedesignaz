@@ -31,29 +31,32 @@
   <link rel="stylesheet" href="/header-styles.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="/header-styles.css"></noscript>
 
-  <!-- Page CSS (critical bits inline; rest minimal) -->
+  <!-- Page CSS (critical + accessibility) -->
   <style>
     :root{--brand:#0ea5e9;--brand-dark:#0284c7;--text:#0f172a;--muted:#475569;--bg:#fff}
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg);line-height:1.6}
-    a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
     .container{max-width:1200px;margin:0 auto;padding:0 16px}
     main{min-height:52vh}
     .section{padding:48px 0}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+    /* Global link styling: avoid color-only distinction */
+    a{color:var(--brand);text-decoration:underline;text-underline-offset:2px}
+    a:hover{color:var(--brand-dark);text-decoration-thickness:2px}
 
     /* NAV tweaks (header CSS lives in /header-styles.css) */
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700}
     .brand img{height:36px;width:auto}
     .nav-links{display:none;gap:16px;align-items:center}
-    .nav-links a{font-weight:600;color:#0f172a}
-    .cta{display:inline-block;background:var(--brand);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;border:2px solid var(--brand)}
+    .nav-links a{font-weight:600;color:#0f172a;text-decoration:none}
+    .cta{display:inline-block;background:var(--brand);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;border:2px solid var(--brand);text-decoration:none}
     .cta:hover{background:#fff;color:var(--brand);text-decoration:none}
     .menu-btn{background:none;border:none;padding:8px;font-size:28px}
     @media(min-width:920px){.nav-links{display:flex}.menu-btn{display:none}}
 
-    /* HERO: use real <img> for LCP; keep same visual with overlay */
+    /* HERO */
     .hero{position:relative;color:#fff;text-align:left;min-height:520px}
     .hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
     .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,132,199,.95),rgba(14,165,233,.85));z-index:-1}
@@ -63,7 +66,7 @@
     .hero h1{font-size:32px;line-height:1.15;margin:0 0 10px}
     .hero p{font-size:16px;opacity:.95;margin:0 0 18px}
     .hero .cta-wrap{display:flex;gap:10px;flex-wrap:wrap}
-    .cta-alt{display:inline-block;background:#fff;color:var(--brand);padding:10px 16px;border-radius:999px;font-weight:700;border:2px solid #fff}
+    .cta-alt{display:inline-block;background:#fff;color:var(--brand);padding:10px 16px;border-radius:999px;font-weight:700;border:2px solid #fff;text-decoration:none}
     .cta-alt:hover{background:transparent;color:#fff}
 
     /* TRUST row */
@@ -81,7 +84,7 @@
     .card .pad{padding:16px}
     .card h3{margin:0 0 6px;font-size:20px}
     .card p{margin:0 0 12px;color:var(--muted)}
-    .pill{display:inline-block;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;background:#e0f2fe;color:var(--brand-dark);margin-right:6px}
+    .pill{display:inline-block;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px;background:var(--brand);color:#fff} /* improved contrast */
 
     /* Reviews */
     .reviews{background:#f8fafc}
@@ -96,13 +99,13 @@
     /* Mobile sticky call bar */
     .mobile-call{position:sticky;bottom:0;padding:12px;background:#fff;border-top:1px solid #e2e8f0}
     .mobile-call .btn-row{display:flex;gap:10px}
-    .mobile-call a{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid #e2e8f0}
+    .mobile-call a{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid #e2e8f0;text-decoration:none}
     .icon-phone,.icon-text{width:18px;height:18px}
 
     /* Footer */
     footer{background:#0b1220;color:#d1d5db;padding:32px 0 24px 0}
     .foot-grid, footer .container{padding-left:16px;padding-right:16px}
-    footer a{color:#93c5fd}
+    footer a{color:#60a5fa} /* brighter for contrast */
     .foot-grid{display:grid;grid-template-columns:1fr;gap:18px;padding:28px 0}
     @media(min-width:920px){.foot-grid{grid-template-columns:repeat(4,1fr)}}
     .small{font-size:12px;color:#9ca3af}
@@ -110,9 +113,20 @@
     /* Micro-footer */
     .micro-footer{background:#111;padding:12px 0;font-size:14px;color:#ccc;text-align:center}
     .micro-footer .container{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
+
+    /* --- Accessibility targeting for Fieldd form (third-party) --- */
+    fieldd-lead-form, #lead-form-anchor { display:block; max-width:420px; margin:0 auto; width:100% }
+    fieldd-lead-form input, fieldd-lead-form textarea { color: var(--text); border-color:#94a3b8 }
+    fieldd-lead-form input::placeholder, fieldd-lead-form textarea::placeholder { color:#475569 }
+    fieldd-lead-form label { color: var(--text); font-weight: 600 }
+    fieldd-lead-form button, .vfPrakkFNZ4f_IUyItwg { background: var(--brand) !important; color:#fff !important; border:2px solid var(--brand); border-radius:999px; font-weight:700 }
+    fieldd-lead-form a { text-decoration: underline }
+
+    /* Keyboard focus visibility */
+    :focus-visible { outline: 3px solid #94caff; outline-offset: 2px }
   </style>
 
-  <!-- JSON-LD (unchanged except kept valid) -->
+  <!-- JSON-LD (unchanged) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -140,16 +154,16 @@
   <a class="sr-only" href="#main">Skip to content</a>
 
   <!-- ===== HEADER ===== -->
-  <header class="main-header" id="main-header">
+  <header class="main-header" id="main-header" role="banner">
     <div class="header-container">
       <div class="header-content">
         <a href="/" class="brand" aria-label="Shine Design Home">
           <img src="/assets/images/logo.webp" alt="Shine Design Logo" width="140" height="36" decoding="async" fetchpriority="high">
         </a>
 
-        <nav class="nav-links" aria-label="Primary">
+        <nav class="nav-links" aria-label="Primary" role="navigation">
           <div class="nav-dropdown">
-            <a href="/services/">Services <span class="arrow">▼</span></a>
+            <a href="/services/">Services <span class="arrow" aria-hidden="true">▼</span></a>
             <div class="dropdown-menu" role="menu">
               <div class="dropdown-label">Detailing Services</div>
               <a href="/services/car-detailing.html">Mobile Detailing</a>
@@ -165,7 +179,7 @@
           </div>
 
           <div class="nav-dropdown">
-            <a href="/locations/">Locations <span class="arrow">▼</span></a>
+            <a href="/locations/">Locations <span class="arrow" aria-hidden="true">▼</span></a>
             <div class="dropdown-menu" role="menu">
               <a href="/locations/gilbert.html">Gilbert</a>
               <a href="/locations/mesa.html">Mesa</a>
@@ -180,7 +194,7 @@
           </div>
 
           <div class="nav-dropdown">
-            <a href="/pricing/">Pricing <span class="arrow">▼</span></a>
+            <a href="/pricing/">Pricing <span class="arrow" aria-hidden="true">▼</span></a>
             <div class="dropdown-menu" role="menu">
               <div class="dropdown-label">Service Pricing</div>
               <a href="/pricing/mobile-detailing.html">Mobile Detailing</a>
@@ -202,10 +216,10 @@
     </div>
 
     <!-- Mobile Navigation -->
-    <nav id="mobile-nav" aria-label="Mobile" hidden>
+    <nav id="mobile-nav" aria-label="Mobile" hidden role="navigation">
       <div class="mobile-panel">
         <div class="mobile-dropdown">
-          <button aria-expanded="false">Services <span class="arrow">▼</span></button>
+          <button aria-expanded="false">Services <span class="arrow" aria-hidden="true">▼</span></button>
           <div class="mobile-submenu">
             <div class="submenu-label">Detailing Services</div>
             <a href="/services/mobile-detailing.html">Mobile Detailing</a>
@@ -219,7 +233,7 @@
         </div>
 
         <div class="mobile-dropdown">
-          <button aria-expanded="false">Locations <span class="arrow">▼</span></button>
+          <button aria-expanded="false">Locations <span class="arrow" aria-hidden="true">▼</span></button>
           <div class="mobile-submenu">
             <a href="/locations/gilbert.html">Gilbert</a>
             <a href="/locations/mesa.html">Mesa</a>
@@ -233,7 +247,7 @@
         </div>
 
         <div class="mobile-dropdown">
-          <button aria-expanded="false">Pricing <span class="arrow">▼</span></button>
+          <button aria-expanded="false">Pricing <span class="arrow" aria-hidden="true">▼</span></button>
           <div class="mobile-submenu">
             <div class="submenu-label">Service Pricing</div>
             <a href="/pricing/mobile-detailing.html">Mobile Detailing</a>
@@ -275,29 +289,31 @@
     const menu = document.getElementById('mobile-nav');
     if (!btn || !menu) return;
 
-    const openMenu = () => { menu.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); btn.textContent = '✕'; };
-    const closeMenu = () => { menu.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); btn.textContent = '☰'; };
+    function openMenu(){ menu.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); btn.textContent = '✕'; }
+    function closeMenu(){ menu.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); btn.textContent = '☰'; }
 
-    btn.addEventListener('click', () => { (!menu.hasAttribute('hidden') ? closeMenu() : openMenu()); });
+    btn.addEventListener('click', function(){
+      if (menu.hasAttribute('hidden')) { openMenu(); } else { closeMenu(); }
+    });
 
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', function(e){
       if (!menu.hasAttribute('hidden') && !btn.contains(e.target) && !menu.contains(e.target)) closeMenu();
     }, { passive: true });
 
-    const mobileButtons = document.querySelectorAll('.mobile-dropdown > button');
-    mobileButtons.forEach((button) => {
-      button.addEventListener('click', (e) => {
+    var mobileButtons = document.querySelectorAll('.mobile-dropdown > button');
+    mobileButtons.forEach(function(button){
+      button.addEventListener('click', function(e){
         e.stopPropagation();
-        const parent = button.parentElement;
-        const isOpen = parent.classList.contains('open');
-        mobileButtons.forEach((b) => { b.parentElement.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+        var parent = button.parentElement;
+        var isOpen = parent.classList.contains('open');
+        mobileButtons.forEach(function(b){ b.parentElement.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
         if (!isOpen) { parent.classList.add('open'); button.setAttribute('aria-expanded','true'); }
       }, { passive: true });
     });
   })();
   </script>
 
-  <!-- HERO with real image (no file change; same /assets/images/hero-bg.jpg) -->
+  <!-- HERO with real image (no file changes) -->
   <section class="hero">
     <img class="bg" src="/assets/images/hero-bg.jpg" alt="" width="2000" height="1200" fetchpriority="high" decoding="async">
     <div class="container">
@@ -335,8 +351,8 @@
         Request a Free Quote<br>
         for Mobile Detailing, Ceramic Coatings, PPF, or Window Tint in East Valley AZ
       </h2>
-      <!-- Lazy-load Fieldd when near viewport; keeps images unchanged -->
-      <div id="lead-form-anchor" data-fieldd-code="I-HCZQ"></div>
+      <!-- Accessible placeholder for Fieldd lead form -->
+      <div id="lead-form-anchor" data-fieldd-code="I-HCZQ" aria-label="Lead form"></div>
     </div>
 
     <section class="section">
@@ -345,15 +361,15 @@
         <p class="lead" style="color:var(--muted);margin:0 0 16px;">Professional results for daily drivers, exotics, fleets, RVs & boats. Choose a service to learn more.</p>
         <div class="cards">
           <article class="card">
-            <img loading="lazy" src="/assets/images/services/ceramic-coating.jpg" alt="Ceramic coating application on a vehicle in Gilbert, AZ">
+            <img loading="lazy" decoding="async" src="/assets/images/services/ceramic-coating.jpg" alt="Ceramic coating application on a vehicle in Gilbert, AZ">
             <div class="pad">
               <h3>Ceramic Coating</h3>
               <p>UV protection, extreme gloss, and effortless washing. 1–7 year options.</p>
-              <span class="pill">Most Popular</span> <a href="/services/ceramic-coating.html">Learn more →</a>
+              <span class="pill" aria-label="Most Popular">Most Popular</span> <a href="/services/ceramic-coating.html">Learn more →</a>
             </div>
           </article>
           <article class="card">
-            <img loading="lazy" src="/assets/images/services/paint-protection-film.jpg" alt="PPF clear bra installation in Mesa, AZ">
+            <img loading="lazy" decoding="async" src="/assets/images/services/paint-protection-film.jpg" alt="PPF clear bra installation in Mesa, AZ">
             <div class="pad">
               <h3>Paint Protection Film (PPF)</h3>
               <p>Rock-chip & scratch defense with self-healing film. Front-end & full-body.</p>
@@ -361,7 +377,7 @@
             </div>
           </article>
           <article class="card">
-            <img loading="lazy" src="/assets/images/services/interior-detail.jpg" alt="Interior detailing and steam cleaning in Chandler, AZ">
+            <img loading="lazy" decoding="async" src="/assets/images/services/interior-detail.jpg" alt="Interior detailing and steam cleaning in Chandler, AZ">
             <div class="pad">
               <h3>Interior Detailing</h3>
               <p>Deep clean seats, carpets & plastics. Pet hair & stain removal options.</p>
@@ -369,7 +385,7 @@
             </div>
           </article>
           <article class="card">
-            <img loading="lazy" src="/assets/images/services/exterior-detail.jpg" alt="Exterior wash, decon and wax in Queen Creek, AZ">
+            <img loading="lazy" decoding="async" src="/assets/images/services/exterior-detail.jpg" alt="Exterior wash, decon and wax in Queen Creek, AZ">
             <div class="pad">
               <h3>Exterior Detailing</h3>
               <p>Decon wash, clay, iron removal, and sealant for slick, protected paint.</p>
@@ -377,7 +393,7 @@
             </div>
           </article>
           <article class="card">
-            <img loading="lazy" src="/assets/images/services/paint-correction.jpg" alt="Paint correction polishing & swirl removal in San Tan Valley, AZ">
+            <img loading="lazy" decoding="async" src="/assets/images/services/paint-correction.jpg" alt="Paint correction polishing & swirl removal in San Tan Valley, AZ">
             <div class="pad">
               <h3>Paint Correction</h3>
               <p>1–3 step machine polishing to remove swirls & restore mirror-like finish.</p>
@@ -385,7 +401,7 @@
             </div>
           </article>
           <article class="card">
-            <img loading="lazy" src="/assets/images/services/window-tinting.jpg" alt="Window tint installation in Scottsdale, AZ">
+            <img loading="lazy" decoding="async" src="/assets/images/services/window-tinting.jpg" alt="Window tint installation in Scottsdale, AZ">
             <div class="pad">
               <h3>Window Tint</h3>
               <p>Heat-rejection films for a cooler cabin & UV protection. Ceramic & IR.</p>
@@ -450,11 +466,11 @@
   <div class="micro-footer">
     <div class="container">
       Mobile detailing, ceramic coating & PPF across Gilbert, Mesa, Chandler, Queen Creek, San Tan Valley.
-      <a href="tel:+14805288227" style="color:#0ea5e9;font-weight:700;">Call 480-528-8227</a>
+      <a href="tel:+14805288227" style="font-weight:700;">Call 480-528-8227</a>
     </div>
   </div>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="container foot-grid">
       <div>
         <img src="/assets/images/logo-sqaure-white.png" alt="Shine Design logo (white square)" style="height:36px;">
@@ -490,26 +506,26 @@
   </footer>
 
   <!-- Footer year token -->
-  <script>document.querySelectorAll('footer .small').forEach(el=>{el.innerHTML = el.innerHTML.replace('{year}', new Date().getFullYear());});</script>
+  <script>document.querySelectorAll('footer .small').forEach(function(el){el.innerHTML = el.innerHTML.replace('{year}', new Date().getFullYear());});</script>
 
   <!-- Lazy-load Fieldd on view (keeps images untouched) -->
   <script>
   (function(){
-    const el = document.getElementById('lead-form-anchor');
+    var el = document.getElementById('lead-form-anchor');
     if(!el) return;
-    const load = () => {
-      if (window.customElements?.get('fieldd-lead-form')) {
-        el.outerHTML = `<fieldd-lead-form code="${el.dataset.fielddCode}"></fieldd-lead-form>`;
+    function mountFieldd(){
+      if (window.customElements && window.customElements.get('fieldd-lead-form')) {
+        el.outerHTML = '<fieldd-lead-form code="'+ el.dataset.fielddCode +'"></fieldd-lead-form>';
         return;
       }
-      const s = document.createElement('script');
+      var s = document.createElement('script');
       s.src = 'https://fieldd-scripts.s3.amazonaws.com/leadForm/fieldd-lead-form.js';
       s.defer = true;
-      s.onload = () => el.outerHTML = `<fieldd-lead-form code="${el.dataset.fielddCode}"></fieldd-lead-form>`;
+      s.onload = function(){ el.outerHTML = '<fieldd-lead-form code="'+ el.dataset.fielddCode +'"></fieldd-lead-form>'; };
       document.head.appendChild(s);
-    };
-    const io = new IntersectionObserver((entries) => {
-      if (entries.some(e => e.isIntersecting)) { io.disconnect(); load(); }
+    }
+    var io = new IntersectionObserver(function(entries){
+      if (entries.some(function(e){return e.isIntersecting;})) { io.disconnect(); mountFieldd(); }
     }, { rootMargin: '600px' });
     io.observe(el);
   })();
@@ -517,5 +533,116 @@
 
   <!-- Your site scripts -->
   <script defer src="/action-buttons.js"></script>
+
+  <!-- =================== navigation.js (fixed) =================== -->
+  <script type="text/plain" data-filename="/navigation.js">
+(() => {
+  const VERSION = '3';
+  const key = (p) => `chrome:${VERSION}:${p}`;
+
+  // Load header-styles.css once
+  (function injectHeaderCSS() {
+    const href = '/header-styles.css';
+    const has = Array.from(document.styleSheets || []).some(s => s.href && s.href.includes(href));
+    if (!has) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    }
+  })();
+
+  // Remove any legacy header/footer
+  function removeLegacyChrome() {
+    document.querySelectorAll('header.main-header, .micro-footer, footer').forEach(el => el.remove());
+  }
+
+  // Ensure placeholders exist inside <body>
+  function ensurePlaceholders() {
+    if (!document.querySelector('.sr-only[href="#main"]')) {
+      const skip = document.createElement('a');
+      skip.className = 'sr-only';
+      skip.href = '#main';
+      skip.textContent = 'Skip to content';
+      document.body.insertBefore(skip, document.body.firstChild);
+    }
+    if (!document.getElementById('site-header')) {
+      const top = document.createElement('div');
+      top.id = 'site-header';
+      top.setAttribute('data-chrome-path', '/partials/header.html');
+      document.body.insertBefore(top, document.body.firstChild.nextSibling);
+    }
+    if (!document.getElementById('site-footer')) {
+      const bottom = document.createElement('div');
+      bottom.id = 'site-footer';
+      bottom.setAttribute('data-chrome-path', '/partials/footer.html');
+      document.body.appendChild(bottom);
+    }
+  }
+
+  async function mount(id, path, after) {
+    const slot = document.getElementById(id);
+    if (!slot) return;
+
+    const cached = localStorage.getItem(key(path));
+    if (cached) slot.outerHTML = cached;
+
+    try {
+      const res = await fetch(path, { cache: 'no-cache' });
+      if (!res.ok) return;
+      const html = await res.text();
+      localStorage.setItem(key(path), html);
+      const target = document.getElementById(id) || document.querySelector(`[data-chrome-path="${path}"]`);
+      if (target) target.outerHTML = html;
+      if (typeof after === 'function') after();
+    } catch (e) {
+      console.error('[navigation.js] fetch error', e);
+    }
+  }
+
+  function wireHeader() {
+    const btn = document.querySelector('.menu-btn');
+    const menu = document.getElementById('mobile-nav');
+    if (!btn || !menu) return;
+
+    function open(){ menu.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); btn.textContent = '✕'; }
+    function close(){ menu.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); btn.textContent = '☰'; }
+
+    btn.addEventListener('click', function(){
+      if (menu.hasAttribute('hidden')) { open(); } else { close(); }
+    });
+
+    document.addEventListener('click', function(e){
+      if (!menu.hasAttribute('hidden') && !btn.contains(e.target) && !menu.contains(e.target)) close();
+    }, { passive: true });
+
+    document.querySelectorAll('.mobile-dropdown > button').forEach(function(b){
+      b.addEventListener('click', function(e){
+        e.stopPropagation();
+        const parent = b.parentElement;
+        const on = parent.classList.contains('open');
+        document.querySelectorAll('.mobile-dropdown').forEach(function(d){
+          d.classList.remove('open');
+          const db = d.querySelector('button');
+          if (db) db.setAttribute('aria-expanded','false');
+        });
+        if (!on) { parent.classList.add('open'); b.setAttribute('aria-expanded','true'); }
+      }, { passive: true });
+    });
+  }
+
+  function fixYear() {
+    document.querySelectorAll('footer .small').forEach(function(el){
+      el.innerHTML = el.innerHTML.replace('{year}', new Date().getFullYear());
+    });
+  }
+
+  console.log('[navigation.js] loaded');
+  removeLegacyChrome();
+  ensurePlaceholders();
+  mount('site-header', '/partials/header.html', wireHeader);
+  mount('site-footer', '/partials/footer.html', fixYear);
+})();
+  </script>
 </body>
 </html>
